@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="cookie.js"></script>
+    <script src="javascript/cookie.js"></script>
   </head>
   <body style='background-color: white'>
     <div id='server' style='font-weight: 600'></div>
@@ -22,10 +22,10 @@
     <div id='banner_check_div'></div>
     <script>
       var boxes = ['native_check', 'mrect_check', 'banner_check'];
-      
+
       var codes = {};
-      
-      codes['native_check'] = 
+
+      codes['native_check'] =
         '<div class="fb-ad" data-format="native" data-testmode="%%TEST_MOD%%" data-placementid="97972641212_10153121319441213"data-nativeadid="ad_root"></div> ' +
         '<div id="ad_root" style="width:300px; height:400px;position:relative"> ' +
         '  <a class="fbAdLink"> ' +
@@ -36,45 +36,45 @@
         '      <div class="fbAdBody"></div> ' +
         '  </a> ' +
         '</div> ';
-      
+
       codes['mrect_check'] = '<fb:ad placementid="97972641212_10153177743496213" format="300x250" testmode="%%TEST_MOD%%"></fb:ad>';
       codes['banner_check'] = '<fb:ad placementid="97972641212_10153177743496213" format="320x50" testmode="%%TEST_MOD%%"></fb:ad>';
-      
+
       document.getElementById('intern').addEventListener('click', function () {
         Cookies.set('server', 'intern');
         window.location.reload();
       });
-      
+
       document.getElementById('connect').addEventListener('click', function () {
         Cookies.set('server', '!CONNECT!');
         window.location.reload();
       });
-      
+
       document.getElementById('sb').addEventListener('click', function () {
         var sandbox = document.getElementById('sbname').value;
         Cookies.set('server', sandbox);
         Cookies.set('sandbox', sandbox);
         window.location.reload();
       });
-      
+
       document.getElementById('testmode').addEventListener('change', function () {
         Cookies.set('testmode', document.getElementById('testmode').checked ? 'yes' : 'no');
         window.location.reload();
       });
-      
+
       (function(d, s, id) {
         var sb = Cookies.get('sandbox');
         if (!sb) {
           sb = 'tonypan.sb';
         }
         Cookies.set('sandbox', sb);
-      
+
         var server = Cookies.get('server');
         if (!server) {
           server = 'intern';
         }
         Cookies.set('server', server);
-      
+
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
@@ -84,40 +84,40 @@
             js.src = '//www.' + server + '.facebook.com/assets.php/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=97972641212';
         }
         fjs.parentNode.insertBefore(js, fjs);
-        
+
         window.SCRIPT_URL = js.src;
       }(document, 'script', 'facebook-jssdk'));
-      
+
       document.addEventListener("DOMContentLoaded", function() {
         var sb = Cookies.get('sandbox');
         document.getElementById('sbname').value = sb;
-      
+
         document.getElementById('server').innerText = 'Script from: ' + window.SCRIPT_URL;
-      
+
         var testmode = Cookies.get('testmode') === 'yes';
         document.getElementById('testmode').checked = testmode;
-        
+
         for (var i = 0; i < boxes.length; i++) {
           var name = boxes[i];
           var checked = Cookies.get(name) === 'yes';
-      
+
           document.getElementById(name).checked = checked;
-      
+
           var inner_html = checked ? codes[name] : 'Nothing';
           inner_html = inner_html.replace('%%TEST_MOD%%', testmode);
           document.getElementById(name + '_div').innerHTML = inner_html;
-      
+
           document.getElementById(name).addEventListener('change', function () {
             for (var i = 0; i < boxes.length; i++) {
               var name = boxes[i];
-              Cookies.set(name, document.getElementById(name).checked ? 'yes' : 'no'); 
+              Cookies.set(name, document.getElementById(name).checked ? 'yes' : 'no');
             }
-      
+
             window.location.reload();
           });
         }
       });
-      
+
       window.fbAsyncInit = function() {
         FB.Event.subscribe(
           'ad.error',
@@ -130,7 +130,7 @@
           }
         );
       };
-      
+
     </script>
   </body>
 </html>
