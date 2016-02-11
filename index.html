@@ -2,11 +2,6 @@
 <html>
   <head>
     <script src="javascript/cookie.js"></script>
-
-  <script type='text/javascript' src='https://www.googletagservices.com/tag/js/gpt.js'>
-    googletag.pubads().definePassback('/124141061/tony-ad-1', [300, 250]).display();
-  </script>
-
   </head>
   <body style='background-color: white'>
     <div id='server' style='font-weight: 600'></div>
@@ -67,7 +62,7 @@
         window.location.reload();
       });
 
-      /*(function(d, s, id) {
+      (function(d, s, id) {
         var sb = Cookies.get('sandbox');
         if (!sb) {
           sb = 'tonypan.sb';
@@ -91,7 +86,7 @@
         fjs.parentNode.insertBefore(js, fjs);
 
         window.SCRIPT_URL = js.src;
-      }(document, 'script', 'facebook-jssdk'));*/
+      }(document, 'script', 'facebook-jssdk'));
 
       document.addEventListener("DOMContentLoaded", function() {
         var sb = Cookies.get('sandbox');
