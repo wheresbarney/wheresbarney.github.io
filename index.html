@@ -67,7 +67,7 @@
         window.location.reload();
       });
 
-      (function(d, s, id) {
+      /*(function(d, s, id) {
         var sb = Cookies.get('sandbox');
         if (!sb) {
           sb = 'tonypan.sb';
@@ -91,7 +91,7 @@
         fjs.parentNode.insertBefore(js, fjs);
 
         window.SCRIPT_URL = js.src;
-      }(document, 'script', 'facebook-jssdk'));
+      }(document, 'script', 'facebook-jssdk'));*/
 
       document.addEventListener("DOMContentLoaded", function() {
         var sb = Cookies.get('sandbox');
