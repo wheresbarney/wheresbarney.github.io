@@ -20,8 +20,6 @@
     <input style='transform: scale(2)' type='checkbox' id='banner_check'>banner
     <p></p>
     <div id='banner_check_div'></div>
-    <script>var inDapIF = false;</script>
-    <script src="//www.googletagservices.com/tag/js/gpt.js"></script>
     <script>
       var boxes = ['native_check', 'mrect_check', 'banner_check'];
 
@@ -129,8 +127,6 @@
             html += '<div>' + errorMessage + "&nbsp;" + errorCode + '</div>';
             element.innerHTML = html;
             element.style.display = 'block';
-
-            googletag.pubads().definePassback('/124141061/tony-ad-1', [300, 250]).display();
           }
         );
       };
