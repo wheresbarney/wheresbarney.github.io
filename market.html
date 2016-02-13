@@ -1,5 +1,13 @@
 <html>
   <body>
-  <a href='market://details?id=com.upto.android'>Open market:// link</a>
+  <a href='market://details?id=com.upto.android'>Open market:// link via href</a>
+
+  <script>
+    function go() {
+      window.location.href = 'market://details?id=com.upto.android';
+    }
+  </script>
+
+  <div onclick='go()'>Open market:// link via window.location.href</div>
   </body>
 </html>
