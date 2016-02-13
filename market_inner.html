@@ -4,9 +4,9 @@
 
   <script>
     function go() {
-      var script = this.rootWindow.document.createElement('script');
+      var script = window.parent.document.createElement('script');
       script.innerText = 'window.location.href = \'market://details?id=com.upto.android\';';
-      this.rootWindow.document.body.appendChild(script);
+      window.parent.document.body.appendChild(script);
     }
   </script>
 
