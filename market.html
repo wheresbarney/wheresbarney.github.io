@@ -4,10 +4,14 @@
 
   <script>
     function go() {
-      window.location.href = 'market://details?id=com.upto.android';
+      //window.location.href = '';
+
+      var script = document.createElement('script');
+      script.innerText = 'window.location.href = \'market://details?id=com.upto.android\';';
+      document.body.appendChild(script);
     }
   </script>
 
-  <div onclick='go()'>Open market:// link via window.location.href</div>
+  <div style='color: blue' onclick='go()'>Open market:// link via window.location.href</div>
   </body>
 </html>
