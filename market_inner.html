@@ -1,0 +1,15 @@
+<html>
+  <body>
+  <a style='color: blue; font-size: 60px' href='market://details?id=com.upto.android'>Open market:// link via href</a>
+
+  <script>
+    function go() {
+      var script = this.rootWindow.document.createElement('script');
+      script.innerText = 'window.location.href = \'market://details?id=com.upto.android\';';
+      this.rootWindow.document.body.appendChild(script);
+    }
+  </script>
+
+  <div style='color: blue; font-size: 60px; text-decoration: underline; cursor: pointer;' onclick='go()'>Open market:// link via window.location.href</div>
+  </body>
+</html>
