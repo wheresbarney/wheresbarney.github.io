@@ -22,13 +22,31 @@
       googletag.pubads().enableSingleRequest();
       googletag.enableServices();
     });
+
+    googletag.cmd.push(function() {
+      googletag.defineSlot('/124141061/ad-unit-native', [300, 250], 'div-gpt-ad-1455845134939-0').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+
   </script>
+
 
   </head>
 
   <body>
 
-  Ad from DFP:
+  native from DFP:
+  <!-- /124141061/ad-unit-native -->
+  <div id='div-gpt-ad-1455845134939-0' style='height:250px; width:300px;'>
+    <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455845134939-0'); });
+    </script>
+  </div>
+
+  <hr>
+
+  mrect from DFP:
   <!-- /124141061/tony-ad-unit-1 -->
   <div id='div-gpt-ad-1455825127862-0' style='height:250px; width:300px;'>
     <script type='text/javascript'>
