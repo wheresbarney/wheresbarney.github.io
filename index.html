@@ -105,6 +105,7 @@
           document.getElementById(name).checked = checked;
 
           var inner_html = checked ? codes[name] : 'Nothing';
+          console.warn(inner_html);
           inner_html = inner_html.replace('%%TEST_MOD%%', testmode);
           document.getElementById(name + '_div').innerHTML = inner_html;
 
