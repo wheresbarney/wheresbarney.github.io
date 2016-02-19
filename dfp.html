@@ -18,23 +18,20 @@
 
   <script type='text/javascript'>
     googletag.cmd.push(function() {
+      // SF
       googletag.defineSlot('/124141061/tony-ad-unit-1', [300, 250], 'div-gpt-ad-1455825127862-0').addService(googletag.pubads());
-      googletag.pubads().enableSingleRequest();
-      googletag.enableServices();
-    });
-
-    googletag.cmd.push(function() {
       googletag.defineSlot('/124141061/ad-unit-native', [300, 250], 'div-gpt-ad-1455845134939-0').addService(googletag.pubads());
-      googletag.pubads().enableSingleRequest();
-      googletag.enableServices();
-    });
-
-    googletag.cmd.push(function() {
       googletag.defineSlot('/124141061/tony-ad-unit-banner', [320, 50], 'div-gpt-ad-1455853800469-0').addService(googletag.pubads());
       googletag.pubads().enableSingleRequest();
       googletag.enableServices();
-    });
 
+      // NO SF
+      googletag.defineSlot('/124141061/ad-unit-banner-no-sf', [320, 50], 'div-gpt-ad-1455860169823-0').addService(googletag.pubads());
+      googletag.defineSlot('/124141061/ad-unit-mrect-no-sf', [300, 250], 'div-gpt-ad-1455860169823-1').addService(googletag.pubads());
+      googletag.defineSlot('/124141061/ad-unit-native-no-sf', [300, 250], 'div-gpt-ad-1455860169823-2').addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
   </script>
 
 
@@ -49,6 +46,12 @@
       googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455845134939-0'); });
     </script>
   </div>
+  <!-- /124141061/ad-unit-native-no-sf -->
+  <div id='div-gpt-ad-1455860169823-2' style='height:250px; width:300px;'>
+    <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455860169823-2'); });
+    </script>
+  </div>
 
   <hr>
 
@@ -59,6 +62,12 @@
       googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455825127862-0'); });
     </script>
   </div>
+  <!-- /124141061/ad-unit-mrect-no-sf -->
+  <div id='div-gpt-ad-1455860169823-1' style='height:250px; width:300px;'>
+    <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455860169823-1'); });
+    </script>
+  </div>
 
   <hr>
 
@@ -67,6 +76,13 @@
   <div id='div-gpt-ad-1455853800469-0' style='height:50px; width:320px;'>
     <script type='text/javascript'>
       googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455853800469-0'); });
+    </script>
+  </div>
+
+  <!-- /124141061/ad-unit-banner-no-sf -->
+  <div id='div-gpt-ad-1455860169823-0' style='height:50px; width:320px;'>
+    <script type='text/javascript'>
+      googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455860169823-0'); });
     </script>
   </div>
 
