@@ -38,8 +38,8 @@
     window.addEventListener('DOMContentLoaded', function () {
       var textState = Cookies.get('showText') || 'on';
       document.getElementById('text').visibility = textState === 'on' ? 'visible' : 'hidden';
-      doucment.getElementById('toggleText').checked = textState === 'on';
-      doucment.getElementById('toggleText').addEventListener('change', function () {
+      document.getElementById('toggleText').checked = textState === 'on';
+      document.getElementById('toggleText').addEventListener('change', function () {
         var newState = document.getElementById('toggleText').checked;
         Cookies.set('showText', newState ? 'on' : 'off');
         window.location.reload();
