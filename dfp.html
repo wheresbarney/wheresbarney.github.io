@@ -5,8 +5,7 @@
   <script type='text/javascript'>
     window.addEventListener('DOMContentLoaded', function () {
       var textState = Cookies.get('showText') || 'on';
-      document.getElementById('text').visibility = textState === 'on' ? 'visible' : 'hidden';
-      console.warn(document.getElementById('text').visibility);
+      document.getElementById('text').style.visibility = textState === 'on' ? 'visible' : 'hidden';
       document.getElementById('toggleText').checked = textState === 'on';
       document.getElementById('toggleText').addEventListener('change', function () {
         var newState = document.getElementById('toggleText').checked;
