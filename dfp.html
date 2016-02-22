@@ -38,9 +38,11 @@
     window.onload = function () {
       var textState = Cookies.get('showText') || 'on';
       document.getElementById('text').visibility = textState === 'on' ? 'visible' : 'hidden';
+      doucment.getElementById('toggleText').checked = textState === 'on';
       doucment.getElementById('toggleText').addEventListener('change', function () {
         var newState = doucment.getElementById('toggleText').checked;
         Cookies.set('showText', newState ? 'on' : 'off');
+        window.location.reload();
       });
     }
   </script>
