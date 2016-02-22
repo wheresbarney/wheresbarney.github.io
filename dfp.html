@@ -34,6 +34,16 @@
     });
   </script>
 
+  <script>
+    window.onload = function () {
+      var textState = Cookies.get('showText') || 'on';
+      document.getElementById('text').visibility = textState === 'on' ? 'visible' : 'hidden';
+      doucment.getElementById('toggleText').addEventListener('change', function () {
+        var newState = doucment.getElementById('toggleText').checked;
+        Cookies.set('showText', newState ? 'on' : 'off');
+      });
+    }
+  </script>
   <style>
 .datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #000000; }.datagrid table td, .datagrid table th { padding: 4px 0px; }.datagrid table tbody td { color: #000000; border-left: 3px solid #000000;font-size: 12px;border-bottom: 2px solid #000000;font-weight: normal; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }
   </style>
@@ -41,7 +51,8 @@
   </head>
 
   <body>
-<p>
+<input style='transform: scale(2)' type='checkbox' id='toggleText'>Show text
+<p id='text'>
 Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'
 So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.
 There was nothing so very remarkable in that; nor did Alice think it so very much out of the way to hear the Rabbit say to itself, 'Oh dear! Oh dear! I shall be late!' (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.
@@ -66,7 +77,6 @@ However, this bottle was not marked 'poison,' so Alice ventured to taste it, and
         <tr><td>Safe Frame</td><td>Friendly Frame</td></tr>
         <tr>
           <td id="sf-native">
-            <input style='transform: scale(2)' type='checkbox'>Show</input>
             <!-- /124141061/ad-unit-native -->
             <div id='div-gpt-ad-1455845134939-0' style='height:250px; width:300px;'>
               <script type='text/javascript'>
@@ -76,47 +86,47 @@ However, this bottle was not marked 'poison,' so Alice ventured to taste it, and
           </td>
           <td id="friendly-native">
             <!-- /124141061/ad-unit-native-no-sf -->
-  <!--          <div id='div-gpt-ad-1455860169823-2' style='height:250px; width:300px;'>
+            <div id='div-gpt-ad-1455860169823-2' style='height:250px; width:300px;'>
               <script type='text/javascript'>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455860169823-2'); });
               </script>
-            </div>-->
+            </div>
           </td>
         </tr>
         <tr>
           <td id="sf-mrect">
             <!-- /124141061/tony-ad-unit-1 -->
-        <!--    <div id='div-gpt-ad-1455825127862-0' style='height:250px; width:300px;'>
+            <div id='div-gpt-ad-1455825127862-0' style='height:250px; width:300px;'>
               <script type='text/javascript'>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455825127862-0'); });
               </script>
-            </div> -->
+            </div>
           </td>
           <td id="friendly-mrect">
             <!-- /124141061/ad-unit-mrect-no-sf -->
-      <!--      <div id='div-gpt-ad-1455860169823-1' style='height:250px; width:300px;'>
+            <div id='div-gpt-ad-1455860169823-1' style='height:250px; width:300px;'>
               <script type='text/javascript'>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455860169823-1'); });
               </script>
-            </div>-->
+            </div>
           </td>
         </tr>
         <tr>
           <td id="sf-banner">
             <!-- /124141061/tony-ad-unit-banner -->
-    <!--        <div id='div-gpt-ad-1455853800469-0' style='height:50px; width:320px;'>
+            <div id='div-gpt-ad-1455853800469-0' style='height:50px; width:320px;'>
               <script type='text/javascript'>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455853800469-0'); });
               </script>
-            </div>-->
+            </div>
           </td>
           <td id="friendly-banner">
             <!-- /124141061/ad-unit-banner-no-sf -->
-      <!--      <div id='div-gpt-ad-1455860169823-0' style='height:50px; width:320px;'>
+            <div id='div-gpt-ad-1455860169823-0' style='height:50px; width:320px;'>
               <script type='text/javascript'>
                 googletag.cmd.push(function() { googletag.display('div-gpt-ad-1455860169823-0'); });
               </script>
-            </div> -->
+            </div>
           </td>
         </tr>
       </tbody>
