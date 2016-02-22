@@ -40,7 +40,7 @@
       document.getElementById('text').visibility = textState === 'on' ? 'visible' : 'hidden';
       doucment.getElementById('toggleText').checked = textState === 'on';
       doucment.getElementById('toggleText').addEventListener('change', function () {
-        var newState = doucment.getElementById('toggleText').checked;
+        var newState = document.getElementById('toggleText').checked;
         Cookies.set('showText', newState ? 'on' : 'off');
         window.location.reload();
       });
