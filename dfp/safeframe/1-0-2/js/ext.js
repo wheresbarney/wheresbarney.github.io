@@ -598,6 +598,7 @@
     } catch (c) {}
   };
   Q.prototype.B = function(a) {
+    debugger;
     try {
       if (!v(this)) throw Error(
         "Container is not initialized or registered");
