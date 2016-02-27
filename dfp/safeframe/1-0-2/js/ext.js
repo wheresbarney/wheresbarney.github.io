@@ -679,6 +679,7 @@
     },
     Sa = function() {
       if (!v(T)) return R(T, "Called geom on bad container"), null;
+      debugger;
       var a = T.j;
       return {
         win: {
