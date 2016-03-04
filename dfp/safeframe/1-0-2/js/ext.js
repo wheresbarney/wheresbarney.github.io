@@ -208,10 +208,10 @@
     this.o = p(this.q, this)
   };
   B.prototype.q = function(a) {
-    debugger;
     if (a.origin == this.m && a.source == this.e) {
       var b = null;
       try {
+        console.warn(a.data);
         b = w(a.data)
       } catch (c) {}
       if (n(b) && (a = b.i, b.c === this.j && a != this.k && (2 != this.f &&
