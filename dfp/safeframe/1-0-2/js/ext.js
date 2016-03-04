@@ -208,6 +208,7 @@
     this.o = p(this.q, this)
   };
   B.prototype.q = function(a) {
+    debugger;
     if (a.origin == this.m && a.source == this.e) {
       var b = null;
       try {
@@ -598,7 +599,6 @@
     } catch (c) {}
   };
   Q.prototype.B = function(a) {
-    debugger;
     try {
       if (!v(this)) throw Error(
         "Container is not initialized or registered");
@@ -680,7 +680,6 @@
     },
     Sa = function() {
       if (!v(T)) return R(T, "Called geom on bad container"), null;
-      debugger;
       var a = T.j;
       return {
         win: {
