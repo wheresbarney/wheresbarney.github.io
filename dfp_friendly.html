@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <body>
-    <iframe width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;<html><body style='background:transparent'><script>document.onload=function(){alert(1)}</script></body></html>&quot;" style="border: 0px; vertical-align: bottom;">
+    <iframe width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;<html><body> <script>document.onload=function(){alert(1);}; var f=function (){console.warn('---------->' + document.readyState); setTimeout(f, 1000);}; setTimeout(f, 1000); </script></body></html>&quot;" style="border: 0px; vertical-align: bottom;">
     </iframe>
   </body>
 </html>
