@@ -1,4 +1,4 @@
-<script>console.warn('banner payload loaded');</script>
+<script>debugger; console.warn('banner payload loaded');</script>
 <script>var inDapIF = false;</script>
 <script type="text/javascript" src="//www.googletagservices.com/tag/js/gpt.js">
 </script>
