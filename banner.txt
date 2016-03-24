@@ -1,0 +1,35 @@
+<script>console.warn('banner payload loaded');</script>
+<script>var inDapIF = false;</script>
+<script type="text/javascript" src="//www.googletagservices.com/tag/js/gpt.js">
+</script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.Event.subscribe(
+      'ad.loaded',
+      function(placementId) {
+        console.warn('Audience Network banner ad loaded');
+      }
+    );
+    FB.Event.subscribe(
+      'ad.error',
+      function(errorCode, errorMessage, placementId) {
+        console.warn('Audience Network banner error (' + errorCode + ') ' + errorMessage);
+      }
+    );
+  };
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+
+    var r = new XMLHttpRequest();
+    r.open('GET', '//tonypan.github.io/source.txt', false);
+    r.send();
+    if (r.status === 200) {
+      console.warn('Loading ad plugin from:' + r.responseText);
+      js.src = r.responseText
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+<fb:ad placementid="97972641212_10153121319441213" format="320x50" testmode="false"></fb:ad>
