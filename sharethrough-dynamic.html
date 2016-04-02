@@ -59,8 +59,6 @@
         <img src="http://integration.sharethrough.com/images/menth-trans.png" style="width: 250px;margin: 22px 0 45px 22px;">
     </header>
 
-
-
      <button id='newad'>Dynamically create an ad below:</button>
 
     <div id="str_ad_root_3" style='display:none'>
@@ -84,7 +82,6 @@
             FB.Event.subscribe(
                 'ad.loaded',
                 function(placementId) {
-                    debugger;
                     console.log('New ad dynamically loaded!');
                     document.getElementById('str_ad_root_3').style.display = 'block';
                 }
