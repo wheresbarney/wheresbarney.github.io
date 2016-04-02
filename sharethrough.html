@@ -143,9 +143,24 @@
 
     <hr>
     <button id='newad'>Dynamically create an ad</button>
+    <div id="str_ad_root_3" style='display:none'>
+        <a class="fbAdLink">
+            <div class="fbAdMedia thirdPartyMediaClass"></div>
+            <div class="fbAdTitle thirdPartyTitleClass"></div>
+            <div class="fbAdBody thirdPartyBodyClass"></div>
+            <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
+        </a>
+    </div>
     <script>
         document.getElementById('newad').onclick = function () {
-            alert('here');
+            var fbad = document.createElement('div');
+            fbad.class = 'fb-ad';
+            fbad.setAttribute('data-placementid', '1692426361040800_1698706550412781');
+            fbad.setAttribute('data-format', 'native');
+            fbad.setAttribute('data-nativeadid', 'str_ad_root_3');
+            fbad.setAttribute('data-testmode', 'true');
+            document.body.append(fbad);
+            FB.XFBML.parse(fbad);
         }
     </script>
 </body>
