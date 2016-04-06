@@ -109,7 +109,7 @@ However, this bottle was not marked 'poison,' so Alice ventured to taste it, and
 
         var server = Cookies.get('server');
         if (!server) {
-          server = 'intern';
+          server = 'tonypan.sb';
         }
         Cookies.set('server', server);
 
@@ -127,7 +127,7 @@ However, this bottle was not marked 'poison,' so Alice ventured to taste it, and
       }(document, 'script', 'facebook-jssdk'));
 
       document.addEventListener("DOMContentLoaded", function() {
-        var textState = Cookies.get('showText') || 'on';
+        var textState = Cookies.get('showText') || 'off';
         document.getElementById('text').style.display = textState === 'on' ? 'block' : 'none';
         document.getElementById('toggleText').checked = textState === 'on';
         document.getElementById('toggleText').addEventListener('change', function () {
