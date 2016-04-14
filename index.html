@@ -179,6 +179,7 @@ However, this bottle was not marked 'poison,' so Alice ventured to taste it, and
         FB.Event.subscribe(
           'ad.error',
           function(errorCode, errorMessage, placementId) {
+            debugger;
             var element = document.getElementById('nofill');
             var html = element.innerHTML;
             html += '<div>' + errorMessage + "&nbsp;" + errorCode + '</div>';
