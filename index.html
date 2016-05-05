@@ -169,9 +169,10 @@ However, this bottle was not marked 'poison,' so Alice ventured to taste it, and
       window.fbAsyncInit = function() {
         FB.Event.subscribe(
           'ad.loaded',
-          function() {
+          function(placementId) {
             var nativeNode = document.getElementById('native_ad_root');
-            if (nativeNode && nativeNode.style.display !== 'block') {
+            debugger;
+            if (nativeNode && placementId === '10153121319441213') {
               nativeNode.style.display = 'block';
             }
           }
