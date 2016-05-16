@@ -19,7 +19,7 @@
       var fjs = document.getElementsByTagName('script')[0];
       fjs.parentNode.insertBefore(s1, fjs);
       fjs.parentNode.insertBefore = function () {
-        debugger;
+        console.warn('overriden loading of prod sdk');
       }
       return s2;
     }
