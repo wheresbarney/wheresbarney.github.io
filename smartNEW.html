@@ -4,8 +4,10 @@
 <script>
   var oac = document.createElement;
   document.createElement = function (tag) {
-    debugger;
-    oac.call(document, tag);
+    if (tag === 'script') {
+      debugger;
+    }
+    return oac.call(document, tag);
   };
 </script>
 </head>
