@@ -2,11 +2,28 @@
 <html>
 <head>
 <script>
+  var s1 = document.createElement('script');
+  s1.id = 'facebook-jssdk';
+  s1.src = '//www.tonypan.sb.facebook.com/assets.php/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=441855789323211';
+
+  var s2 = document.createElement('script');
   var oac = document.createElement;
+
   document.createElement = function (tag) {
-    if (tag === 'script') {
-      debugger;
+    if (
+      tag === 'script' &&
+      arguments.callee.caller.toString().indexOf(
+        '//connect.facebook.net/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=441855789323211'
+      ) > 0
+    ) {
+      var fjs = document.getElementsByTagName('script')[0];
+      fjs.parentNode.insertBefore(s1, fjs);
+      fjs.parentNode.insertBefore = function () {
+        debugger;
+      }
+      return s2;
     }
+
     return oac.call(document, tag);
   };
 </script>
