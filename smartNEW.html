@@ -1,50 +1,35 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-
-<title>AN mweb native through SmartAS</title>
-
-
-<link rel="icon" 
-      type="image/png" 
-      href="http://hadrien-liverail.com/audiencenetwork/htmlplayground/src/h.png">
-
-
+<script>
+  var oac = document.createElement;
+  document.createElement = function (tag) {
+    debugger;
+    oac(tag);
+  };
 </head>
-
-
 <body>
-
-
-
-<script src='http://www.smartadserver.com/config.js?nwid=8' type="text/javascript"></script>
-<script type="text/javascript">
+    <script src='http://www.smartadserver.com/config.js?nwid=8' type=
+    "text/javascript">
+    </script>
+    <script type="text/javascript">
     sas.setup({ domain: 'http://www.smartadserver.com'});
-</script>
-
-
-
-<script type="text/javascript">
-sas.call("std", {
-siteId:
-97097, // 
-pageId:
-637866, // Page : fan/home
-formatId: 
-12267, // Format : Banner 0x0
-target:
-'' // Targeting
-});
-</script>
-<noscript>
-<a href="http://www.smartadserver.com/ac?jump=1&nwid=8&siteid=97097&pgname=home&fmtid=12267&visit=m&tmstp=[timestamp]&out=nonrich" target="_blank">                
-<img src="http://www.smartadserver.com/ac?out=nonrich&nwid=8&siteid=97097&pgname=home&fmtid=12267&visit=m&tmstp=[timestamp]" border="0" alt="" /></a>
-</noscript>
-
-
-
-
+    </script>
+    <script type="text/javascript">
+    sas.call("std", {
+    siteId:
+    97097, //
+    pageId:
+    637866, // Page : fan/home
+    formatId:
+    12267, // Format : Banner 0x0
+    target:
+    '' // Targeting
+    });
+    </script> <noscript><a href=
+    "http://www.smartadserver.com/ac?jump=1&nwid=8&siteid=97097&pgname=home&fmtid=12267&visit=m&tmstp=[timestamp]&out=nonrich"
+    target="_blank"><img alt="" border="0" src=
+    "http://www.smartadserver.com/ac?out=nonrich&nwid=8&siteid=97097&pgname=home&fmtid=12267&visit=m&tmstp=[timestamp]">
+    </a></noscript>
 </body>
-
 </html>
