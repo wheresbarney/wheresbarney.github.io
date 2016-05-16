@@ -5,7 +5,7 @@
   var oac = document.createElement;
   document.createElement = function (tag) {
     debugger;
-    oac(tag);
+    oac.call(document, tag);
   };
 </script>
 </head>
