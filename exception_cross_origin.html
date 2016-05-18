@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://www.stanford.edu/~tonyp/bad.js">
+    </script>
+    <script>
+       window.onload = function () {
+         document.getElementById('btn').onclick = function () {
+           try {
+             window.badstuff();
+           } catch (e) {
+             console.warn(e.stack);
+           }
+         };
+       };
+    </script>
+    <title></title>
+</head>
+<body>
+    <button id='btn'>click</button>
+</body>
+</html>
