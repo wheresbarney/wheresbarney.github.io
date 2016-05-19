@@ -72,6 +72,7 @@ function submitTryit() {
 
   ifrw.document.open();
 
+  ifrw.document.write('<script>debugger;<\/script>');
   ifrw.document.write(text);
 
   ifrw.document.close();
