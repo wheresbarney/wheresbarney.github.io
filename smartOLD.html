@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+<title>AN mweb native through SmartAS</title>
+
+<script>
+  var s1 = document.createElement('script');
+  s1.id = 'facebook-jssdk';
+  s1.src = '//www.tonypan.sb.facebook.com/assets.php/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=441855789323211';
+
+  var s2 = document.createElement('script');
+  var oac = document.createElement;
+
+  document.createElement = function (tag) {
+    if (
+      tag === 'script' &&
+      arguments.callee.caller.toString().indexOf(
+        '//connect.facebook.net/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=441855789323211'
+      ) > 0
+    ) {
+      var fjs = document.getElementsByTagName('script')[0];
+      fjs.parentNode.insertBefore(s1, fjs);
+      fjs.parentNode.insertBefore = function () {
+        console.warn('overriden loading of prod sdk');
+      }
+      return s2;
+    }
+
+    return oac.call(document, tag);
+  };
+</script>
+
+<style type="text/css">
+      iframe {
+        width: 100%;
+        height: 500px;
+        border-color: grey;
+        border-style: solid;
+        border-width: 5px;
+      }
+      .seeResult {
+        background-color: red;
+        font-size:25px
+      }
+      .code_input{
+      width:100%;
+      height:300px;
+      background-color:#cce5ff;
+      }
+</style>
+
+
+<script type="text/javascript">
+
+function submitTryit() {
+
+  var text = document.getElementById("textareaCode").value;
+
+  var ifr = document.createElement("iframe");
+
+  ifr.setAttribute("frameborder", "0");
+
+  ifr.setAttribute("id", "iframeResult");
+
+  document.getElementById("iframewrapper").innerHTML = "";
+
+  document.getElementById("iframewrapper").appendChild(ifr);
+
+  var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
+
+  ifrw.document.open();
+
+  ifrw.document.write(text);
+
+  ifrw.document.close();
+
+}
+
+
+
+</script>
+
+</head>
+
+
+<body>
+
+
+<div class="textareawrapper">
+
+        <textarea autocomplete="off" class="code_input" id="textareaCode" wrap="logical" spellcheck="false">
+
+
+
+
+<script type="text/javascript">
+sas_tmstp=Math.round(Math.random()*10000000000);sas_masterflag=1;
+function sasmobile(sas_pageid,sas_formatid,sas_target) {
+ if (sas_masterflag==1) {sas_masterflag=0;sas_master='M';} else {sas_master='S';};
+ document.write('<scr'+'ipt src="http://www.smartadserver.com/call2/pubmj/'+sas_pageid+'/'+sas_formatid+'/'+sas_master+'/'+sas_tmstp+'/'+escape(sas_target)+'?"></scr'+'ipt>');
+}function sascc(sas_imageid,sas_pageid) {
+img=new Image();
+img.src='http://www.smartadserver.com/h/mcp?imgid='+sas_imageid+'&pgid='+sas_pageid+'&uid=[uid]&tmstp='+sas_tmstp+'&tgt=[targeting]';
+}</script>
+
+<script type="text/javascript">
+sas_pageid='97097/637866'; // Page : fan/home
+sas_formatid=12392; // Format : Banner mobile 300x150
+sas_target=''; // Targeting
+sasmobile(sas_pageid,sas_formatid,sas_target);
+</script>
+<noscript>
+<a href="http://www.smartadserver.com/call2/pubjumpmi/97097/637866/12392/M/[timestamp]/?" target="_blank">
+<img src="http://www.smartadserver.com/call2/pubmi/97097/637866/12392/M/[timestamp]/?" border="0" alt="" /></a>
+</noscript>
+
+
+
+
+
+</textarea>
+
+
+  </div>
+
+<button class="seeResult" type="button" onclick="submitTryit()">  Load the new AN mweb ad !</button>
+
+<div id="iframewrapper"></div>
+
+
+<script>submitTryit()</script>
+
+</body>
+
+</html>
