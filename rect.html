@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script>
+      var update = function () {
+        var r = document.getElementById("rect").getBoundingClientRect();
+        document.getElementById("state").innerHTML =
+          "Left = " + r.left +
+          " | Right = " + r.right +
+          "<br>Top = " + r.top +
+          " | Bottom = " + r.bottom;
+        console.warn(r);
+      };
+      window.addEventListener('scroll', update);
+      window.addEventListener('load', update);
+    </script>
+  </head>
+  <body>
+    <div style="width: 200%; height: 2000px">
+      <div id="rect" style="width: 400px; height: 400px; background-color: red"></div>
+      <div id="state" style="position: fixed; top: 0; left:0; font-size:48px;"></div>
+    </div>
+  </body>
+</html>
