@@ -2,109 +2,110 @@
 <head>
 </head>
 <body>
- <div>
-  <script async>
-    var now = Date.now();
-    console.warn('Page loaded: ' + now);
-    var xhr = new XMLHttpRequest();
-    xhr.open(
-      'GET',
-      'https://www.tonypan.sb.facebook.com/audience_network/client_event/?app_id=97972641212&publisher_id=10153177743496213&event_name=ADNW_SDK_LOADING_XHR&client_ts=' + now,
-      true
-    );
-    xhr.send();
+<div>
+    <script async>
+      var now = Date.now();
+      console.warn('Page loaded: ' + now);
+      var xhr = new XMLHttpRequest();
+      xhr.open(
+        'GET',
+        'https://www.tonypan.sb.facebook.com/audience_network/client_event/?app_id=97972641212&publisher_id=10153177743496213&event_name=ADNW_SDK_LOADING_XHR&client_ts=' + now,
+        true
+      );
+      xhr.send();
 
-    var data = {
-      placementid: '97972641212_10153177743496213',
-      format: '300x250',
-      testmode: false,
-    }
-    var onAdLoaded = function(placementId) {
-      console.log('Audience Network Ad Loaded');
-    };
-    var onAdError = function(errorCode, errorMessage, placementId) {
-      console.log('Audience Network Ad Error: ' + errorCode);
-    };
-    ///////////////////////////////////////////////////////
-    var rootElement = document.currentScript.parentElement;
-    window.ADNW = window.ADNW || {};
-    rootElement.dataset.placementid = data.placementid;
-    // create iframe
-    var getReferrer = function(w) {
-      try {
-        return w.document.referrer;
-      } catch (e) {}
-      return '';
-    }
-    var extractDomain = function(url) {
-      var index = url.indexOf('/', url.indexOf('://') + 3);
-      if (index === -1) {
-        return url;
+      var data = {
+        placementid: '97972641212_10153177743496213',
+        format: '300x250',
+        testmode: false,
       }
-      return url.substring(0, index);
-    };
-    var urls = [window.location.href];
-    if (window !== window.parent) {
-      this._ancestorUrls = [];
-      let prevWindow;
-      let currentWindow = window;
-      while (currentWindow !== prevWindow) {
-        let url;
+      var onAdLoaded = function(placementId) {
+        console.log('Audience Network Ad Loaded');
+      };
+      var onAdError = function(errorCode, errorMessage, placementId) {
+        console.log('Audience Network Ad Error: ' + errorCode);
+      };
+      ///////////////////////////////////////////////////////
+      var rootElement = document.currentScript.parentElement;
+      window.ADNW = window.ADNW || {};
+      rootElement.dataset.placementid = data.placementid;
+      // create iframe
+      var getReferrer = function(w) {
         try {
-          url = currentWindow.location.href;
+          return w.document.referrer;
         } catch (e) {}
-        urls.push(url || getReferrer(prevWindow));
-        prevWindow = currentWindow;
-        currentWindow = currentWindow.parent;
+        return '';
       }
-    }
-    var origins = window.location.ancestorOrigins;
-    if (origins) {
-      if  (origins.length > 0) {
-        data.topdomain = origins[origins.length - 1];
-      } else {
-        data.topdomain = extractDomain(urls[urls.length - 1]);
+      var extractDomain = function(url) {
+        var index = url.indexOf('/', url.indexOf('://') + 3);
+        if (index === -1) {
+          return url;
+        }
+        return url.substring(0, index);
+      };
+      var urls = [window.location.href];
+      if (window !== window.parent) {
+        this._ancestorUrls = [];
+        let prevWindow;
+        let currentWindow = window;
+        while (currentWindow !== prevWindow) {
+          let url;
+          try {
+            url = currentWindow.location.href;
+          } catch (e) {}
+          urls.push(url || getReferrer(prevWindow));
+          prevWindow = currentWindow;
+          currentWindow = currentWindow.parent;
+        }
       }
-    }
-    data.topurl = urls[urls.length - 1];
-    data.channel = extractDomain(urls[0]);
-    data.screenwidth = screen.width;
-    data.screenheight = screen.height;
-    data.pixelratio = window.devicePixelRatio;
-    var obj = window.ADNW[data.placementid] = {};
-    obj.iframe = document.createElement('iframe');
-    var iframeSrc = 'https://www.tonypan.sb.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
-    for (var key in data) {
-      iframeSrc += '&' + key + '=' + encodeURIComponent(data[key]);
-    }
-    obj.iframe.src = iframeSrc;
-    obj.placementId = data.placementid;
-    obj.displayFormat = data.format;
-    obj.onAdLoaded = onAdLoaded;
-    obj.onAdError = onAdError;
+      var origins = window.location.ancestorOrigins;
+      if (origins) {
+        if  (origins.length > 0) {
+          data.topdomain = origins[origins.length - 1];
+        } else {
+          data.topdomain = extractDomain(urls[urls.length - 1]);
+        }
+      }
+      data.topurl = urls[urls.length - 1];
+      data.channel = extractDomain(urls[0]);
+      data.screenwidth = screen.width;
+      data.screenheight = screen.height;
+      data.pixelratio = window.devicePixelRatio;
+      var obj = window.ADNW[data.placementid] = {};
+      obj.iframe = document.createElement('iframe');
+      var iframeSrc = 'https://www.tonypan.sb.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
+      for (var key in data) {
+        iframeSrc += '&' + key + '=' + encodeURIComponent(data[key]);
+      }
+      obj.iframe.src = iframeSrc;
+      obj.placementId = data.placementid;
+      obj.displayFormat = data.format;
+      obj.onAdLoaded = onAdLoaded;
+      obj.onAdError = onAdError;
+      obj.initTime = now;
 
-    // listen for events
-    obj.events = [];
-    window.addEventListener('message', function(event) {
-      debugger;
-      console.log('TAG - received message: ' + event.data.name);
-      if (obj.sdkEventHandler) {
-        obj.sdkEventHandler(event.data);
-      } else {
-        obj.events.push(event.data);
-      }
-    }, false);
-    obj.onSdkLoaded = function() {
-      debugger;
-      console.log('TAG - onSdkLoaded');
-      while (obj.events.length > 0) {
-        obj.sdkEventHandler(obj.events.shift());
-      }
-    };
-    rootElement.appendChild(obj.iframe);
-  </script>
-  <script async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
-  </script>
+      // listen for events
+      obj.events = [];
+      window.addEventListener('message', function(event) {
+        debugger;
+        console.log('TAG - received message: ' + event.data.name);
+        if (obj.sdkEventHandler) {
+          obj.sdkEventHandler(event.data);
+        } else {
+          obj.events.push(event.data);
+        }
+      }, false);
+      obj.onSdkLoaded = function() {
+        debugger;
+        console.log('TAG - onSdkLoaded');
+        while (obj.events.length > 0) {
+          obj.sdkEventHandler(obj.events.shift());
+        }
+      };
+      rootElement.appendChild(obj.iframe);
+    </script>
+    <script async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
+    </script>
 </div>
   </body>
 </html>
