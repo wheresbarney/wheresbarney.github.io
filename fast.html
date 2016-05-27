@@ -79,7 +79,6 @@
       // listen for events
       obj.events = [];
       window.addEventListener('message', function(event) {
-        debugger;
         console.log('TAG - received message: ' + event.data.name);
         if (obj.sdkEventHandler) {
           obj.sdkEventHandler(event.data);
@@ -88,7 +87,6 @@
         }
       }, false);
       obj.onSdkLoaded = function() {
-        debugger;
         console.log('TAG - onSdkLoaded');
         while (obj.events.length > 0) {
           obj.sdkEventHandler(obj.events.shift());
