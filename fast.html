@@ -66,6 +66,8 @@
       iframeSrc += '&' + key + '=' + encodeURIComponent(data[key]);
     }
     obj.iframe.src = iframeSrc;
+    obj.iframe.style.width = '300px';
+    obj.iframe.style.height = '250px';
     obj.placementId = data.placementid;
     obj.displayFormat = data.format;
     obj.onAdLoaded = onAdLoaded;
