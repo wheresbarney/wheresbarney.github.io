@@ -9,6 +9,8 @@ xhr.open(
   true
 );
 xhr.send();
+window._fb_visibility_changed = false;
+document.addEventListener('visibilitychange', function() {window._fb_visibility_changed = true;}, false);
 </script>
 </head>
 <body>
@@ -78,8 +80,6 @@ xhr.send();
       iframeSrc += '&' + key + '=' + encodeURIComponent(data[key]);
     }
     obj.iframe.src = iframeSrc;
-    obj.iframe.style.width = '300px';
-    obj.iframe.style.height = '250px';
     obj.placementId = data.placementid;
     obj.displayFormat = data.format;
     obj.onAdLoaded = onAdLoaded;
@@ -103,7 +103,7 @@ xhr.send();
     };
     rootElement.appendChild(obj.iframe);
   </script>
-  <script type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
+  <script async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
   </script>
 </div>
   </body>
