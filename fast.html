@@ -1,22 +1,19 @@
 <html>
 <head>
-<script>
-window._fb_adnw_init = Date.now();
-console.warn('Page loaded: ' + window._fb_adnw_init);
-var xhr = new XMLHttpRequest();
-xhr.open(
-  'GET',
-  'https://www.tonypan.sb.facebook.com/audience_network/client_event/?app_id=97972641212&publisher_id=10153177743496213&event_name=ADNW_SDK_LOADING_XHR&client_ts=' + window._fb_adnw_init,
-  true
-);
-xhr.send();
-window._fb_visibility_changed = false;
-document.addEventListener('visibilitychange', function() {window._fb_visibility_changed = true;}, false);
-</script>
 </head>
 <body>
  <div>
   <script async>
+    var now = Date.now();
+    console.warn('Page loaded: ' + now);
+    var xhr = new XMLHttpRequest();
+    xhr.open(
+      'GET',
+      'https://www.tonypan.sb.facebook.com/audience_network/client_event/?app_id=97972641212&publisher_id=10153177743496213&event_name=ADNW_SDK_LOADING_XHR&client_ts=' + now,
+      true
+    );
+    xhr.send();
+
     var data = {
       placementid: '97972641212_10153177743496213',
       format: '300x250',
