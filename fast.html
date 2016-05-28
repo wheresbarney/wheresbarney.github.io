@@ -74,7 +74,7 @@
       obj.displayFormat = data.format;
       obj.onAdLoaded = onAdLoaded;
       obj.onAdError = onAdError;
-      obj.initTime = now;
+      obj.tagJsInit = now;
 
       // listen for events
       obj.events = [];
@@ -93,6 +93,7 @@
         }
       };
       rootElement.appendChild(obj.iframe);
+      obj.tagJsIframeAppendedTime = Date.now();
     </script>
     <script async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
     </script>
