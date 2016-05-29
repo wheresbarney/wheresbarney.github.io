@@ -74,7 +74,7 @@
       obj.displayFormat = data.format;
       obj.onAdLoaded = onAdLoaded;
       obj.onAdError = onAdError;
-      obj.tagJsInit = now;
+      obj.tagJsInitTime = now;
 
       // listen for events
       obj.events = [];
@@ -86,12 +86,6 @@
           obj.events.push(event.data);
         }
       }, false);
-      obj.onSdkLoaded = function() {
-        console.log('TAG - onSdkLoaded');
-        while (obj.events.length > 0) {
-          obj.sdkEventHandler(obj.events.shift());
-        }
-      };
       rootElement.appendChild(obj.iframe);
       obj.tagJsIframeAppendedTime = Date.now();
     </script>
