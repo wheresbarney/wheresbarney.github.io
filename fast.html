@@ -80,8 +80,7 @@
       obj.events = [];
       window.addEventListener('message', function(event) {
         console.log('TAG - received message: ' + event.data.name);
-        event.timestamp = Date.now();
-        debugger;
+        event.data.timestamp = Date.now();
         if (obj.sdkEventHandler) {
           obj.sdkEventHandler(event.data);
         } else {
