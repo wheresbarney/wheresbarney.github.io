@@ -81,7 +81,7 @@
       window.addEventListener('message', function(event) {
         console.log('TAG - received message: ' + event.data.name);
         event.data.receivedTimestamp = Date.now();
-        if (false && obj.sdkEventHandler) {
+        if (obj.sdkEventHandler) {
           obj.sdkEventHandler(event.data);
         } else {
           obj.events.push(event.data);
@@ -90,7 +90,7 @@
       rootElement.appendChild(obj.iframe);
       obj.tagJsIframeAppendedTime = Date.now();
     </script>
-    <script type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
+    <script async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
     </script>
 </div>
   </body>
