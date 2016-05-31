@@ -84,6 +84,7 @@
         if (obj.sdkEventHandler) {
           obj.sdkEventHandler(event.data);
         } else {
+          debugger;
           obj.events.push(event.data);
         }
       }, false);
