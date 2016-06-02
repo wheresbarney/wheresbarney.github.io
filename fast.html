@@ -38,10 +38,10 @@
       var urls = [window.location.href];
       if (window !== window.parent) {
         this._ancestorUrls = [];
-        let prevWindow;
-        let currentWindow = window;
+        var prevWindow;
+        var currentWindow = window;
         while (currentWindow !== prevWindow) {
-          let url;
+          var url;
           try {
             url = currentWindow.location.href;
           } catch (e) {}
