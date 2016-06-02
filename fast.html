@@ -4,7 +4,7 @@
 <body>
 <div>
     <script>
-      var now = window.performance.now();
+      var now = Date.now();
 
       var data = {
         placementid: '97972641212_10153177743496213',
@@ -80,7 +80,7 @@
       obj.events = [];
       window.addEventListener('message', function(event) {
         console.log('TAG - received message: ' + event.data.name);
-        event.data.receivedTimestamp = window.performance.now();
+        event.data.receivedTimestamp = Date.now();
         if (obj.sdkEventHandler) {
           obj.sdkEventHandler(event.data);
         } else {
@@ -88,7 +88,7 @@
         }
       }, false);
       rootElement.appendChild(obj.iframe);
-      obj.tagJsIframeAppendedTime = window.performance.now();
+      obj.tagJsIframeAppendedTime = Date.now();
     </script>
     <script async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
     </script>
