@@ -5,13 +5,7 @@
 <div>
     <script>
       function getTime() {
-        if (window.performance && window.performance.now) {
-          return Math.round(window.performance.now());
-        } else if (Date.now) {
-          return Date.now();
-        } else {
-          return +new Date();
-        }
+        return Date.now();
       }
 
       var now = getTime();
