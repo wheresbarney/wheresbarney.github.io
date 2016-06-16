@@ -21,6 +21,7 @@
         googletag.pubads().enableSingleRequest();
         googletag.pubads().addEventListener('slotRenderEnded', function(event) {
           console.log('Slot has been rendered:');
+          debugger;
         });
         googletag.enableServices();
       });
