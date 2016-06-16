@@ -24,7 +24,10 @@
             var e = document.getElementById(event.slot.getSlotElementId());
             if (e) {
               e = e.querySelector('div iframe');
-              e && e.setAttribute('width', '100%');
+              if (e) {
+                e.setAttribute('width', '100%');
+                e.setAttribute('height', '600px');
+              }
             }
           }
         });
