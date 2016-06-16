@@ -24,7 +24,7 @@
             debugger;
             var e = document.getElementById(event.slot.getSlotElementId());
             if (e) {
-              e = e.querySelector('div iframe');
+              e = e.querySelector("iframe[title='3rd party ad content']");
               if (e) {
                 e.setAttribute('width', '100%');
                 e.setAttribute('height', '600px');
