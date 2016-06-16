@@ -21,6 +21,7 @@
         googletag.pubads().enableSingleRequest();
         googletag.pubads().addEventListener('slotRenderEnded', function(event) {
           if (event.creativeId === 104626380061) {
+            debugger;
             var e = document.getElementById(event.slot.getSlotElementId());
             if (e) {
               e = e.querySelector('div iframe');
