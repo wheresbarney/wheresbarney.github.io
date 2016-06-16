@@ -20,8 +20,9 @@
         googletag.defineSlot('/124141061/adaptive-native-test', [300, 250], 'div-gpt-ad-1465925858723-0').addService(googletag.pubads());
         googletag.pubads().enableSingleRequest();
         googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-          console.log('Slot has been rendered:');
-          debugger;
+          if (event.creativeId === 104626380061) {
+            debugger;//document.element.
+          }
         });
         googletag.enableServices();
       });
