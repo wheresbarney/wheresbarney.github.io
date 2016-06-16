@@ -3,6 +3,41 @@
 </head>
 <body>
 <div>
+<style>
+     #native_ad_id {
+        display: none;
+        font-size: 14px;
+        height: 450px;
+        line-height: 16px;
+        position: relative;
+        width: 600px;
+      }
+      .thirdPartyMediaClass {
+        height: 300px;
+        width: 400px;
+      }
+      .thirdPartyTitleClass {
+        font-weight: 600;
+        font-size: 16px;
+        margin: 8px 0 4px 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .thirdPartyBodyClass {
+        display: -webkit-box;
+        height: 32px;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .thirdPartyCallToActionClass {
+        color: #326891;
+        font-family: sans-serif;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+    </style>
+
     <script>
       function getTime() {
         return Date.now();
@@ -12,8 +47,9 @@
 
       var data = {
         placementid: '97972641212_10153177743496213',
-        format: '300x250',
+        format: 'native',
         testmode: false,
+        nativeadid: 'native_ad_id',
       }
       var onAdLoaded = function(placementId) {
         console.log('Audience Network Ad Loaded');
@@ -97,5 +133,7 @@
     <script async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
     </script>
 </div>
+
+<div id='native_ad_id'></div>
   </body>
 </html>
