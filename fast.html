@@ -52,6 +52,7 @@
         nativeadid: 'native_ad_id',
       }
       var onAdLoaded = function(placementId) {
+        document.getElementById('native_ad_id').parentNode.style.display = 'block';
         console.log('Audience Network Ad Loaded');
       };
       var onAdError = function(errorCode, errorMessage, placementId) {
@@ -132,8 +133,17 @@
     </script>
     <script async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js">
     </script>
+
+    <div id="native_ad_id">
+      <a class="fbAdLink">
+        <div class="fbAdMedia thirdPartyMediaClass"></div>
+        <div class="fbAdTitle thirdPartyTitleClass"></div>
+        <div class="fbAdBody thirdPartyBodyClass"></div>
+        <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
+      </a>
+    </div>
+
 </div>
 
-<div id='native_ad_id'></div>
   </body>
 </html>
