@@ -106,7 +106,8 @@
       data.pixelratio = window.devicePixelRatio;
       var obj = window.ADNW[data.placementid] = {};
       obj.iframe = document.createElement('iframe');
-      var iframeSrc = 'https://www.tonypan.sb.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
+      //var iframeSrc = 'https://www.tonypan.sb.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
+      var iframeSrc = 'https://www.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
       for (var key in data) {
         iframeSrc += '&' + key + '=' + encodeURIComponent(data[key]);
       }
