@@ -131,14 +131,13 @@
       }, false);
       rootElement.appendChild(obj.iframe);
       obj.tagJsIframeAppendedTime = getTime();
+
+      window.addEventListener('DOMContentLoaded', function () {
+        debugger;
+      });
     </script>
 <!--    <script id='sdkjs' async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js"></script>-->
-    <script>
-      window._fb_adnw_error = function (e) {
-        debugger;
-      };
-    </script>
-    <script onerror="alert('a')" async type="text/javascript" src="https://connect.facebook.net/en_US/fbadnw.js"></script>
+    <script id="sdkjs" async type="text/javascript" src="https://connect.facebook.net/en_US/fbadnw.js"></script>
     <div id="native_ad_id">
       <a class="fbAdLink">
         <div class="fbAdMedia thirdPartyMediaClass"></div>
