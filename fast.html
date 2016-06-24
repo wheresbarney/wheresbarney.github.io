@@ -106,7 +106,6 @@
       data.pixelratio = window.devicePixelRatio;
       var obj = {};
       obj.iframe = rootElement.firstElementChild;
-      debugger;
       var iframeSrc = 'https://www.tonypan.sb.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
       for (var key in data) {
         iframeSrc += '&' + key + '=' + encodeURIComponent(data[key]);
@@ -122,7 +121,6 @@
       // listen for events
       obj.events = [];
       window.addEventListener('message', function(event) {
-        debugger;
         event.data.receivedTimestamp = getTime();
         if (this.sdkEventHandler) {
           this.sdkEventHandler(event.data);
