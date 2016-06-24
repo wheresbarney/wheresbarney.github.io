@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html>
 <head>
+  <title></title>
 </head>
 <body>
-<div>
-<style>
+  <div>
+    <style>
      #native_ad_id {
         /*display: none;*/
         font-size: 14px;
@@ -37,30 +39,27 @@
         margin-top: 8px;
       }
     </style>
-
     <script>
-      function getTime() {
+      var getTime = function() {
         return Date.now();
-      }
+      };
 
       var now = getTime();
-
       var data = {
         placementid: '97972641212_10153177743496213',
         format: 'native',
         testmode: false,
-        nativeadid: 'native_ad_id',
-      }
+      };
       var onAdLoaded = function(placementId) {
-        document.getElementById('native_ad_id').parentNode.style.display = 'block';
-        console.log('Audience Network Ad Loaded');
       };
       var onAdError = function(errorCode, errorMessage, placementId) {
-        console.log('Audience Network Ad Error: ' + errorCode);
       };
       ///////////////////////////////////////////////////////
-      var rootElement = document.currentScript.parentElement;
-      window.ADNW = window.ADNW || {};
+      var currentScript = document.currentScript || (function() {
+        var scripts = document.getElementsByTagName('script');
+        return scripts[scripts.length - 1];
+      })();
+      var rootElement = currentScript.parentElement;
       rootElement.dataset.placementid = data.placementid;
       // create iframe
       var getReferrer = function(w) {
@@ -68,7 +67,7 @@
           return w.document.referrer;
         } catch (e) {}
         return '';
-      }
+      };
       var extractDomain = function(url) {
         var index = url.indexOf('/', url.indexOf('://') + 3);
         if (index === -1) {
@@ -104,10 +103,9 @@
       data.screenwidth = screen.width;
       data.screenheight = screen.height;
       data.pixelratio = window.devicePixelRatio;
-      var obj = window.ADNW[data.placementid] = {};
-      obj.iframe = document.createElement('iframe');
-      //var iframeSrc = 'https://www.tonypan.sb.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
-      var iframeSrc = 'https://www.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
+      var obj = {};
+      obj.iframe = rootElement.firstChild;
+      var iframeSrc = 'https://www.tonypan.sb.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
       for (var key in data) {
         iframeSrc += '&' + key + '=' + encodeURIComponent(data[key]);
       }
@@ -117,34 +115,34 @@
       obj.onAdLoaded = onAdLoaded;
       obj.onAdError = onAdError;
       obj.tagJsInitTime = now;
+      obj.rootElement = rootElement;
 
       // listen for events
       obj.events = [];
       window.addEventListener('message', function(event) {
-        console.log('TAG - received message: ' + event.data.name);
         event.data.receivedTimestamp = getTime();
-        if (obj.sdkEventHandler) {
-          obj.sdkEventHandler(event.data);
+        if (this.sdkEventHandler) {
+          this.sdkEventHandler(event.data);
         } else {
-          obj.events.push(event.data);
+          this.events.push(event.data);
         }
-      }, false);
-      rootElement.appendChild(obj.iframe);
+      }.bind(obj), false);
       obj.tagJsIframeAppendedTime = getTime();
+
+      window.ADNW = window.ADNW || {};
+      window.ADNW.Ads = window.ADNW.Ads || [];
+      window.ADNW.Ads.push(obj);
+      window.ANDW.init && window.ADNW.init(obj);
     </script>
-    <!--    <script id='sdkjs' async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js"></script>-->
-    <script async type="text/javascript" src="https://connect.facebook.net/en_US/fbadnw.js"></script>
-    <script async type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnwchecksum.js"></script>
+    <script async src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js" type="text/javascript">
+    </script>
     <div id="native_ad_id">
       <a class="fbAdLink">
-        <div class="fbAdMedia thirdPartyMediaClass"></div>
-        <div class="fbAdTitle thirdPartyTitleClass"></div>
-        <div class="fbAdBody thirdPartyBodyClass"></div>
-        <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
-      </a>
+      <div class="fbAdMedia thirdPartyMediaClass"></div>
+      <div class="fbAdTitle thirdPartyTitleClass"></div>
+      <div class="fbAdBody thirdPartyBodyClass"></div>
+      <div class="fbAdCallToAction thirdPartyCallToActionClass"></div></a>
     </div>
-
-</div>
-
-  </body>
+  </div>
+</body>
 </html>
