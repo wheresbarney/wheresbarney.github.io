@@ -120,6 +120,7 @@
       // listen for events
       obj.events = [];
       window.addEventListener('message', function(event) {
+        debugger;
         event.data.receivedTimestamp = getTime();
         if (this.sdkEventHandler) {
           this.sdkEventHandler(event.data);
