@@ -136,8 +136,10 @@ window.onload = displayrandomANad;
           'ad.loaded',
           function(placementId) {
             console.log('Audience Network ad loaded');
-            document.getElementById('ad_root').style.display = 'block';
-
+            var root = document.getElementById('ad_root');
+            if (root) {
+              root.style.display = 'block';
+            }
           }
         );
         FB.Event.subscribe(
