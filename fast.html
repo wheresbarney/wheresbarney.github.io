@@ -51,6 +51,9 @@
         format: 'native',
         testmode: false,
         url: window.location.href,
+        width: screen.wdith,
+        height: screen.height,
+        pixel_ratio: window.devicePixelRatio,
       };
       var onAdLoaded = function(placementId) {
         document.getElementById('native_ad_id').style.display = 'block';
