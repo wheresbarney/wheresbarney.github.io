@@ -6,6 +6,23 @@
     body {
       margin: 0;
     }
+
+    hr {
+        padding: 0;
+        border: none;
+        border-top: medium double #333;
+        color: #333;
+        text-align: center;
+    }
+    hr:after {
+        content: "§";
+        display: inline-block;
+        position: relative;
+        top: -0.7em;
+        font-size: 1.5em;
+        padding: 0 0.25em;
+        background: white;
+    }
   </style>
 </head>
 
@@ -85,6 +102,8 @@
     </div>
   </div>
 
+  <hr>
+
   <div style="display:none; position: relative;">
     <iframe style="display:none;"></iframe>
     <script type="text/javascript">
@@ -105,6 +124,8 @@
     </script>
     <script type="text/javascript" src="https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js" async></script>
   </div>
+
+  <hr>
 
   <div style="display:none; position: relative;">
     <iframe style="display:none;"></iframe>
