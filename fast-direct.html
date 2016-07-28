@@ -2,7 +2,6 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="javascript/cookie.js"></script>
   <style>
     body {
       margin: 0;
@@ -16,9 +15,15 @@
 
 <body>
   <script>
+    var getQueryString = function (field) {
+      var href = window.location.href;
+      var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+      var string = reg.exec(href);
+      return string ? string[1] : null;
+    };
+
     document.addEventListener("DOMContentLoaded", function() {
-      var textState = Cookies.get('showText') || 'off';
-      if (textState === 'on') {
+      if (getQueryString('txt')) {
         document.getElementsById('text').style.display = block;
       }
     });
