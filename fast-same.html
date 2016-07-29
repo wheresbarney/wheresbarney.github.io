@@ -132,6 +132,7 @@
         o.rootElement = c;
         o.events = [];
         w.addEventListener('message', function(event) {
+          console.warn('received message for ' + event.data.data.placementId);
           event.data.receivedTimestamp = t();
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
@@ -238,6 +239,7 @@
         o.rootElement = c;
         o.events = [];
         w.addEventListener('message', function(event) {
+          console.warn('received message for ' + event.data.data.placementId);
           event.data.receivedTimestamp = t();
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
