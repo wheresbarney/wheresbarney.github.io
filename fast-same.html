@@ -134,6 +134,7 @@
         o.events = [];
         w.addEventListener('message', function(event) {
           event.data.receivedTimestamp = t();
+          console.warn(event.source);
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
           } else {
@@ -241,6 +242,7 @@
         o.events = [];
         w.addEventListener('message', function(event) {
           event.data.receivedTimestamp = t();
+          console.warn(event.source);
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
           } else {
