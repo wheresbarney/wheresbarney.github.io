@@ -134,7 +134,7 @@
         o.events = [];
         w.addEventListener('message', function(event) {
           event.data.receivedTimestamp = t();
-          console.warn(event.source);
+          console.warn(event.source === o.iframe.contentWindow);
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
           } else {
@@ -242,7 +242,7 @@
         o.events = [];
         w.addEventListener('message', function(event) {
           event.data.receivedTimestamp = t();
-          console.warn(event.source);
+          console.warn(event.source === o.iframe.contentWindow);
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
           } else {
