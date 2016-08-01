@@ -137,10 +137,6 @@
           o.rootElement = c;
           o.events = [];
           w.addEventListener('message', function(event) {
-            if (event.data.data.placementIndex !== data.placementindex) {
-              return;
-            }
-
             event.data.receivedTimestamp = t();
             if (this.sdkEventHandler) {
               this.sdkEventHandler(event.data);
@@ -252,10 +248,6 @@
           o.rootElement = c;
           o.events = [];
           w.addEventListener('message', function(event) {
-            if (event.data.data.placementIndex !== data.placementindex) {
-              return;
-            }
-
             event.data.receivedTimestamp = t();
             if (this.sdkEventHandler) {
               this.sdkEventHandler(event.data);
