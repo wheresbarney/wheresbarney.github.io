@@ -133,8 +133,10 @@
         o.rootElement = c;
         o.events = [];
         w.addEventListener('message', function(event) {
+          if (event.source !== o.iframe.contentWindow) {
+            return;
+          }
           event.data.receivedTimestamp = t();
-          console.warn(event.source === o.iframe.contentWindow);
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
           } else {
@@ -241,8 +243,10 @@
         o.rootElement = c;
         o.events = [];
         w.addEventListener('message', function(event) {
+          if (event.source !== o.iframe.contentWindow) {
+            return;
+          }
           event.data.receivedTimestamp = t();
-          console.warn(event.source === o.iframe.contentWindow);
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
           } else {
