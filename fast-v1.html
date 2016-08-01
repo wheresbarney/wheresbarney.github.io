@@ -1,7 +1,9 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <style>
-#ad_root {
+<head>
+
+  <style>
+  #ad_root {
     display: none;
     font-size: 14px;
     height: 252px;
@@ -10,16 +12,16 @@
     width: 302px;
     margin: 0 auto 10px;
     border: 1px solid #000;
-}
-.fbAdLink {
+  }
+  .fbAdLink {
     color: #000;
     text-align: center;
-}
-.thirdPartyMediaClass {
+  }
+  .thirdPartyMediaClass {
     height: 157px;
     width: 300px;
-}
-.thirdPartyTitleClass {
+  }
+  .thirdPartyTitleClass {
     font-weight: 600;
     font-size: 16px;
     margin-top: 5px;
@@ -27,8 +29,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     padding: 0 5px;
-}
-.thirdPartyBodyClass {
+  }
+  .thirdPartyBodyClass {
     display: block;
     height: 32px;
     -webkit-line-clamp: 2;
@@ -36,8 +38,8 @@
     margin-bottom: 5px;
     text-align: center;
     padding: 0 5px;
-}
-.thirdPartyCallToActionClass {
+  }
+  .thirdPartyCallToActionClass {
     color: #fff;
     font-family: lato;
     font-weight: 600;
@@ -49,43 +51,16 @@
     line-height: 30px;
     text-align: center;
     text-transform: uppercase;
-}
-    </style>
-  </head>
-  <body>
-    <div id="ad_root">
-      <iframe src="https://www.facebook.com/audiencenetwork/fast/iframe/" style="display:none;"></iframe>
-      <script type="text/javascript">
-        if (Math.random() <= 0.333) {
-          var inDapIF = false;
-          window._fb_adnw_init = Date.now();
-          window.fbAsyncInit = function() {
-            FB.Event.subscribe(
-              'ad.loaded',
-              function(placementid) {
-                console.log('Audience Network ad loaded');
-                document.getElementById('ad_root').style.display = 'block';
-              }
-            );
-            FB.Event.subscribe(
-              'ad.error',
-              function(errorCode, errorMessage) {
-                console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
-                googletag.pubads().definePassback('/118772816/mq_m_fban_pb_1', [300, 250]).display();
-              }
-            );
-            FB.XFBML.parse();
-          };
-          (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=678213978924452";
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
-        } else {
+  }
+  </style>
+  <title></title>
+</head>
+<body>
+  <div id="ad_root">
+    <iframe src="https://www.facebook.com/audiencenetwork/fast/iframe/" style="display:none;"></iframe>
+    <script type="text/javascript">
         var data = {
-          placementid: '678213978924452_985321001547080',
+          placementid: '97972641212_10153548529766213',
           format: 'native',
           testmode: false,
         };
@@ -95,10 +70,8 @@
         };
         var onAdError = function(errorCode, errorMessage) {
           console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
-          googletag.pubads().definePassback('/118772816/mq_m_fban_pb_1', [300, 250]).display();
+          //googletag.pubads().definePassback('/118772816/mq_m_fban_pb_1', [300, 250]).display();
         };
-        if (Math.random() <= 0.5) {
-        ///////////////////////////////////////////////////////
         var getTime = Date.now || function() { return +new Date; };
         var now = getTime();
         var currentScript = document.currentScript || (function() {
@@ -182,117 +155,8 @@
         window.ADNW.Ads = window.ADNW.Ads || [];
         window.ADNW.Ads.push(obj);
         window.ADNW.init && window.ADNW.init(obj);
-        } else {
-        ///////////////////////////////////////////////////////
-        var getTime = Date.now || function() { return +new Date; };
-        var now = getTime();
-        var currentScript = document.currentScript || (function() {
-          var scripts = document.getElementsByTagName('script');
-          return scripts[scripts.length - 1];
-        })();
-        var rootElement = currentScript.parentElement;
-        rootElement.dataset.placementid = data.placementid;
-        var getReferrer = function(w) {
-          try {
-            return w.document.referrer;
-          } catch (e) {}
-          return '';
-        };
-        var extractDomain = function(url) {
-          var index = url.indexOf('/', url.indexOf('://') + 3);
-          if (index === -1) {
-            return url;
-          }
-          return url.substring(0, index);
-        };
-        var urls = [window.location.href];
-        if (window !== window.parent) {
-          this._ancestorUrls = [];
-          var prevWindow;
-          var currentWindow = window;
-          while (currentWindow !== prevWindow) {
-            var url;
-            try {
-              url = currentWindow.location.href;
-            } catch (e) {}
-            urls.push(url || getReferrer(prevWindow));
-            prevWindow = currentWindow;
-            currentWindow = currentWindow.parent;
-          }
         }
-        var origins = window.location.ancestorOrigins;
-        if (origins) {
-          if  (origins.length > 0) {
-            data.topdomain = origins[origins.length - 1];
-          } else {
-            data.topdomain = extractDomain(urls[urls.length - 1]);
-          }
-        }
-        data.topurl = urls[urls.length - 1];
-        data.channel = extractDomain(urls[0]);
-        data.screenwidth = screen.width;
-        data.screenheight = screen.height;
-        data.pixelratio = window.devicePixelRatio;
-        var obj = {};
-        obj.handleMessage = function(data) {
-          if (this.sdkEventHandler) {
-            this.sdkEventHandler(data);
-          } else {
-            this.events.push(data);
-          }
-        }.bind(obj);
-        obj.iframe = rootElement.firstElementChild;
-        var xhrSrc = 'https://www.facebook.com/audiencenetwork/xhr/?sdk=5.2.web';
-        for (var key in data) {
-          xhrSrc += '&' + key + '=' + encodeURIComponent(data[key]);
-        }
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', xhrSrc, true);
-        xhr.withCredentials = true;
-        xhr.onreadystatechange = function(obj) {
-          if (this.readyState === 4) {
-            obj.handleMessage({
-              name: 'xhrLoaded',
-              data: this.response,
-              postMessageTimestamp: getTime(),
-              receivedTimestamp: getTime()
-            });
-          }
-        }.bind(xhr, obj)
-        xhr.send();
-        obj.placementId = data.placementid;
-        obj.displayFormat = data.format;
-        obj.onAdLoaded = onAdLoaded;
-        obj.onAdError = onAdError;
-        obj.tagJsInitTime = now;
-        obj.rootElement = rootElement;
-
-        obj.events = [];
-        window.addEventListener('message', function(event) {
-          event.data.receivedTimestamp = getTime();
-          this.handleMessage(event.data);
-        }.bind(obj), false);
-        obj.tagJsIframeAppendedTime = getTime();
-
-        var script = document.createElement('script');
-        script.src = 'https://connect.facebook.net/en_US/fastadnw.js';
-        script.async = true;
-        rootElement.insertBefore(script, null);
-
-        window.ADNW = window.ADNW || {};
-        window.ADNW.Ads = window.ADNW.Ads || [];
-        window.ADNW.Ads.push(obj);
-        window.ADNW.init && window.ADNW.init(obj);
-        }
-        }
-      </script>
-      <div class="fb-ad" data-placementid="678213978924452_985321001547080" data-format="native" data-nativeadid="ad_root" data-testmode="false"></div>
-      <a class="fbAdLink">
-        <div class="fbAdMedia thirdPartyMediaClass"></div>
-        <div class="fbAdTitle thirdPartyTitleClass"></div>
-        <div class="fbAdBody thirdPartyBodyClass"></div>
-        <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
-      </a>
-    </div>
-  </body>
+    </script>
+  </div>
+</body>
 </html>
