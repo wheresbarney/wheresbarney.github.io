@@ -71,6 +71,9 @@
         }
       };
       (function(w, l, d, t) {
+        w.ADNW = w.ADNW || {};
+        w.ADNW.Ads = w.ADNW.Ads || [];
+
         var a = t();
         var currentScript = d.currentScript || (function() {
           var b = d.getElementsByTagName('script');
@@ -118,6 +121,7 @@
         data.width = screen.width;
         data.height = screen.height;
         data.pixelratio = w.devicePixelRatio;
+        data.placementindex = w.ADNW.Ads.length;
         var o = {};
         o.iframe = c.firstElementChild;
         var p = window.PLUGINPATH;
@@ -133,7 +137,6 @@
         o.events = [];
         w.addEventListener('message', function(event) {
           debugger;
-          console.warn('received message for ' + event.data.data.placementId);
           event.data.receivedTimestamp = t();
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
@@ -142,8 +145,7 @@
           }
         }.bind(o), false);
         o.tagJsIframeAppendedTime = t();
-        w.ADNW = w.ADNW || {};
-        w.ADNW.Ads = w.ADNW.Ads || [];
+
         w.ADNW.Ads.push(o);
         w.ADNW.init && w.ADNW.init(o);
       })(window, location, document, Date.now || function() {
