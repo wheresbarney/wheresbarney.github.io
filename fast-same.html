@@ -57,102 +57,105 @@
   <div id="mrect" style="display:none; position: relative;">
     <iframe style="display:none;"></iframe>
     <script type="text/javascript">
-    (function () {
-      var data = {
-        placementid: '97972641212_10153177743496213',
-        format: '300x250',
-        testmode: false,
-        onAdLoaded: function(element) {
-          console.log('Audience Network MRECT ad loaded in div ' + element.id);
-          element.style.display = 'block';
-        },
-        onAdError: function(errorCode, errorMessage) {
-          console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
-          // PASSBACK goes here
-        }
-      };
-      (function(w, l, d, t) {
-        w.ADNW = w.ADNW || {};
-        w.ADNW.Ads = w.ADNW.Ads || [];
-
-        var a = t();
-        var currentScript = d.currentScript || (function() {
-          var b = d.getElementsByTagName('script');
-          return b[b.length - 1];
-        })();
-        var c = currentScript.parentElement;
-        c.dataset.placementid = data.placementid;
-        var m = function(v) {
-          try {
-            return v.document.referrer;
-          } catch (e) {}
-          return '';
-        };
-        var f = function(g) {
-          var h = g.indexOf('/', g.indexOf('://') + 3);
-          if (h === -1) {
-            return g;
+      (function () {
+        var data = {
+          placementid: '97972641212_10153177743496213',
+          format: '300x250',
+          testmode: false,
+          onAdLoaded: function(element) {
+            console.log('Audience Network MRECT ad loaded in div ' + element.id);
+            element.style.display = 'block';
+          },
+          onAdError: function(errorCode, errorMessage) {
+            console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
+            // PASSBACK goes here
           }
-          return g.substring(0, h);
         };
-        var i = [l.href];
-        if (w !== w.parent) {
-          var j;
-          var k = w;
-          while (k !== j) {
-            var url;
+        (function(w, l, d, t) {
+          w.ADNW = w.ADNW || {};
+          w.ADNW.Ads = w.ADNW.Ads || [];
+
+          var a = t();
+          var currentScript = d.currentScript || (function() {
+            var b = d.getElementsByTagName('script');
+            return b[b.length - 1];
+          })();
+          var c = currentScript.parentElement;
+          c.dataset.placementid = data.placementid;
+          var m = function(v) {
             try {
-              url = k.location.href;
+              return v.document.referrer;
             } catch (e) {}
-            i.push(url || m(j));
-            j = k;
-            k = k.parent;
+            return '';
+          };
+          var f = function(g) {
+            var h = g.indexOf('/', g.indexOf('://') + 3);
+            if (h === -1) {
+              return g;
+            }
+            return g.substring(0, h);
+          };
+          var i = [l.href];
+          if (w !== w.parent) {
+            var j;
+            var k = w;
+            while (k !== j) {
+              var url;
+              try {
+                url = k.location.href;
+              } catch (e) {}
+              i.push(url || m(j));
+              j = k;
+              k = k.parent;
+            }
           }
-        }
-        var n = l.ancestorOrigins;
-        if (n) {
-          if (n.length > 0) {
-            data.domain = n[n.length - 1];
-          } else {
-            data.domain = f(i[i.length - 1]);
+          var n = l.ancestorOrigins;
+          if (n) {
+            if (n.length > 0) {
+              data.domain = n[n.length - 1];
+            } else {
+              data.domain = f(i[i.length - 1]);
+            }
           }
-        }
-        data.url = i[i.length - 1];
-        data.channel = f(i[0]);
-        data.width = screen.width;
-        data.height = screen.height;
-        data.pixelratio = w.devicePixelRatio;
-        data.placementindex = w.ADNW.Ads.length;
-        var o = {};
-        o.iframe = c.firstElementChild;
-        var p = window.PLUGINPATH;
-        for (var q in data) {
-          o[q] = data[q];
-          if (typeof(data[q]) !== 'function') {
-            p += '&' + q + '=' + encodeURIComponent(data[q]);
+          data.url = i[i.length - 1];
+          data.channel = f(i[0]);
+          data.width = screen.width;
+          data.height = screen.height;
+          data.pixelratio = w.devicePixelRatio;
+          data.placementindex = w.ADNW.Ads.length;
+          var o = {};
+          o.iframe = c.firstElementChild;
+          var p = window.PLUGINPATH;
+          for (var q in data) {
+            o[q] = data[q];
+            if (typeof(data[q]) !== 'function') {
+              p += '&' + q + '=' + encodeURIComponent(data[q]);
+            }
           }
-        }
-        o.iframe.src = p;
-        o.tagJsInitTime = a;
-        o.rootElement = c;
-        o.events = [];
-        w.addEventListener('message', function(event) {
-          console.warn(data.placementindex);
-          event.data.receivedTimestamp = t();
-          if (this.sdkEventHandler) {
-            this.sdkEventHandler(event.data);
-          } else {
-            this.events.push(event.data);
-          }
-        }.bind(o), false);
-        o.tagJsIframeAppendedTime = t();
+          o.iframe.src = p;
+          o.tagJsInitTime = a;
+          o.rootElement = c;
+          o.events = [];
+          w.addEventListener('message', function(event) {
+            if (event.data.data.placementIndex !== data.placementindex) {
+              return;
+            }
 
-        w.ADNW.Ads.push(o);
-        w.ADNW.init && w.ADNW.init(o);
-      })(window, location, document, Date.now || function() {
-        return +new Date();
-      });
-    })();
+            event.data.receivedTimestamp = t();
+            if (this.sdkEventHandler) {
+              this.sdkEventHandler(event.data);
+            } else {
+              this.events.push(event.data);
+            }
+          }.bind(o), false);
+          o.tagJsIframeAppendedTime = t();
+
+          w.ADNW.Ads.push(o);
+          w.ADNW.init && w.ADNW.init(o);
+        })(window, location, document, Date.now || function() {
+          return +new Date();
+        });
+      })();
     </script>
     <script>
       var s = document.createElement('script');
@@ -169,102 +172,105 @@
   <div id="banner" style="display:none; position: relative;">
     <iframe style="display:none;"></iframe>
     <script type="text/javascript">
-    (function () {
-      var data = {
-        placementid: '97972641212_10153177743496213',
-        format: '320x50',
-        testmode: false,
-        onAdLoaded: function(element) {
-          console.log('Audience Network BANNER ad loaded in div: ' + element.id);
-          element.style.display = 'block';
-        },
-        onAdError: function(errorCode, errorMessage) {
-          console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
-          // PASSBACK goes here
-        }
-      };
-      (function(w, l, d, t) {
-        w.ADNW = w.ADNW || {};
-        w.ADNW.Ads = w.ADNW.Ads || [];
+      (function () {
+        var data = {
+          placementid: '97972641212_10153177743496213',
+          format: '320x50',
+          testmode: false,
+          onAdLoaded: function(element) {
+            console.log('Audience Network BANNER ad loaded in div: ' + element.id);
+            element.style.display = 'block';
+          },
+          onAdError: function(errorCode, errorMessage) {
+            console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
+            // PASSBACK goes here
+          }
+        };
+        (function(w, l, d, t) {
+          w.ADNW = w.ADNW || {};
+          w.ADNW.Ads = w.ADNW.Ads || [];
 
-        var a = t();
-        var currentScript = d.currentScript || (function() {
-          var b = d.getElementsByTagName('script');
-          return b[b.length - 1];
-        })();
-        var c = currentScript.parentElement;
-        c.dataset.placementid = data.placementid;
-        var m = function(v) {
-          try {
-            return v.document.referrer;
-          } catch (e) {}
-          return '';
-        };
-        var f = function(g) {
-          var h = g.indexOf('/', g.indexOf('://') + 3);
-          if (h === -1) {
-            return g;
-          }
-          return g.substring(0, h);
-        };
-        var i = [l.href];
-        if (w !== w.parent) {
-          var j;
-          var k = w;
-          while (k !== j) {
-            var url;
+          var a = t();
+          var currentScript = d.currentScript || (function() {
+            var b = d.getElementsByTagName('script');
+            return b[b.length - 1];
+          })();
+          var c = currentScript.parentElement;
+          c.dataset.placementid = data.placementid;
+          var m = function(v) {
             try {
-              url = k.location.href;
+              return v.document.referrer;
             } catch (e) {}
-            i.push(url || m(j));
-            j = k;
-            k = k.parent;
+            return '';
+          };
+          var f = function(g) {
+            var h = g.indexOf('/', g.indexOf('://') + 3);
+            if (h === -1) {
+              return g;
+            }
+            return g.substring(0, h);
+          };
+          var i = [l.href];
+          if (w !== w.parent) {
+            var j;
+            var k = w;
+            while (k !== j) {
+              var url;
+              try {
+                url = k.location.href;
+              } catch (e) {}
+              i.push(url || m(j));
+              j = k;
+              k = k.parent;
+            }
           }
-        }
-        var n = l.ancestorOrigins;
-        if (n) {
-          if (n.length > 0) {
-            data.domain = n[n.length - 1];
-          } else {
-            data.domain = f(i[i.length - 1]);
+          var n = l.ancestorOrigins;
+          if (n) {
+            if (n.length > 0) {
+              data.domain = n[n.length - 1];
+            } else {
+              data.domain = f(i[i.length - 1]);
+            }
           }
-        }
-        data.url = i[i.length - 1];
-        data.channel = f(i[0]);
-        data.width = screen.width;
-        data.height = screen.height;
-        data.pixelratio = w.devicePixelRatio;
-        data.placementindex = w.ADNW.Ads.length;
-        var o = {};
-        o.iframe = c.firstElementChild;
-        var p = window.PLUGINPATH;
-        for (var q in data) {
-          o[q] = data[q];
-          if (typeof(data[q]) !== 'function') {
-            p += '&' + q + '=' + encodeURIComponent(data[q]);
+          data.url = i[i.length - 1];
+          data.channel = f(i[0]);
+          data.width = screen.width;
+          data.height = screen.height;
+          data.pixelratio = w.devicePixelRatio;
+          data.placementindex = w.ADNW.Ads.length;
+          var o = {};
+          o.iframe = c.firstElementChild;
+          var p = window.PLUGINPATH;
+          for (var q in data) {
+            o[q] = data[q];
+            if (typeof(data[q]) !== 'function') {
+              p += '&' + q + '=' + encodeURIComponent(data[q]);
+            }
           }
-        }
-        o.iframe.src = p;
-        o.tagJsInitTime = a;
-        o.rootElement = c;
-        o.events = [];
-        w.addEventListener('message', function(event) {
-          console.warn(data.placementindex);
-          event.data.receivedTimestamp = t();
-          if (this.sdkEventHandler) {
-            this.sdkEventHandler(event.data);
-          } else {
-            this.events.push(event.data);
-          }
-        }.bind(o), false);
-        o.tagJsIframeAppendedTime = t();
-        w.ADNW.Ads.push(o);
-        w.ADNW.init && w.ADNW.init(o);
-      })(window, location, document, Date.now || function() {
-        return +new Date();
-      });
-    })();
-    </script>
+          o.iframe.src = p;
+          o.tagJsInitTime = a;
+          o.rootElement = c;
+          o.events = [];
+          w.addEventListener('message', function(event) {
+            if (event.data.data.placementIndex !== data.placementindex) {
+              return;
+            }
+
+            event.data.receivedTimestamp = t();
+            if (this.sdkEventHandler) {
+              this.sdkEventHandler(event.data);
+            } else {
+              this.events.push(event.data);
+            }
+          }.bind(o), false);
+          o.tagJsIframeAppendedTime = t();
+          w.ADNW.Ads.push(o);
+          w.ADNW.init && w.ADNW.init(o);
+        })(window, location, document, Date.now || function() {
+          return +new Date();
+        });
+      })();
+      </script>
     <script>
       var s = document.createElement('script');
       s.setAttribute('type', 'text/javascript');
