@@ -136,7 +136,7 @@
         o.rootElement = c;
         o.events = [];
         w.addEventListener('message', function(event) {
-          debugger;
+          console.warn(data.placementindex);
           event.data.receivedTimestamp = t();
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
@@ -246,7 +246,7 @@
         o.rootElement = c;
         o.events = [];
         w.addEventListener('message', function(event) {
-          debugger;
+          console.warn(data.placementindex);
           event.data.receivedTimestamp = t();
           if (this.sdkEventHandler) {
             this.sdkEventHandler(event.data);
