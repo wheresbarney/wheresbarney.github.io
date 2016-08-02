@@ -1,0 +1,99 @@
+<!-- SHARETHROUGH: FAN w/ STR PASSBACK -->
+<div id="str-fan-placeholder"></div>
+<script>
+var rootElement = document.getElementById('str-fan-placeholder');
+var iframe = document.createElement('iframe');
+iframe.src = "javascript:false";
+iframe.style.border = 'none';
+iframe.style.height = '280px';
+iframe.style.width = rootElement.offsetWidth + 'px';
+rootElement.appendChild(iframe);
+var doc = iframe.contentWindow.document;
+doc.open().write('<body style="margin: 0px">' +
+'<div style="display:none; position: relative;">' +
+'  <iframe style="display:none;"></iframe> ' +
+'  <script id="str-in-prog" type="text/javascript">' +
+'    var data = {' +
+'      placementid: "129409087172024_872752442837681",' +
+'      format: "native",' +
+'      testmode: false,' +
+'      onAdLoaded: function(element) {' +
+'        console.log("Audience Network ad loaded");' +
+'        element.style.display = "block";' +
+'      },' +
+'      onAdError: function(errorCode, errorMessage) {' +
+'        console.log("Audience Network error (" + errorCode + ") " + errorMessage);' +
+'        var loadSTRScript = function() {' +
+'          console.log("loadSTRScript");' +
+'          var script = document.createElement("script");' +
+'          script.src = "//native.sharethrough.com/assets/sfp-passback-tag.js";' +
+'          document.getElementsByTagName("head")[0].appendChild(script);' +
+'        };' +
+'        if (typeof STR === "undefined") {' +
+'          loadSTRScript();' +
+'        } else {' +
+'          console.log("STR.PassbackTag.boot()");' +
+'          STR.PassbackTag.boot(STR.Tag.Helpers.MediationHelper.findPlacementKey());' +
+'        }' +
+'      }' +
+'    };' +
+'    (function(w,l,d,t){var a=t();var currentScript=d.currentScript||(function(){var b=d.getElementsByTagName("script");return b[b.length-1];})();var c=currentScript.parentElement;c.dataset.placementid=data.placementid;var m=function(v){try{return v.document.referrer;}catch(e){}return"";};var f=function(g){var h=g.indexOf("/",g.indexOf("://")+3);if(h===-1){return g;}return g.substring(0,h);};var i=[l.href];if(w!==w.parent){var j;var k=w;while(k!==j){var url;try{url=k.location.href;}catch(e){}i.push(url||m(j));j=k;k=k.parent;}}var n=l.ancestorOrigins;if(n){if(n.length>0){data.domain=n[n.length-1];}else{data.domain=f(i[i.length-1]);}}data.url=i[i.length-1];data.channel=f(i[0]);data.width=screen.width;data.height=screen.height;data.pixelratio=w.devicePixelRatio;data.placementindex=w.ADNW&&w.ADNW.Ads?w.ADNW.Ads.length:0;var o={};o.iframe=c.firstElementChild;var p="https://www.facebook.com/audiencenetwork/web/?sdk=5.3";for(var q in data){o[q]=data[q];if(typeof(data[q])!=="function"){p+="&"+q+"="+encodeURIComponent(data[q]);}}o.iframe.src=p;o.tagJsInitTime=a;o.rootElement=c;o.events=[];w.addEventListener("message",function(event){if(event.source!==o.iframe.contentWindow){return;}event.data.receivedTimestamp=t();if(this.sdkEventHandler){this.sdkEventHandler(event.data);}else{this.events.push(event.data);}}.bind(o),false);o.tagJsIframeAppendedTime=t();w.ADNW=w.ADNW||{};w.ADNW.Ads=w.ADNW.Ads||[];w.ADNW.Ads.push(o);w.ADNW.init&&w.ADNW.init(o);})(window,location,document,Date.now||function(){return+new Date();});' +
+'  <\/script> ' +
+'  <script async src="https://connect.facebook.net/en_US/fbadnw.js" type="text/javascript">' +
+'  <\/script>' +
+'  <style>' +
+'    #ad_root {' +
+'    display: none;' +
+'    font-size: 14px;' +
+'    line-height: 16px;' +
+'    position: relative;' +
+'    width: 100%;' +
+'    box-sizing: border-box;' +
+'    padding: 15px;' +
+'    }' +
+'    .thirdPartyMediaClass {' +
+'    height: 157px;' +
+'    width: 100%;' +
+'    margin-bottom: 6px;' +
+'    }' +
+'    .thirdPartyTitleClass {' +
+'    font-weight: 600;' +
+'    font-family: arial;' +
+'    font-size: 16px;' +
+'    margin: 8px 0 4px;' +
+'    overflow: hidden;' +
+'    text-overflow: ellipsis;' +
+'    white-space: nowrap;' +
+'    font-weight: 700;' +
+'    font-size: 1.1em;' +
+'    }' +
+'    .thirdPartyBodyClass {' +
+'    display: -webkit-box;' +
+'    height: 32px;' +
+'    -webkit-line-clamp: 2;' +
+'    overflow: hidden;' +
+'    font-family: arial;' +
+'    margin: 5px 0;' +
+'    }' +
+'    .thirdPartyCallToActionClass {' +
+'    color: #326891;' +
+'    font-family: sans-serif;' +
+'    font-weight: 600;' +
+'    margin-top: 8px;' +
+'    font-weight: 700;' +
+'    font-size: .9em;' +
+'    }' +
+'  </style>' +
+'  <div id="ad_root">' +
+'    <a class="fbAdLink">' +
+'    <div class="fbAdMedia rnkrNativeAdMediaClass thirdPartyMediaClass"></div>' +
+'    <div class="fbAdTitle thirdPartyTitleClass"></div>' +
+'    <div class="fbAdBody thirdPartyBodyClass"></div>' +
+'    <div class="fbAdCallToAction thirdPartyCallToActionClass"></div></a>' +
+'  </div>' +
+'</div>  '
+  +  '<' + '/body>');
+doc.close();
+</script>
+<!-- SHARETHROUGH END FAN -->
+
