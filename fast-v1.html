@@ -125,7 +125,7 @@
       data.pixelratio = window.devicePixelRatio;
       var obj = {};
       obj.iframe = rootElement.firstElementChild;
-      var iframeSrc = 'https://www.tonypan.sb.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
+      var iframeSrc = 'https://www.facebook.com/audiencenetwork/fast/?sdk=5.1.web';
       for (var key in data) {
        iframeSrc += '&' + key + '=' + encodeURIComponent(data[key]);
       }
@@ -147,7 +147,7 @@
       }.bind(obj), false);
       obj.tagJsIframeAppendedTime = getTime();
       var script = document.createElement('script');
-      script.src = 'https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js';
+      script.src = 'https://www.facebook.com/assets.php/en_US/fbadnw.js';
       script.async = true;
       rootElement.insertBefore(script, null);
       window.ADNW = window.ADNW || {};
