@@ -33,17 +33,12 @@
     <script async src="https://connect.facebook.net/en_US/fbadnw.js" type="text/javascript">
     </script>
     <style>
-    #ad_root {
-      display: none;
-    }
-
     .adnwMRectRoot {
       font-family: -apple-system,roboto,'Helvetica Neue',Helvetica,sans-serif;
       font-size: 14px;
       font-weight: 600;
       height: 250px;
       line-height: 15px;
-      position: relative;
       text-align: left;
       width: 300px;
     }
@@ -100,8 +95,6 @@
       text-overflow: ellipsis;
     }
     </style>
-    <!-- Load the passback if needed -->
-    <div class="passback_fb" style="display: none;"></div>
     <div id="ad_root">
       <div class="adnwMRectRoot">
         <a class="fbAdLink">
@@ -117,5 +110,7 @@
       </div>
     </div>
   </div>
+  <!-- Load the passback if needed -->
+  <div class="passback_fb" style="display: none;"></div>
 </body>
 </html>
