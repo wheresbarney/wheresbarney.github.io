@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <style>
+    body {
+      margin: 0;
+    }
+
+    #text {
+      display: none;
+    }
+  </style>
+  <title></title>
+</head>
+<body>
+  <script>
+    var getQueryString = function (field) {
+      try {
+        var href = window.top.location.href;
+        var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+        var string = reg.exec(href);
+        return string ? string[1] : null;
+      } catch (e) {
+        return null;
+      }
+    };
+
+    var runas = getQueryString('run_as');
+    var sdkPath = 'https://www.tonypan.sb.facebook.com/assets.php/en_US/fbadnw.js';
+    var pluginPath = 'https://www.tonypan.sb.facebook.com/audiencenetwork/web/?sdk=5.3';
+    if (runas === 'prod') {
+      sdkPath = 'https://connect.facebook.net/en_US/fbadnw.js';
+      pluginPath = 'https://www.facebook.com/audiencenetwork/web/?sdk=5.3';
+    } else if (runas === 'inyour') {
+      sdkPath = 'https://www.inyour.facebook.com/assets.php/en_US/fbadnw.js';
+      pluginPath = 'https://www.inyour.facebook.com/audiencenetwork/web/?sdk=5.3';
+    } else if (runas === 'intern') {
+      sdkPath = 'https://www.intern.facebook.com/assets.php/en_US/fbadnw.js';
+      pluginPath = 'https://www.intern.facebook.com/audiencenetwork/web/?sdk=5.3';
+    } else if (runas) {
+      sdkPath = 'https://www.' + runas + '.sb.facebook.com/assets.php/en_US/fbadnw.js';
+      pluginPath = 'https://www.' + runas + '.sb.facebook.com/audiencenetwork/web/?sdk=5.3';
+    }
+
+    window.SDKPATH = sdkPath;
+    window.PLUGINPATH = pluginPath;
+
+    document.addEventListener("DOMContentLoaded", function() {
+      if (getQueryString('txt')) {
+        document.getElementById('text').style.display = 'block';
+      }
+    });
+  </script>
+  <div id='text'>
+    <p>Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?' So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.</p>
+    <hr>
+    <p>There was nothing so very remarkable in that; nor did Alice think it so very much out of the way to hear the Rabbit say to itself, 'Oh dear! Oh dear! I shall be late!' (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge. In another moment down went Alice after it, never once considering how in the world she was to get out again. The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well.</p>
+    <hr>
+    <p>Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next. First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs. She took down a jar from one of the shelves as she passed; it was labelled 'ORANGE MARMALADE', but to her great disappointment it was empty: she did not like to drop the jar for fear of killing somebody, so managed to put it into one of the cupboards as she fell past it. 'Well!' thought Alice to herself, 'after such a fall as this, I shall think nothing of tumbling down stairs! How brave they'll all think me at home! Why, I wouldn't say anything about it, even if I fell off the top of the house!' (Which was very likely true.)</p>
+    <hr>
+  </div>
+
+  <!-- Medium Rectangle -->
+  <div style="display:none; position: relative;">
+    <iframe style="display:none;"></iframe>
+    <script type="text/javascript">
+      var data = {
+        placementid: '97972641212_10153121319441213',
+        format: '300x250',
+        testmode: false,
+        onAdLoaded: function(element) {
+          console.log('Audience Network ad loaded');
+          element.style.display = 'block';
+        },
+        onAdError: function(errorCode, errorMessage) {
+          console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
+          // PASSBACK goes here
+        }
+      };
+      (function(w, l, d, t) {
+        var a = t();
+        var currentScript = d.currentScript || (function() {
+          var b = d.getElementsByTagName('script');
+          return b[b.length - 1];
+        })();
+        var c = currentScript.parentElement;
+        c.dataset.placementid = data.placementid;
+        var m = function(v) {
+          try {
+            return v.document.referrer;
+          } catch (e) {}
+          return '';
+        };
+        var f = function(g) {
+          var h = g.indexOf('/', g.indexOf('://') + 3);
+          if (h === -1) {
+            return g;
+          }
+          return g.substring(0, h);
+        };
+        var i = [l.href];
+        var xd = false;
+        var sf = false;
+        if (w !== w.parent) {
+          var j;
+          var k = w;
+          while (k !== j) {
+            var url;
+            try {
+              sf = sf || (k.$sf && k.$sf.ext);
+              url = k.location.href;
+            } catch (e) {
+              xd = true;
+            }
+            i.push(url || m(j));
+            j = k;
+            k = k.parent;
+          }
+        }
+        var n = l.ancestorOrigins;
+        if (n) {
+          if (n.length > 0) {
+            data.domain = n[n.length - 1];
+          } else {
+            data.domain = f(i[i.length - 1]);
+          }
+        }
+        data.url = i[i.length - 1];
+        data.channel = f(i[0]);
+        data.width = screen.width;
+        data.height = screen.height;
+        data.pixelratio = w.devicePixelRatio;
+        data.placementindex = w.ADNW && w.ADNW.Ads ? w.ADNW.Ads.length : 0;
+        data.crossdomain = xd;
+        data.safeframe = sf;
+        var o = {};
+        o.iframe = c.firstElementChild;
+        var p = 'https://www.facebook.com/audiencenetwork/web/?sdk=5.3';
+        for (var q in data) {
+          o[q] = data[q];
+          if (typeof(data[q]) !== 'function') {
+            p += '&' + q + '=' + encodeURIComponent(data[q]);
+          }
+        }
+        o.iframe.src = p;
+        o.tagJsInitTime = a;
+        o.rootElement = c;
+        o.events = [];
+        w.addEventListener('message', function(event) {
+          if (event.source !== o.iframe.contentWindow) {
+            return;
+          }
+          event.data.receivedTimestamp = t();
+          if (this.sdkEventHandler) {
+            this.sdkEventHandler(event.data);
+          } else {
+            this.events.push(event.data);
+          }
+        }.bind(o), false);
+        o.tagJsIframeAppendedTime = t();
+        w.ADNW = w.ADNW || {};
+        w.ADNW.Ads = w.ADNW.Ads || [];
+        w.ADNW.Ads.push(o);
+        w.ADNW.init && w.ADNW.init(o);
+      })(window, location, document, Date.now || function() {
+        return +new Date();
+      });
+    </script>
+    <script>
+      var s = document.createElement('script');
+      s.setAttribute('type', 'text/javascript');
+      s.setAttribute('async', 'async');
+      s.setAttribute('src', window.SDKPATH);
+      document.currentScript.parentElement.appendChild(s);
+    </script>
+  </div>
+
+  <hr>
+
+
+</body>
+</html>
