@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  #ad_root {
+    display: none;
+    font-size: 14px;
+    height: 252px;
+    line-height: 16px;
+    position: relative;
+    width: 302px;
+    margin: 0 auto 10px;
+    border: 1px solid #000;
+  }
+  .fbAdLink {
+    color: #000;
+    text-align: center;
+  }
+  .thirdPartyMediaClass {
+    height: 157px;
+    width: 300px;
+  }
+  .thirdPartyTitleClass {
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 5px;
+  }
+  .thirdPartyBodyClass {
+    display: block;
+    height: 32px;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin-bottom: 5px;
+    text-align: center;
+    padding: 0 5px;
+  }
+  .thirdPartyCallToActionClass {
+    color: #fff;
+    font-family: lato;
+    font-weight: 600;
+    margin: 0 auto;
+    background: #de3872;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+    line-height: 30px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  </style>
+  <title></title>
+</head>
+<body>
+  <script src="https://www.googletagservices.com/tag/js/gpt.js" type="text/javascript">
+  </script>
+  <div id="ad_root">
+    <iframe style="display:none;"></iframe>
+    <script type="text/javascript">
+    var data = {
+      placementid: '678213978924452_985321001547080',
+      format: 'native',
+      testmode: false,
+      onAdLoaded: function(element) {
+        console.log('Audience Network ad loaded');
+        element.style.display = 'block';
+      },
+      onAdError: function(errorCode, errorMessage) {
+        console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
+        googletag.pubads().definePassback('/118772816/mq_m_fban_pb_1', [300, 250]).display();
+      }
+    };
+    (function(g,y,F,h){var H=h();var I=F.currentScript||(function(){var a=F.getElementsByTagName("script");return a[a.length-1];})();var G=I.parentElement;G.dataset.placementid=data.placementid;var x=function(a){try{return a.document.referrer;}catch(c){}return"";};var D=function(c){var a=c.indexOf("/",c.indexOf("://")+3);if(a===-1){return c;}return c.substring(0,a);};var C=[y.href];var z=false;var J=false;if(g!==g.parent){var B;var A=g;while(A!==B){var b;try{J=J||(A.$sf&&A.$sf.ext);b=A.location.href;}catch(E){z=true;}C.push(b||x(B));B=A;A=A.parent;}}var v=y.ancestorOrigins;if(v){if(v.length>0){data.domain=v[v.length-1];}else{data.domain=D(C[C.length-1]);}}data.url=C[C.length-1];data.channel=D(C[0]);data.width=screen.width;data.height=screen.height;data.pixelratio=g.devicePixelRatio;data.placementindex=g.ADNW&&g.ADNW.Ads?g.ADNW.Ads.length:0;data.crossdomain=z;data.safeframe=!!J;var u={};u.iframe=G.firstElementChild;var s="https://www.facebook.com/audiencenetwork/web/?sdk=5.3";for(var r in data){u[r]=data[r];if(typeof(data[r])!=="function"){s+="&"+r+"="+encodeURIComponent(data[r]);}}u.iframe.src=s;u.tagJsInitTime=H;u.rootElement=G;u.events=[];g.addEventListener("message",function(a){if(a.source!==u.iframe.contentWindow){return;}a.data.receivedTimestamp=h();if(this.sdkEventHandler){this.sdkEventHandler(a.data);}else{this.events.push(a.data);}}.bind(u),false);u.tagJsIframeAppendedTime=h();g.ADNW=g.ADNW||{};g.ADNW.Ads=g.ADNW.Ads||[];g.ADNW.Ads.push(u);g.ADNW.init&&g.ADNW.init(u);})(window,location,document,Date.now||function(){return +new Date();});
+    </script>
+    <script async src="https://connect.facebook.net/en_US/fbadnw.js" type="text/javascript">
+    </script>
+    <style>
+    #ad_root {
+      font-size: 14px;
+      height: 250px;
+      line-height: 16px;
+      position: relative;
+      width: 300px;
+    }
+    .thirdPartyMediaClass {
+      height: 157px;
+      width: 300px;
+    }
+    .thirdPartyTitleClass {
+      font-weight: 600;
+      font-size: 16px;
+      margin: 8px 0 4px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .thirdPartyBodyClass {
+      display: -webkit-box;
+      height: 32px;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+    .thirdPartyCallToActionClass {
+      color: #326891;
+      font-family: sans-serif;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+    </style>
+    <a class="fbAdLink">
+    <div class="fbAdMedia thirdPartyMediaClass"></div>
+    <div class="fbAdTitle thirdPartyTitleClass"></div>
+    <div class="fbAdBody thirdPartyBodyClass"></div>
+    <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
+    </a>
+  </div>
+</body>
+</html>
