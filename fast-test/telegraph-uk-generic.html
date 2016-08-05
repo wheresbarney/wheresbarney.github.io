@@ -4,8 +4,8 @@
     <iframe style="display:none;"></iframe>
     <script type="text/javascript">
       var data = {
-        placementid: '981480451927296_1085277068214300',
-        format: 'native',
+        placementid: '97972641212_10153121319441213', // '981480451927296_984690021606339',
+        format: '300x250',
         testmode: false,
         onAdLoaded: function(element) {
           console.log('Audience Network ad loaded');
@@ -13,7 +13,8 @@
         },
         onAdError: function(errorCode, errorMessage) {
           console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
-          var write_iframe = '<ifr' + 'ame src="https://secure.s.telegraph.co.uk/tmgads/admin/passback.html?sz=300x250&nw=facebook.web" style="border:0px #FFFFFF none;" scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" width="300" height="250"/></ifr' + 'ame>';
+          //Passback Code Start
+          var write_iframe='<ifr'+'ame src="http://s.telegraph.co.uk/tmgads/admin/passback.html?sz=300x250&nw=facebookweb" style="border:0px #FFFFFF none;" scrolling="no" frameborder="0" marginheight="0px" marginwidth="0px" width="300" height="250"/></ifr'+'ame>';
           document.write(write_iframe);
           //Passback Code End
         }
@@ -22,50 +23,6 @@
 data){q[s]=data[s];if(typeof(data[s])!=='function'){r+='&'+s+'='+encodeURIComponent(data[s]);}}q.iframe.src=r;q.tagJsInitTime=a;q.rootElement=e;q.events=[];w.addEventListener('message',function(u){if(u.source!==q.iframe.contentWindow){return;}u.data.receivedTimestamp=t();if(this.sdkEventHandler){this.sdkEventHandler(u.data);}else{this.events.push(u.data);}}.bind(q),false);q.tagJsIframeAppendedTime=t();w.ADNW=w.ADNW||{};w.ADNW.Ads=w.ADNW.Ads||[];w.ADNW.Ads.push(q);w.ADNW.init&&w.ADNW.init(q);})(window,location,document,Date.now||function(){return+new Date;});
     </script>
     <script type="text/javascript" src="https://connect.facebook.net/en_US/fbadnw.js" async></script>
-    <style>
-     .thirdPartyRoot {
-        font-size: 14px;
-        height: 250px;
-        line-height: 16px;
-        width: 300px;
-      }
-
-      .thirdPartyMediaClass {
-        height: 157px;
-        width: 300px;
-      }
-
-      .thirdPartyTitleClass {
-        font-weight: 600;
-        font-size: 16px;
-        margin: 8px 0 4px 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .thirdPartyBodyClass {
-        display: -webkit-box;
-        height: 32px;
-        -webkit-line-clamp: 2;
-        overflow: hidden;
-      }
-
-      .thirdPartyCallToActionClass {
-        color: #326891;
-        font-family: sans-serif;
-        font-weight: 600;
-        margin-top: 8px;
-      }
-    </style>
-    <div class="thirdPartyRoot">
-      <a class="fbAdLink">
-        <div class="fbAdMedia thirdPartyMediaClass"></div>
-        <div class="fbAdTitle thirdPartyTitleClass"></div>
-        <div class="fbAdBody thirdPartyBodyClass"></div>
-        <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
-      </a>
-    </div>
   </div>
   </body>
 </html>
