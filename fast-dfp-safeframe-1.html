@@ -38,8 +38,8 @@
     });
 
     window.onmessage = function (e) {
-      debugger;
       if (e.data === 'mwebtest-creative-ready') {
+        debugger;
         e.source.postMessage({
           name: 'mwebtest-settings',
           sdkPath: sdkPath,
