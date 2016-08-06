@@ -12,9 +12,11 @@
 
   window.TESTMODE = !!getQueryString('test');
 
+  debugger
   window.top.postMessage('mwebtest-creative-ready', '*');
   window.onmessage = function (e) {
     if (e.data.name === 'mwebtest-settings') {
+      debugger;
       window.SDKPATH = e.data.sdkPath;
       window.PLUGINPATH = e.data.pluginPath;
       window.TESTMODE = e.data.test;
