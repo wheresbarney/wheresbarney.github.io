@@ -14,13 +14,19 @@
 
   window.top.postMessage('mwebtest-creative-ready', '*');
   window.onmessage = function (e) {
-    var r = new XMLHttpRequest();
-    r.open('GET', '//tonypan.github.io/dfp-fast-banner-core.html', false);
-    r.send();
-    if (r.status === 200) {
-      document.open();
-      document.write(r.responseText);
-      document.close();
+    if (e.data.name === 'mwebtest-settings') {
+      window.SDKPATH = e.data.sdkPath;
+      window.PLUGINPATH = e.data.pluginPath;
+      window.TESTMODE = e.data.test;
+
+      var r = new XMLHttpRequest();
+      r.open('GET', '//tonypan.github.io/dfp-fast-banner-core.html', false);
+      r.send();
+      if (r.status === 200) {
+        document.open();
+        document.write(r.responseText);
+        document.close();
+      }
     }
   };
 </script>
