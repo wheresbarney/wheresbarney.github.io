@@ -39,6 +39,7 @@
 
     window.SDKPATH = sdkPath;
     window.PLUGINPATH = pluginPath;
+    window.TESTMODE = !!getQueryString('test');
 
     document.addEventListener("DOMContentLoaded", function() {
       if (getQueryString('txt')) {
@@ -62,7 +63,7 @@
       var data = {
         placementid: '97972641212_10153548529766213',
         format: 'native',
-        testmode: false,
+        testmode: window.TESTMODE,
         onAdLoaded: function(element) {
           console.log('Audience Network ad loaded');
           element.style.display = 'block';
@@ -132,7 +133,7 @@
       var data = {
         placementid: '97972641212_10153121319441213',
         format: '300x250',
-        testmode: false,
+        testmode: window.TESTMODE,
         onAdLoaded: function(element) {
           console.log('Audience Network ad loaded');
           element.style.display = 'block';
@@ -162,7 +163,7 @@
       var data = {
         placementid: '97972641212_10153177743496213',
         format: '320x50',
-        testmode: false,
+        testmode: window.TESTMODE,
         onAdLoaded: function(element) {
           console.log('Audience Network ad loaded');
           element.style.display = 'block';

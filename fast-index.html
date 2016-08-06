@@ -98,7 +98,7 @@
     }
 
     window.onload = function () {
-      document.getElementById('gogogo').onclick = function () {
+      document.getElementById('gogogo').onclick = function (e) {
         var text = document.getElementById('text');
         text = !hasClass(text.querySelector('.toggle'), 'off');
 
@@ -109,10 +109,18 @@
         if (text) {
           destination += '?txt=1';
         } else {
-          destination += '?txt=0';
+          destination += '?txt';
         }
 
-        window.location = destination;
+        if (test) {
+          destination += '?test=1';
+        } else {
+          destination += '?test';
+        }
+
+        window.location = 'http://tonypan.github.io/' + destination;
+        e.stopPropagation();
+        e.preventDefault();
       };
     };
   </script>
