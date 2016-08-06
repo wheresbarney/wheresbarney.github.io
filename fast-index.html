@@ -41,8 +41,7 @@
 
   <form class="form-inline">
     <div class="form-group">
-      <label style="font-size: 20px" for="exampleInputName2">Sandbox Prefix</label>
-      <div class="btn-group" data-toggle="buttons">
+      <div style="margin-bottom:20px" class="btn-group" data-toggle="buttons">
           <label class="btn btn-default active">
               <input type="radio" name="inputWalls" id="inputWalls" value="prod" checked>
           prod</label>
@@ -56,11 +55,30 @@
               <input type="radio" name="inputWalls" id="inputWalls" value="sandbox">
           sandbox</label>
       </div>
-          <input class="form-control" style="font-size: 20px; height: 50px;" id="exampleInputName2" placeholder="tonypan.sb" type="text">
+      <input class="form-control" style="display: block; font-size: 20px; height: 40px;" id="exampleInputName2" placeholder="tonypan.sb" type="text">
 
-
+      <div style="margin-top:20px" class="btn-group" data-toggle="buttons">
+          <label class="btn btn-default active">
+              <input type="radio" name="inputWalls" id="inputWalls" value="dfp-safeframe-1" checked>
+          DFP SafeFrame 1</label>
+          <label class="btn btn-default">
+              <input type="radio" name="inputWalls" id="inputWalls" value="dfp-safeframe-2">
+          DFP SafeFrame 2</label>
+          <label class="btn btn-default">
+              <input type="radio" name="inputWalls" id="inputWalls" value="dfp-safeframe-3">
+          DFP SafeFrame 2</label>
+          <label class="btn btn-default">
+              <input type="radio" name="inputWalls" id="inputWalls" value="dfp-friendly-1">
+          DFP Friendly 1</label>
+          <label class="btn btn-default">
+              <input type="radio" name="inputWalls" id="inputWalls" value="dfp-friendly-2">
+          DFP Friendly 2</label>
+          <label class="btn btn-default">
+              <input type="radio" name="inputWalls" id="inputWalls" value="dfp-friendly-3">
+          DFP Friendly 3</label>
+      </div>
     </div>
-    <button class="btn btn-primary" type="submit">Send invitation</button>
+    <button class="btn btn-primary">Send invitation</button>
   </form>
 </body>
 </html>
