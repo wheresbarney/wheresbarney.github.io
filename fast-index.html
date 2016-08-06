@@ -1,471 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1" name="viewport">
-<title>Test Pages Mweb 5.3</title>
-<style>
-body,html {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  min-height: 100%;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  font-family: sans-serif;
-}
-
-li,ul {
-  margin-bottom: 80px;
-  list-style: none;
-  padding: 0;
-}
-
-.tg-list {
-  text-align: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.tg-list-item {
-  margin: 0 2em;
-}
-
-h2 {
-  color: #777;
-}
-
-h4 {
-  color: #999;
-}
-
-.tgl {
-  display: none;
-}
-
-.tgl,.tgl *,.tgl :after,.tgl :before,.tgl+.tgl-btn,.tgl:after,.tgl:before {
-  box-sizing: border-box;
-}
-
-.tgl ::-moz-selection,.tgl :after::-moz-selection,.tgl :before::-moz-selection,.tgl+.tgl-btn::-moz-selection,.tgl::-moz-selection,.tgl:after::-moz-selection,.tgl:before::-moz-selection {
-  background: 0 0;
-}
-
-.tgl ::selection,.tgl :after::selection,.tgl :before::selection,.tgl+.tgl-btn::selection,.tgl::selection,.tgl:after::selection,.tgl:before::selection {
-  background: 0 0;
-}
-
-.tgl+.tgl-btn {
-  outline: 0;
-  display: block;
-  width: 4em;
-  height: 2em;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.tgl+.tgl-btn:after,.tgl+.tgl-btn:before {
-  position: relative;
-  display: block;
-  content: "";
-  width: 50%;
-  height: 100%;
-}
-
-.tgl+.tgl-btn:after {
-  left: 0;
-}
-
-.tgl+.tgl-btn:before {
-  display: none;
-}
-
-.tgl-flip+.tgl-btn:after,.tgl-flip+.tgl-btn:before,.tgl-skewed+.tgl-btn:after,.tgl-skewed+.tgl-btn:before {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  line-height: 2em;
-  font-weight: 700;
-  color: #fff;
-  position: absolute;
-}
-
-.tgl:checked+.tgl-btn:after {
-  left: 50%;
-}
-
-.tgl-light+.tgl-btn {
-  background: #f0f0f0;
-  border-radius: 2em;
-  padding: 2px;
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
-}
-
-.tgl-light+.tgl-btn:after {
-  border-radius: 50%;
-  background: #fff;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-}
-
-.tgl-light:checked+.tgl-btn {
-  background: #9FD6AE;
-}
-
-.tgl-ios+.tgl-btn {
-  background: #fbfbfb;
-  border-radius: 2em;
-  padding: 2px;
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
-  border: 1px solid #e8eae9;
-}
-
-.tgl-ios+.tgl-btn:after {
-  border-radius: 2em;
-  background: #fbfbfb;
-  -webkit-transition: left .3s cubic-bezier(.175,.885,.32,1.275),padding .3s ease,margin .3s ease;
-  transition: left .3s cubic-bezier(.175,.885,.32,1.275),padding .3s ease,margin .3s ease;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.1),0 4px 0 rgba(0,0,0,.08);
-}
-
-.tgl-ios+.tgl-btn:hover:after {
-  will-change: padding;
-}
-
-.tgl-ios+.tgl-btn:active {
-  box-shadow: inset 0 0 0 2em #e8eae9;
-}
-
-.tgl-ios+.tgl-btn:active:after {
-  padding-right: .8em;
-}
-
-.tgl-ios:checked+.tgl-btn {
-  background: #86d993;
-}
-
-.tgl-ios:checked+.tgl-btn:active {
-  box-shadow: none;
-}
-
-.tgl-ios:checked+.tgl-btn:active:after {
-  margin-left: -.8em;
-}
-
-.tgl-skewed+.tgl-btn {
-  overflow: hidden;
-  -webkit-transform: skew(-10deg);
-  transform: skew(-10deg);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  font-family: sans-serif;
-  background: #888;
-}
-
-.tgl-skewed+.tgl-btn:after,.tgl-skewed+.tgl-btn:before {
-  -webkit-transform: skew(10deg);
-  transform: skew(10deg);
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  text-shadow: 0 1px 0 rgba(0,0,0,.4);
-}
-
-.tgl-skewed+.tgl-btn:after {
-  left: 100%;
-  content: attr(data-tg-on);
-}
-
-.tgl-skewed+.tgl-btn:before {
-  left: 0;
-  content: attr(data-tg-off);
-}
-
-.tgl-skewed+.tgl-btn:active {
-  background: #888;
-}
-
-.tgl-skewed+.tgl-btn:active:before {
-  left: -10%;
-}
-
-.tgl-skewed:checked+.tgl-btn {
-  background: #86d993;
-}
-
-.tgl-skewed:checked+.tgl-btn:before {
-  left: -100%;
-}
-
-.tgl-skewed:checked+.tgl-btn:after {
-  left: 0;
-}
-
-.tgl-skewed:checked+.tgl-btn:active:after {
-  left: 10%;
-}
-
-.tgl-flat+.tgl-btn {
-  padding: 2px;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  background: #fff;
-  border: 4px solid #f2f2f2;
-  border-radius: 2em;
-}
-
-.tgl-flat+.tgl-btn:after {
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  background: #f2f2f2;
-  content: "";
-  border-radius: 1em;
-}
-
-.tgl-flat:checked+.tgl-btn {
-  border: 4px solid #7FC6A6;
-}
-
-.tgl-flat:checked+.tgl-btn:after {
-  left: 50%;
-  background: #7FC6A6;
-}
-
-.tgl-flip+.tgl-btn {
-  padding: 2px;
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  font-family: sans-serif;
-  -webkit-perspective: 100px;
-  perspective: 100px;
-}
-
-.tgl-flip+.tgl-btn:after,.tgl-flip+.tgl-btn:before {
-  -webkit-transition: all .4s ease;
-  transition: all .4s ease;
-  top: 0;
-  left: 0;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 4px;
-}
-
-.tgl-flip+.tgl-btn:after {
-  content: attr(data-tg-on);
-  background: #02C66F;
-  -webkit-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
-}
-
-.tgl-flip+.tgl-btn:before {
-  background: #FF3A19;
-  content: attr(data-tg-off);
-}
-
-.tgl-flip+.tgl-btn:active:before {
-  -webkit-transform: rotateY(-20deg);
-  transform: rotateY(-20deg);
-}
-
-.tgl-flip:checked+.tgl-btn:before {
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-}
-
-.tgl-flip:checked+.tgl-btn:after {
-  -webkit-transform: rotateY(0);
-  transform: rotateY(0);
-  left: 0;
-  background: #7FC6A6;
-}
-
-form,form button {
-  background-color: #fff;
-  display: inline-block;
-  box-sizing: border-box;
-  position: relative;
-}
-
-.tgl-flip:checked+.tgl-btn:active:after {
-  -webkit-transform: rotateY(20deg);
-  transform: rotateY(20deg);
-}
-
-.transition,form .question input[type=text],form .question label,form button {
-  -moz-transition: all .25s cubic-bezier(.53,.01,.35,1.5);
-  -o-transition: all .25s cubic-bezier(.53,.01,.35,1.5);
-  -webkit-transition: all .25s cubic-bezier(.53,.01,.35,1.5);
-  transition: all .25s cubic-bezier(.53,.01,.35,1.5);
-}
-
-* {
-  font-family: Helvetica,sans-serif;
-  font-weight: light;
-  -webkit-font-smoothing: antialiased;
-}
-
-form button,form h1 {
-  color: #ff4a56;
-  font-weight: 100;
-  letter-spacing: .01em;
-}
-
-html {
-  background-color: #ff4a56;
-}
-
-form {
-  width: 100%;
-  padding: 90px 50px;
-  border-radius: 40px;
-  margin: 0;
-  left: 50%;
-  -moz-transform: translate(-50%,0);
-  -ms-transform: translate(-50%,0);
-  -webkit-transform: translate(-50%,0);
-  transform: translate(-50%,0);
-}
-
-form h1 {
-  margin-left: 15px;
-  margin-bottom: 35px;
-  text-transform: uppercase;
-}
-
-form button {
-  margin-top: 35px;
-  border: 1px solid #ff4a56;
-  line-height: 0;
-  font-size: 17px;
-  padding: 20px 15px;
-  border-radius: 60px;
-  z-index: 1;
-}
-
-form button:focus,form button:hover {
-  color: #fff;
-  background-color: #ff4a56;
-}
-
-form .question {
-  position: relative;
-  padding: 10px 0;
-}
-
-form .question:first-of-type {
-  padding-top: 0;
-}
-
-form .question:last-of-type {
-  padding-bottom: 0;
-}
-
-form .question input[type=text],form .question label {
-  font-size: 17px;
-  display: block;
-  box-sizing: border-box;
-  padding: 10px 15px;
-  color: #ff4a56;
-  font-weight: 100;
-  letter-spacing: .01em;
-}
-
-form .question label {
-  transform-origin: left center;
-  position: absolute;
-  margin-top: -40px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-form .question input[type=text] {
-  appearance: none;
-  background-color: none;
-  border: 1px solid #ff4a56;
-  line-height: 0;
-  width: 100%;
-  border-radius: 60px;
-  position: relative;
-  z-index: 1;
-}
-
-form .question input[type=text]:focus {
-  outline: 0;
-  background: #ff4a56;
-  color: #fff;
-  margin-top: 30px;
-}
-
-form .question input[type=text]:valid {
-  margin-top: 30px;
-}
-
-form .question input[type=text]:focus~label {
-  -moz-transform: translate(0,-35px);
-  -ms-transform: translate(0,-35px);
-  -webkit-transform: translate(0,-35px);
-  transform: translate(0,-35px);
-}
-
-form .question input[type=text]:valid~label {
-  text-transform: uppercase;
-  font-style: italic;
-  -moz-transform: translate(5px,-35px) scale(.6);
-  -ms-transform: translate(5px,-35px) scale(.6);
-  -webkit-transform: translate(5px,-35px) scale(.6);
-  transform: translate(5px,-35px) scale(.6);
-}
-</style>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport"><!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>mweb 5.3</title><!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet"><!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+  </script><!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  <script src="js/bootstrap.min.js">
+  </script>
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js">
+  </script>
+
+  <style>
+  .checkbox-inline {
+    font-size:20px;
+  }
+.btn-primary {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  font-size:20px;
+}
+.btn.active {
+  background-color:#5cb85c;
+}
+
+  </style>
 </head>
-<body>
+<body style="margin: 20px">
+  <div style="margin-bottom: 20px">
+    <label class="checkbox-inline"><input data-onstyle="success" data-size="large" data-toggle="toggle" type="checkbox" data-on="Text" data-off="No Text"></label>
 
-<form>
-
-  <h1>Options</h1>
-<ul class="tg-list">
-  <li class="tg-list-item">
-    <h4>Text</h4>
-    <input id="cb1" type="checkbox" class="tgl tgl-light"/>
-    <label for="cb1" class="tgl-btn"></label>
-  </li>
-  <li class="tg-list-item">
-    <h4>Test</h4>
-    <input id="cb2" type="checkbox" class="tgl tgl-light"/>
-    <label for="cb2" class="tgl-btn"></label>
-  </li>
-</ul>
-
-  <div class="question">
-    <input type="text" required/>
-    <label>sandbox</label>
+    <label class="checkbox-inline"><input data-onstyle="success" data-size="large" data-toggle="toggle" type="checkbox" data-on="Test Mode" data-off="Not Test Mode"></label>
   </div>
-  <button>GO GO GO!</button>
 
-</form>
+
+  <form class="form-inline">
+    <div class="form-group">
+      <label style="font-size: 20px" for="exampleInputName2">Sandbox Prefix</label>
+      <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-lg active">
+              <input type="radio" name="inputWalls" id="inputWalls" value="prod" checked>
+          prod</label>
+          <label class="btn btn-lg">
+              <input type="radio" name="inputWalls" id="inputWalls" value="intern">
+          intern</label>
+          <label class="btn btn-lg">
+              <input type="radio" name="inputWalls" id="inputWalls" value="inyour">
+          inyour</label>
+          <label class="btn btn-lg">
+              <input type="radio" name="inputWalls" id="inputWalls" value="sandbox">
+          sandbox</label>
+      </div>
+          <input class="form-control" style="font-size: 20px; height: 50px;" id="exampleInputName2" placeholder="tonypan.sb" type="text">
+
+
+    </div>
+    <button class="btn btn-primary" type="submit">Send invitation</button>
+  </form>
 </body>
 </html>
