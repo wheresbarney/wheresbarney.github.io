@@ -13,6 +13,11 @@
     console.warn('Loading Plugin from:' + r.responseText);
     window.PLUGINPATH = r.responseText;
   }
+
+  window.onmessage = function (e) {
+    console.warn(e);
+  }
+
 </script>
 
 <!-- Banner -->

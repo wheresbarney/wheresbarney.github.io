@@ -45,7 +45,7 @@
 
   <form class="form-inline">
     <div class="form-group">
-      <div style="margin-bottom:20px" class="btn-group" data-toggle="buttons">
+      <div id="run_as" style="margin-bottom:20px" class="btn-group" data-toggle="buttons">
           <label class="btn btn-default active">
               <input type="radio" name="inputWalls" id="inputWalls" value="prod" checked>
           prod</label>
@@ -59,9 +59,9 @@
               <input type="radio" name="inputWalls" id="inputWalls" value="sandbox">
           sandbox</label>
       </div>
-      <input class="form-control" style="display: block; font-size: 20px; height: 40px;" id="exampleInputName2" placeholder="tonypan.sb" type="text">
+      <input id="sandbox" class="form-control" style="display: block; font-size: 20px; height: 40px;" id="exampleInputName2" placeholder="tonypan.sb" type="text">
 
-      <div style="margin-top:20px" class="btn-group" data-toggle="buttons">
+      <div id="destination" style="margin-top:20px" class="btn-group" data-toggle="buttons">
           <label class="btn btn-default active">
               <input type="radio" name="inputWalls" id="inputWalls" value="fast-dfp-safeframe-1" checked>
           DFP SafeFrame 1</label>
@@ -104,7 +104,13 @@
 
         var test = document.getElementById('test');
         test = !hasClass(test.querySelector('.toggle'), 'off');
-        var destination = 'fast-direct.html';
+
+        var run_as = document.getElementById('run_as').querySelector('.active input').value;
+        if (run_as === 'sandbox') {
+          run_as = document.getElementById('sandbox').value;
+        }
+
+        var destination = document.getElementById('destination').querySelector('.active input').value + '.html'
         if (text) {
           destination += '?txt=1';
         } else {
@@ -116,6 +122,8 @@
         } else {
           destination += '&test';
         }
+
+        destination += "&run_as=" + run_as;
 
         window.location = 'http://tonypan.github.io/' + destination;
         e.stopPropagation();
