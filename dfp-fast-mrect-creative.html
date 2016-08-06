@@ -1,4 +1,15 @@
 <script>
+  var getQueryString = function (field) {
+    try {
+      var href = window.top.location.href;
+      var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+      var string = reg.exec(href);
+      return string ? string[1] : null;
+    } catch (e) {
+      return null;
+    }
+  };
+
   var r = new XMLHttpRequest();
   r.open('GET', '//tonypan.github.io/SDKJS.txt', false);
   r.send();
@@ -13,6 +24,8 @@
     console.warn('Loading Plugin from:' + r.responseText);
     window.PLUGINPATH = r.responseText;
   }
+
+  window.TESTMODE = !!getQueryString('test');
 </script>
 
 <!-- Medium Rectangle -->
@@ -22,7 +35,7 @@
     var data = {
       placementid: '97972641212_10153121319441213',
       format: '300x250',
-      testmode: false,
+      testmode: window.TESTMODE,
       onAdLoaded: function(element) {
         console.log('Audience Network ad loaded');
         element.style.display = 'block';
