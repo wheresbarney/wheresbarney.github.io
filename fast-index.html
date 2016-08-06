@@ -15,83 +15,40 @@
   <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
   <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js">
   </script>
-
   <style>
   .checkbox-inline {
     font-size:20px;
   }
-.btn-primary {
+  .btn-primary {
   background-color: #5cb85c;
   border-color: #4cae4c;
   font-size:20px;
-}
-.form-group .btn.active {
+  }
+  .form-group .btn.active {
   background-color:#5cb85c;
-}
-.btn-default.active, .btn-default.active:hover {
+  }
+  .btn-default.active, .btn-default.active:hover {
   color:white;
-}
-.btn.btn-default.active.toggle-off {
+  }
+  .btn.btn-default.active.toggle-off {
   color: #333;
-}
-</style>
+  }
+  </style>
 </head>
 <body style="margin: 20px">
   <div style="margin-bottom: 20px">
-    <label id="text" class="checkbox-inline"><input data-onstyle="success"  data-toggle="toggle" type="checkbox" data-on="Text" data-off="No Text"></label>
-    <label id="test" class="checkbox-inline"><input data-onstyle="success" data-toggle="toggle" type="checkbox" data-on="Test Mode" data-off="Not Test Mode"></label>
+    <label class="checkbox-inline" id="text"><input data-off="No Text" data-on="Text" data-onstyle="success" data-toggle="toggle" type="checkbox"></label> <label class="checkbox-inline" id="test"><input data-off="Not Test Mode" data-on="Test Mode" data-onstyle="success" data-toggle="toggle" type="checkbox"></label>
   </div>
-
-
   <form class="form-inline">
     <div class="form-group">
-      <div id="run_as" style="margin-bottom:20px" class="btn-group" data-toggle="buttons">
-          <label class="btn btn-default active">
-              <input type="radio" name="inputWalls" id="inputWalls" value="prod" checked>
-          prod</label>
-          <label class="btn btn-default">
-              <input type="radio" name="inputWalls" id="inputWalls" value="intern">
-          intern</label>
-          <label class="btn btn-default">
-              <input type="radio" name="inputWalls" id="inputWalls" value="inyour">
-          inyour</label>
-          <label class="btn btn-default">
-              <input id="sandbox_toggle" type="radio" name="inputWalls" id="inputWalls" value="sandbox">
-          sandbox</label>
+      <div class="btn-group" data-toggle="buttons" id="run_as" style="margin-bottom:20px">
+        <label class="btn btn-default active"><input checked id="inputWalls" name="inputWalls" type="radio" value="prod"> prod</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="intern"> intern</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="inyour"> inyour</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="sandbox"> sandbox</label>
+      </div><input class="form-control" id="exampleInputName2" placeholder="tonypan.sb" style="font-size: 20px; height: 40px;" type="text">
+      <div class="btn-group" data-toggle="buttons" id="destination" style="margin-top:20px">
+        <label class="btn btn-default"><input checked id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-safeframe-1"> DFP SafeFrame 1</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-safeframe-2"> DFP SafeFrame 2</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-safeframe-3"> DFP SafeFrame 3</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-friendly-1"> DFP Friendly 1</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-friendly-2"> DFP Friendly 2</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-friendly-3"> DFP Friendly 3</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-iframe"> FIF 1</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-iframe-2"> FIF 2</label> <label class="btn btn-default active"><input id="inputWalls" name="inputWalls" type="radio" value="fast-direct"> Direct</label>
       </div>
-      <input id="sandbox" class="form-control" style="font-size: 20px; height: 40px;" id="exampleInputName2" placeholder="tonypan.sb" type="text">
-
-      <div id="destination" style="margin-top:20px" class="btn-group" data-toggle="buttons">
-          <label class="btn btn-default active">
-              <input type="radio" name="inputWalls" id="inputWalls" value="fast-dfp-safeframe-1" checked>
-          DFP SafeFrame 1</label>
-          <label class="btn btn-default">
-              <input type="radio" name="inputWalls" id="inputWalls" value="fast-dfp-safeframe-2">
-          DFP SafeFrame 2</label>
-          <label class="btn btn-default">
-              <input type="radio" name="inputWalls" id="inputWalls" value="fast-dfp-safeframe-3">
-          DFP SafeFrame 2</label>
-          <label class="btn btn-default">
-              <input type="radio" name="inputWalls" id="inputWalls" value="fast-dfp-friendly-1">
-          DFP Friendly 1</label>
-          <label class="btn btn-default">
-              <input type="radio" name="inputWalls" id="inputWalls" value="fast-dfp-friendly-2">
-          DFP Friendly 2</label>
-          <label class="btn btn-default">
-              <input type="radio" name="inputWalls" id="inputWalls" value="fast-dfp-friendly-3">
-          DFP Friendly 3</label>
-          <label class="btn btn-default">
-              <input type="radio" name="inputWalls" id="inputWalls" value="fast-iframe">
-          FIF 1</label>
-          <label class="btn btn-default">
-              <input type="radio" name="inputWalls" id="inputWalls" value="fast-iframe-2">
-          FIF 2</label>
-      </div>
-    </div>
-    <button id='gogogo' class="btn btn-primary">Go Go Go!</button>
+    </div><button class="btn btn-primary" id='gogogo'>Go Go Go!</button>
   </form>
-
-
   <script>
     function hasClass(element, cls) {
         return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
