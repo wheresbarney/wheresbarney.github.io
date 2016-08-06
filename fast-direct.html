@@ -32,15 +32,9 @@
     if (runas === 'prod') {
       sdkPath = 'https://connect.facebook.net/en_US/fbadnw.js';
       pluginPath = 'https://www.facebook.com/audiencenetwork/web/?sdk=5.3';
-    } else if (runas === 'inyour') {
-      sdkPath = 'https://www.inyour.facebook.com/assets.php/en_US/fbadnw.js';
-      pluginPath = 'https://www.inyour.facebook.com/audiencenetwork/web/?sdk=5.3';
-    } else if (runas === 'intern') {
-      sdkPath = 'https://www.intern.facebook.com/assets.php/en_US/fbadnw.js';
-      pluginPath = 'https://www.intern.facebook.com/audiencenetwork/web/?sdk=5.3';
     } else if (runas) {
-      sdkPath = 'https://www.' + runas + '.sb.facebook.com/assets.php/en_US/fbadnw.js';
-      pluginPath = 'https://www.' + runas + '.sb.facebook.com/audiencenetwork/web/?sdk=5.3';
+      sdkPath = 'https://www.' + runas + '.facebook.com/assets.php/en_US/fbadnw.js';
+      pluginPath = 'https://www.' + runas + '.facebook.com/audiencenetwork/web/?sdk=5.3';
     }
 
     window.SDKPATH = sdkPath;

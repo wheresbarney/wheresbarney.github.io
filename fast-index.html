@@ -38,9 +38,8 @@
 </head>
 <body style="margin: 20px">
   <div style="margin-bottom: 20px">
-    <label class="checkbox-inline"><input data-onstyle="success"  data-toggle="toggle" type="checkbox" data-on="Text" data-off="No Text"></label>
-
-    <label class="checkbox-inline"><input data-onstyle="success" data-toggle="toggle" type="checkbox" data-on="Test Mode" data-off="Not Test Mode"></label>
+    <label id="text" class="checkbox-inline"><input data-onstyle="success"  data-toggle="toggle" type="checkbox" data-on="Text" data-off="No Text"></label>
+    <label id="test" class="checkbox-inline"><input data-onstyle="success" data-toggle="toggle" type="checkbox" data-on="Test Mode" data-off="Not Test Mode"></label>
   </div>
 
 
@@ -89,7 +88,34 @@
           FIF 2</label>
       </div>
     </div>
-    <button class="btn btn-primary">Go Go Go!</button>
+    <button id='gogogo' class="btn btn-primary">Go Go Go!</button>
   </form>
+
+
+  <script>
+    function hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+
+    window.onload = function () {
+      document.getElementById('gogogo').onclick = function () {
+        var text = document.getElementById('text');
+        text = !hasClass(text.querySelector('.toggle'), 'off');
+
+        var test = document.getElementById('test');
+        test = !hasClass(test.querySelector('.toggle'), 'off');
+
+        var destination = 'fast-direct.html';
+        if (text) {
+          destination += '?txt=1';
+        } else {
+          destination += '?txt=0';
+        }
+
+        debugger;
+        window.location.href = destination;
+      };
+    };
+  </script>
 </body>
 </html>
