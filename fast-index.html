@@ -104,7 +104,7 @@
 
         var test = document.getElementById('test');
         test = !hasClass(test.querySelector('.toggle'), 'off');
-
+        alert(test);
         var destination = 'fast-direct.html';
         if (text) {
           destination += '?txt=1';
@@ -113,9 +113,9 @@
         }
 
         if (test) {
-          destination += '?test=1';
+          destination += '&test=1';
         } else {
-          destination += '?test';
+          destination += '&test';
         }
 
         window.location = 'http://tonypan.github.io/' + destination;
