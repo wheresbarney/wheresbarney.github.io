@@ -1,22 +1,7 @@
 <script>
-  var getQueryString = function (field) {
-    try {
-      var href = window.top.location.href;
-      var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
-      var string = reg.exec(href);
-      return string ? string[1] : null;
-    } catch (e) {
-      return null;
-    }
-  };
-
-  window.TESTMODE = !!getQueryString('test');
-
-  debugger
   window.top.postMessage('mwebtest-creative-ready', '*');
   window.onmessage = function (e) {
     if (e.data.name === 'mwebtest-settings') {
-      debugger;
       window.SDKPATH = e.data.sdkPath;
       window.PLUGINPATH = e.data.pluginPath;
       window.TESTMODE = e.data.test;
