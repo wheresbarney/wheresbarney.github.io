@@ -21,6 +21,7 @@
 
     html, body {
         height: 100%;
+        margin: 0;
     }
     .container-fluid {
       height: 100%;
@@ -28,13 +29,25 @@
     .editor-col, .editor-row, .output-col, #output {
       height: 100%;
     }
+
     .btn {
       width: 40px;
       height: 40px;
     }
 
+    .output-col {
+      display: flex;
+      flex-flow: column;
+    }
+
     .toolbar {
       margin-bottom: 15px;
+    }
+
+    #output {
+      flex: 1;
+      overflow: auto;
+      box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
     }
   </style>
 </head>
