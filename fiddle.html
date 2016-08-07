@@ -86,11 +86,11 @@
       iframe.contentWindow.document.close();
     };
 
-    window.setTimeout(save, 5000);
-
     document.getElementById('save').onclick = save;
     document.getElementById('reload').onclick = reload;
 
+    window.setTimeout(save, 5000);
+    window.setTimeout(reload);
   </script>
 </body>
 </html>
