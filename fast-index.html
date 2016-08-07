@@ -43,7 +43,7 @@
     <div class="form-group">
       <div class="btn-group" data-toggle="buttons" id="run_as" style="margin-bottom:20px">
         <label class="btn btn-default active"><input checked id="inputWalls" name="inputWalls" type="radio" value="prod"> prod</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="intern"> intern</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="inyour"> inyour</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="sandbox"> sandbox</label>
-      </div><input class="form-control" id="exampleInputName2" placeholder="tonypan.sb" style="font-size: 20px; height: 40px;" type="text">
+      </div><input class="form-control" id="sandbox" placeholder="tonypan.sb" style="font-size: 20px; height: 40px;" type="text">
       <div class="btn-group" data-toggle="buttons" id="destination" style="margin-top:20px">
         <label class="btn btn-default"><input checked id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-safeframe-1"> DFP SafeFrame 1</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-safeframe-2"> DFP SafeFrame 2</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-safeframe-3"> DFP SafeFrame 3</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-friendly-1"> DFP Friendly 1</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-friendly-2"> DFP Friendly 2</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-dfp-friendly-3"> DFP Friendly 3</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-iframe"> FIF 1</label> <label class="btn btn-default"><input id="inputWalls" name="inputWalls" type="radio" value="fast-iframe-2"> FIF 2</label> <label class="btn btn-default active"><input id="inputWalls" name="inputWalls" type="radio" value="fast-direct"> Direct</label>
       </div>
@@ -81,9 +81,7 @@
         }
 
         destination += "&run_as=" + run_as;
-        debugger;
         window.location = 'http://tonypan.github.io/' + destination;
-        debugger;
         e.stopPropagation();
         e.preventDefault();
       };
