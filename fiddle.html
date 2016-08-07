@@ -27,7 +27,7 @@
     .container-fluid {
       height: 100%;
     }
-    .editor-col, .editor-row, .output-col {
+    .editor-col, .editor-row, .output-col, #id {
       height: 100%;
     }
     .btn {
@@ -69,7 +69,6 @@
 
     var save = function () {
       localStorage.setItem('saved-code', editor.getValue());
-      console.warn('saved!');
       window.setTimeout(save, 5000);
     };
 
@@ -81,7 +80,9 @@
 
       var iframe = document.createElement('iframe');
       iframe.style.border = 'none';
+      iframe.style.border = '100%';
       output.appendChild(iframe);
+
       iframe.contentWindow.document.open();
       iframe.contentWindow.document.write(editor.getValue());
       iframe.contentWindow.document.close();
