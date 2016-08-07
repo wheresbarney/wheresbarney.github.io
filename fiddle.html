@@ -71,13 +71,15 @@
 
     var reload = function () {
       var output = document.getElementById('output');
+      while(output.hasChildNodes()) {
+         output.removeChild(output.lastChild);
+      }
+
       var iframe = document.createElement('iframe');
       output.appendChild(iframe);
       iframe.contentWindow.document.open();
       iframe.contentWindow.document.write(editor.getValue());
       iframe.contentWindow.document.close();
-
-
     };
 
     window.setTimeout(save, 5000);
