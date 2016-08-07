@@ -1,17 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fiddle</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-      </head>
-  <body>
-    <h1>Hello, world!</h1>
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Fiddle</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+  </script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+  </script>
+  <script charset="utf-8" src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript">
+  </script>
+  <style media="screen" type="text/css">
+    #editor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    html, body {
+        height: 100%;
+    }
+    .container-fluid {
+      height: 100%;
+    }
+    .editor-col, .editor-row {
+      height: 100%;
+    }
+    .btn {
+      width: 40px;
+      height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row editor-row">
+      <div class="col-xs-8 editor-col">
+        <div id="editor"></div>
+      </div>
+      <div class="col-xs-4">
+        <div class="btn-group" role="group">
+          <button id="save" type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-floppy-disk"></span>
+          </button>
+          <button id="reload" type="button" class="btn btn-primary">
+            <span class="glyphicon glyphicon-refresh"></span>
+          </button>
+        </div>
+        <div id="output"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.getSession().setMode("ace/mode/html");
+    editor.getSession().setUseWrapMode(true);
+    editor.getSession().setTabSize(4);
+    editor.setValue(localStorage.getItem('saved-code') || '');
+
+    var save = function () {
+      localStorage.setItem('saved-code', editor.getValue());
+      console.warn('saved!');
+      window.setTimeout(save, 5000);
+    };
+
+    var reload = function () {
+      var output = document.getElementById('output');
+      var iframe = document.createElement('iframe');
+      output.appendChild(iframe);
+      iframe.contentWindow.document.open();
+      iframe.contentWindow.document.write(editor.getValue());
+      iframe.contentWindow.document.close();
 
 
-  </body>
+    };
+
+    window.setTimeout(save, 5000);
+
+    document.getElementById('save').onclick = save;
+    document.getElementById('reload').onclick = reload;
+
+  </script>
+</body>
 </html>
