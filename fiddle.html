@@ -80,6 +80,7 @@
       }
 
       var iframe = document.createElement('iframe');
+      iframe.style.border = 'none';
       output.appendChild(iframe);
       iframe.contentWindow.document.open();
       iframe.contentWindow.document.write(editor.getValue());
