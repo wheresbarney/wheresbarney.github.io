@@ -69,28 +69,15 @@
   </div>
   <script>
     var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
+    editor.setValue(localStorage.getItem('saved-code') || '', -1);
+    editor.setTheme("ace/theme/iplastic");
     editor.getSession().setMode("ace/mode/html");
     editor.getSession().setUseWrapMode(true);
     editor.getSession().setTabSize(4);
-    editor.setValue(localStorage.getItem('saved-code') || '');
 
     var save = function () {
       localStorage.setItem('saved-code', editor.getValue());
       window.setTimeout(save, 5000);
-    };
-
-    var setUserAgent = function(window, userAgent) {
-      if (window.navigator.userAgent != userAgent) {
-        var userAgentProp = { get: function () { return userAgent; } };
-        try {
-          Object.defineProperty(window.navigator, 'userAgent', userAgentProp);
-        } catch (e) {
-          window.navigator = Object.create(navigator, {
-            userAgent: userAgentProp
-          });
-        }
-      }
     };
 
     var reload = function () {
@@ -104,7 +91,6 @@
       iframe.style.height = '100%';
       output.appendChild(iframe);
 
-      setUserAgent(iframe.contentWindow, 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4');
       iframe.contentWindow.document.open();
       iframe.contentWindow.document.write(editor.getValue());
       iframe.contentWindow.document.close();
