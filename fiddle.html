@@ -64,9 +64,6 @@
             <button id="new" type="button" class="btn btn-primary">
               <span class="glyphicon glyphicon-file"></span>
             </button>
-            <!--<button id="save" type="button" class="btn btn-primary">
-              <span class="glyphicon glyphicon-floppy-disk"></span>
-            </button>-->
             <button id="reload" type="button" class="btn btn-primary">
               <span class="glyphicon glyphicon-refresh"></span>
             </button>
@@ -85,8 +82,12 @@
     </div>
   </div>
   <script>
-    var editor = ace.edit("editor");
-    editor.setValue(localStorage.getItem('saved-code') || '', -1);
+    var editor = ace.edit('editor');
+    var code = localStorage.getItem('saved-code');
+    if (code !== null) {
+      editor.setValue(code, -1);
+    }
+
     editor.setTheme("ace/theme/iplastic");
     editor.getSession().setMode("ace/mode/html");
     editor.getSession().setUseWrapMode(true);
@@ -94,13 +95,26 @@
 
     var save = function () {
       localStorage.setItem('saved-code', editor.getValue());
-      console.warn('Saved!');
     };
 
-    var createNew = function () {
-      bootbox.confirm("Discard current code?", function(result) {
-        if (result) {
-          editor.setValue(`<!DOCTYPE html>
+    var reload = function () {
+      var output = document.getElementById('output');
+      while(output.hasChildNodes()) {
+         output.removeChild(output.lastChild);
+      }
+
+      var iframe = document.createElement('iframe');
+      iframe.style.border = 'none';
+      iframe.style.height = '100%';
+      output.appendChild(iframe);
+
+      iframe.contentWindow.document.open();
+      iframe.contentWindow.document.write(editor.getValue());
+      iframe.contentWindow.document.close();
+    };
+
+    var reset = function () {
+      editor.setValue(`<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -176,24 +190,19 @@
     </div>
 </body>
 </html>`, -1);
-        }
-      });
+      reload();
     };
 
-    var reload = function () {
-      var output = document.getElementById('output');
-      while(output.hasChildNodes()) {
-         output.removeChild(output.lastChild);
+    var createNew = function () {
+      if (code === null) {
+        reset();
+      } else {
+        bootbox.confirm("Discard current code?", function (result) {
+          if (result) {
+            reset();
+          }
+        });
       }
-
-      var iframe = document.createElement('iframe');
-      iframe.style.border = 'none';
-      iframe.style.height = '100%';
-      output.appendChild(iframe);
-
-      iframe.contentWindow.document.open();
-      iframe.contentWindow.document.write(editor.getValue());
-      iframe.contentWindow.document.close();
     };
 
     var leftSize = 8;
@@ -219,7 +228,6 @@
     editor.on("change", save);
 
     document.getElementById('new').onclick = createNew;
-    //document.getElementById('save').onclick = save;
     document.getElementById('reload').onclick = reload;
     document.getElementById('expand-left').onclick = expandLeft;
     document.getElementById('expand-right').onclick = expandRight;
