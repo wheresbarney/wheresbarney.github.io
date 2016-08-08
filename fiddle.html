@@ -84,8 +84,11 @@
   <script>
     var editor = ace.edit('editor');
     var code = localStorage.getItem('saved-code');
+    var firstRun = false;
     if (code !== null) {
       editor.setValue(code, -1);
+    } else {
+      firstRun = true;
     }
 
     editor.setTheme("ace/theme/iplastic");
@@ -225,7 +228,10 @@
       }
     };
 
-    editor.on("change", save);
+    editor.on("change", function () {
+      firstRun = false;
+      save();
+    });
 
     document.getElementById('new').onclick = createNew;
     document.getElementById('reload').onclick = reload;
