@@ -197,7 +197,7 @@
     };
 
     var createNew = function () {
-      if (code === null) {
+      if (firstRun) {
         reset();
       } else {
         bootbox.confirm("Discard current code?", function (result) {
