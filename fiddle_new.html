@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Fiddle</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/device.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script charset="utf-8" src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js" type="text/javascript"></script>
+  <script async src="js/bootbox.min.js"></script>
+
+  <style media="screen" type="text/css">
+    #editor {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+    .container-fluid {
+      height: 100%;
+    }
+    .editor-col, .editor-row, .output-col, #output {
+      height: 100%;
+    }
+
+    .toolbar .btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .output-col {
+      display: flex;
+      flex-flow: column;
+    }
+
+    .toolbar {
+      margin-bottom: 15px;
+    }
+
+    #output {
+      flex: 1;
+      overflow: auto;
+      box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row editor-row">
+      <div class="col-xs-8 editor-col">
+        <div id="editor"></div>
+      </div>
+      <div class="col-xs-4 output-col">
+        <div class="btn-toolbar toolbar" role="toolbar">
+          <div class="btn-group" role="group">
+            <button id="new" type="button" class="btn btn-primary">
+              <span class="glyphicon glyphicon-file"></span>
+            </button>
+            <button id="reload" type="button" class="btn btn-primary">
+              <span class="glyphicon glyphicon-refresh"></span>
+            </button>
+          </div>
+          <div class="btn-group" role="group">
+            <button id="expand-left" type="button" class="btn btn-primary">
+              <span class="glyphicon glyphicon-step-backward"></span>
+            </button>
+            <button id="expand-right" type="button" class="btn btn-primary">
+              <span class="glyphicon glyphicon-step-forward"></span>
+            </button>
+          </div>
+        </div>
+        <div class="marvel-device iphone6 black">
+          <div class="top-bar"></div>
+          <div class="sleep"></div>
+          <div class="volume"></div>
+          <div class="camera"></div>
+          <div class="sensor"></div>
+          <div class="speaker"></div>
+          <div class="screen">
+              <div id="output"></div>
+          </div>
+          <div class="home"></div>
+          <div class="bottom-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var editor = ace.edit('editor');
+    var code = localStorage.getItem('saved-code');
+    var firstRun = false;
+    if (code !== null) {
+      editor.setValue(code, -1);
+    } else {
+      firstRun = true;
+    }
+
+    editor.setTheme("ace/theme/iplastic");
+    editor.getSession().setMode("ace/mode/html");
+    editor.getSession().setUseWrapMode(true);
+    editor.getSession().setTabSize(4);
+
+    var save = function () {
+      localStorage.setItem('saved-code', editor.getValue());
+    };
+
+    var reload = function () {
+      var output = document.getElementById('output');
+      while(output.hasChildNodes()) {
+         output.removeChild(output.lastChild);
+      }
+
+      var iframe = document.createElement('iframe');
+      iframe.style.border = 'none';
+      iframe.style.height = '100%';
+      iframe.style.width = '100%';
+      output.appendChild(iframe);
+
+      iframe.contentWindow.document.open();
+      iframe.contentWindow.document.write(editor.getValue());
+      iframe.contentWindow.document.close();
+    };
+
+    var reset = function () {
+      editor.setValue(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+    <style>
+     #ad_root {
+        display: none;
+        font-size: 14px;
+        height: 250px;
+        line-height: 16px;
+        position: relative;
+        width: 300px;
+      }
+      .thirdPartyMediaClass {
+        height: 157px;
+        width: 300px;
+      }
+      .thirdPartyTitleClass {
+        font-weight: 600;
+        font-size: 16px;
+        margin: 8px 0 4px 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .thirdPartyBodyClass {
+        display: -webkit-box;
+        height: 32px;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+      .thirdPartyCallToActionClass {
+        color: #326891;
+        font-family: sans-serif;
+        font-weight: 600;
+        margin-top: 8px;
+      }
+    </style>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.Event.subscribe(
+          'ad.loaded',
+          function(placementId) {
+            console.log('Audience Network ad loaded');
+            document.getElementById('ad_root').style.display = 'block';
+          }
+        );
+        FB.Event.subscribe(
+          'ad.error',
+          function(errorCode, errorMessage, placementId) {
+            console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
+          }
+        );
+      };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=97972641212";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    <\/script>
+    <div class="fb-ad" data-placementid="97972641212_10153121319441213" data-format="native" data-nativeadid="ad_root" data-testmode="false"></div>
+    <div id="ad_root">
+      <a class="fbAdLink">
+        <div class="fbAdMedia thirdPartyMediaClass"></div>
+        <div class="fbAdTitle thirdPartyTitleClass"></div>
+        <div class="fbAdBody thirdPartyBodyClass"></div>
+        <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
+      </a>
+    </div>
+</body>
+</html>`, -1);
+      reload();
+    };
+
+    var createNew = function () {
+      if (firstRun) {
+        reset();
+      } else {
+        bootbox.confirm("Discard current code?", function (result) {
+          if (result) {
+            reset();
+          }
+        });
+      }
+    };
+
+    var leftSize = 8;
+    var resize = function () {
+      document.querySelector('.editor-col').className = 'editor-col col-xs-' + leftSize;
+      document.querySelector('.output-col').className = 'output-col col-xs-' + (12 - leftSize);
+    };
+
+    var expandLeft = function () {
+      if (leftSize > 1) {
+        leftSize--;
+        resize();
+      }
+    };
+
+    var expandRight = function () {
+      if (leftSize < 11) {
+        leftSize++;
+        resize();
+      }
+    };
+
+    editor.on("change", function () {
+      firstRun = false;
+      save();
+    });
+
+    document.getElementById('new').onclick = createNew;
+    document.getElementById('reload').onclick = reload;
+    document.getElementById('expand-left').onclick = expandLeft;
+    document.getElementById('expand-right').onclick = expandRight;
+
+    window.setTimeout(reload);
+  </script>
+</body>
+</html>
