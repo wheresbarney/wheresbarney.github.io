@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width" name="viewport">
+  <title></title>
+</head>
+<body>
+  <style>
+    html,body {
+      margin: 0;
+      width: 414px;
+      height:736px;
+    }
+
+    #ad_root {
+      display: none;
+      font-size: 14px;
+      line-height: 16px;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      font-family: Arial;
+    }
+
+    .fbAdLink {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+    }
+    .thirdPartyBodyClass {
+      font-size: 20px;
+      line-height: 20px;
+      height: 20%;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      padding:20px;
+      color: #6B9A81;
+      display: flex;
+      //justify-content: flex-end;
+      align-items: flex-end;
+      background-color: white;
+    }
+
+    .thirdPartyMediaClass {
+      width: 100%;
+    }
+
+    .thirdPartyTitleClass {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .thirdPartyCallToActionClass {
+      color: #fff;
+      font-family: sans-serif;
+      font-weight: 600;
+      margin-top: 8px;
+      background-color: #B1CA71;
+      width: 100px;
+      border: none;
+      border-radius: 5px 5px 5px 5px;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+    }
+
+    .advertisement {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding-top: 8px;
+      padding-bottom: 0px;
+      font-size: 12px;
+      line-height: 12px;
+      height :20px;
+    }
+
+    .background {
+      flex: 1;
+      //height: calc(100% - 26px - 15% - 60vw);
+    }
+
+    .backgroundBlur {
+      width: 100%;
+      -webkit-filter: blur(5px);
+      //-moz-filter: blur(20px);
+      //-o-filter: blur(20px);
+      //-ms-filter: blur(20px);
+      //filter: blur(30px);
+      opacity: .9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background-size: cover;
+    }
+
+    .content {
+        margin-top: 20%;
+    }
+    .left {
+      background-color: #fff;
+      width: 40%;
+      float: left;
+      padding-top:50px;
+      height: 110px;
+      padding-left: 20px;
+    }
+
+    .left-tri {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 160px 80px 0 0;
+      border-color: #fff transparent transparent;
+      float: left;
+    }
+
+    .right-tri {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 160px 80px;
+      border-color: transparent transparent #fff;
+      float: left;
+      margin-left: -60px;
+    }
+
+    .thirdPartyIconClass {
+      padding-top: 30px;
+      padding-left: 10px;
+      padding-bottom: 30px;
+      padding-right: 15px;
+      background-color:white;
+      width: 100px;
+      height: 100px;
+      float:left;
+    }
+  </style>
+  <script>
+      window.fbAsyncInit = function() {
+        FB.Event.subscribe(
+          'ad.loaded',
+          function(placementId) {
+            console.log('Audience Network ad loaded');
+
+            var image1 = document.querySelector('#ad_root .thirdPartyMediaClass img');
+            var image2 = document.querySelector('#ad_root .thirdPartyMediaClass > div');
+            var image3 = document.querySelector('#ad_root .thirdPartyMediaClass div a');
+            var bg = document.querySelector('#ad_root .background .backgroundBlur');
+            if (image1) {
+              bg.style.backgroundImage = 'url(\'' + image1.src + '\')';
+            } else if (image2 && image2.style.backgroundImage) {
+              bg.style.backgroundImage = image2.style.backgroundImage;
+            } else if (image3 && image3.style.backgroundImage) {
+              bg.style.backgroundImage = image3.style.backgroundImage;
+              document.querySelector('.thirdPartyMediaClass').style.height = window.innerWidth * 0.6 + 'px';
+            }
+            document.getElementById('ad_root').style.display = 'block';
+          }
+        );
+        FB.Event.subscribe(
+          'ad.error',
+          function(errorCode, errorMessage, placementId) {
+            console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
+          }
+        );
+      };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk/xfbml.ad.js#xfbml=1&version=v2.5&appId=97972641212";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <div class="fb-ad" data-format="native" data-nativeadid="ad_root" data-placementid="97972641212_10153121319441213" data-testmode="false"></div>
+  <div id="ad_root">
+    <a class="fbAdLink">
+        <div class="advertisement">
+          ADVERTISEMENT
+        </div>
+        <div class="fbAdBody thirdPartyBodyClass"></div>
+        <div class="fbAdMedia thirdPartyMediaClass"></div>
+        <div class="background">
+            <div class="backgroundBlur"></div>
+            <div class="content">
+              <div class="left">
+                  <div class="fbAdTitle thirdPartyTitleClass"></div>
+                  <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
+              </div>
+              <div class="left-tri"></div>
+              <div class="right-tri"></div>
+              <div class="fbAdIcon thirdPartyIconClass"></div>
+            </div>
+        </div>
+        <div class="advertisement">
+          SCROLL TO CONTINUE WITH CONTENT
+        </div>
+    </a>
+
+  </div>
+</body>
+</html>
