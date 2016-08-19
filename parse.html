@@ -4,8 +4,8 @@
 </head>
 <body>
   <script>
-    var loadedHandler;
-    var errorHandler;
+    var loaded;
+    var error;
 
     window.FB = {
       Event: {
@@ -13,28 +13,25 @@
           var body = func.toString();
           body = body.substring(body.indexOf('{') + 1, body.lastIndexOf('}'));
           if (name === 'ad.loaded') {
-            loadedHandler = body;
+            loaded = body;
           } else if (name === 'ad.error') {
-            errorHandler = body;
+            error = body;
           }
-        },
+        }
       },
-      XFBML: { parse: function() {} },
+      XFBML: { parse: function() {} }
     };
 
     try {
       eval(window.atob(window.location.search.substring(1)));
       if (window.fbAsyncInit) {
         window.fbAsyncInit();
-        window.top.postMessage({
-          loaded: loadedHandler,
-          error: errorHandler,
-        }, 'facebook.com');
+        window.top.postMessage({ loaded: loaded, error: error }, '*');
       } else {
-        window.top.postMessage(null, 'facebook.com');
+        window.top.postMessage(null, '*');
       }
     } catch (e) {
-      window.top.postMessage(null, 'facebook.com');
+      window.top.postMessage(null, '*');
     }
   </script>
 </body>
