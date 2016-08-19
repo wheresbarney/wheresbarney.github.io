@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <script>
+    var loadedHandler;
+    var errorHandler;
+
+    window.FB = {
+      Event: {
+        subscribe: function(name, func) {
+          var body = func.toString();
+          body = body.substring(body.indexOf('{') + 1, body.lastIndexOf('}'));
+          if (name === 'ad.loaded') {
+            loadedHandler = body;
+          } else if (name === 'ad.error') {
+            errorHandler = body;
+          }
+        },
+      },
+      XFBML: { parse: function() {} },
+    };
+
+    try {
+      eval(window.atob(window.location.search));
+      if (window.fbAsyncInit) {
+        window.fbAsyncInit();
+        window.top.postMessage({
+          loaded: loadedHandler,
+          error: errorHandler,
+        }, 'facebook.com');
+      } else {
+        window.top.postMessage(null, 'facebook.com');
+      }
+    } catch (e) {
+      window.top.postMessage(null, 'facebook.com');
+    }
+  </script>
+</body>
+</html>
