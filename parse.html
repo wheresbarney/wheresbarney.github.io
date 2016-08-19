@@ -23,7 +23,7 @@
     };
 
     try {
-      eval(window.atob(window.location.search));
+      eval(window.atob(window.location.search.substring(1)));
       if (window.fbAsyncInit) {
         window.fbAsyncInit();
         window.top.postMessage({
