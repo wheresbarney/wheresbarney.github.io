@@ -1,0 +1,168 @@
+<html>
+  <body>
+<!-- Here begins the interstitial code-->
+
+<div style="display:none; position: relative;" id="fbANad">
+  <iframe style="display:none;"></iframe>
+  <script type="text/javascript">
+    var data = {
+      placementid: '441855789323211_560740004101455',
+      format: 'native',
+      testmode: false,
+      onAdLoaded: function(element) {
+            console.log('Audience Network ad loaded');
+            element.style.display = 'block';
+          },
+      onAdError: function(errorCode, errorMessage) {
+            console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
+          }
+    };
+    (function(w,l,d,t){var a=t();var b=d.currentScript||(function(){var c=d.getElementsByTagName('script');return c[c.length-1];})();var e=b.parentElement;e.dataset.placementid=data.placementid;var f=function(v){try{return v.document.referrer;}catch(e){}return'';};var g=function(h){var i=h.indexOf('/',h.indexOf('://')+3);if(i===-1){return h;}return h.substring(0,i);};var j=[l.href];var k=false;var m=false;if(w!==w.parent){var n;var o=w;while(o!==n){var h;try{m=m||(o.$sf&&o.$sf.ext);h=o.location.href;}catch(e){k=true;}j.push(h||f(n));n=o;o=o.parent;}}var p=l.ancestorOrigins;if(p){if(p.length>0){data.domain=p[p.length-1];}else{data.domain=g(j[j.length-1]);}}data.url=j[j.length-1];data.channel=g(j[0]);data.width=screen.width;data.height=screen.height;data.pixelratio=w.devicePixelRatio;data.placementindex=w.ADNW&&w.ADNW.Ads?w.ADNW.Ads.length:0;data.crossdomain=k;data.safeframe=!!m;var q={};q.iframe=e.firstElementChild;var r='https://www.facebook.com/audiencenetwork/web/?sdk=5.3';for(var s in data){q[s]=data[s];if(typeof(data[s])!=='function'){r+='&'+s+'='+encodeURIComponent(data[s]);}}q.iframe.src=r;q.tagJsInitTime=a;q.rootElement=e;q.events=[];w.addEventListener('message',function(u){if(u.source!==q.iframe.contentWindow){return;}u.data.receivedTimestamp=t();if(this.sdkEventHandler){this.sdkEventHandler(u.data);}else{this.events.push(u.data);}}.bind(q),false);q.tagJsIframeAppendedTime=t();w.ADNW=w.ADNW||{};w.ADNW.Ads=w.ADNW.Ads||[];w.ADNW.Ads.push(q);w.ADNW.init&&w.ADNW.init(q);})(window,location,document,Date.now||function(){return+new Date;});
+  </script>
+  <script type="text/javascript" src="https://connect.facebook.net/en_US/fbadnw.js" async></script>
+  <style>
+.cross {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  position: fixed;
+  border: 0px solid rgb(180, 180, 180);
+  border-radius: 2.2em;
+  margin: 5px 0px 5px 40%;
+  z-index: 20;
+  background: rgb(90, 90, 90);
+}
+.cross::before {
+  display: inline-block;
+  width: 15px;
+  height: 3px;
+  position: absolute;
+  content: "";
+  top: 16px;
+  left: 10px;
+  transform: rotateZ(45deg);
+  background: rgb(255, 255, 255);
+}
+.cross::after {
+  display: inline-block;
+  width: 15px;
+  height: 3px;
+  position: absolute;
+  content: "";
+  top: 16px;
+  left: 10px;
+  transform: rotateZ(-45deg);
+  background: rgb(255, 255, 255);
+}
+.thirdPartyRoot {
+  font-size: 14px;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
+  text-align: center;
+  z-index: 19;
+  background-color: rgb(255, 255, 255);
+}
+.iconcontainer {
+  height: 52px;
+  width: 52px;
+  z-index: 100;
+  margin: -31px auto auto;
+}
+.IconImage {
+  height: 52px;
+  width: 52px;
+  box-shadow: rgb(1, 0, 0) 0px 4px 12px;
+  box-sizing: content-box;
+  border: 1px solid rgb(51, 51, 51);
+  outline: rgb(255, 255, 255) solid 3px;
+  z-index: 100;
+  position: fixed;
+}
+.thirdPartyMediaClass {
+  height: 34%;
+  width: 100%;
+  max-width: 600px;
+  margin: 45px auto auto auto;
+  z-index: -100;
+}
+.thirdPartyTitleClass {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 8px auto auto;
+  width: 85%;
+  height: 8%;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  color: rgb(51, 51, 51);
+  font-size: 21px;
+  font-weight: bold;
+  padding: 10px 0px 15px;
+  letter-spacing: -0.05em;
+  line-height: 60px;
+}
+.SubtitleClass {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  margin: auto;
+  color: rgb(153, 153, 153);
+  letter-spacing: 0.04em;
+  text-decoration: underline;
+}
+.thirdPartyBodyClass {
+  height: 27%;
+  font-family: "Helvetica Neue", "Open Sans", Arial;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 18px auto;
+  padding: 0px 25px;
+  color: rgb(0, 0, 0);
+}
+.thirdPartyCallToActionClass {
+  margin: auto;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 14px;
+  font-family: "Helvetica Neue", "Open Sans", Arial;
+  width: 28%;
+  text-align: center;
+  padding: 9px 16px 7px;
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: rgb(44, 193, 45) 0px 6px 0px;
+  letter-spacing: 0.1em;
+  line-height: 18px;
+  background: rgb(72, 212, 72);
+}
+.sponsored {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  margin: 20px auto auto;
+  color: rgb(153, 153, 153);
+  letter-spacing: 0.04em;
+}
+</style>
+  <div class="thirdPartyRoot">
+        <div class="cross" onclick="document.getElementById('fbANad').style.display = 'none';"></div>
+        <div class="fbAdMedia thirdPartyMediaClass"></div>
+        <div class="iconcontainer">
+        <div class="fbAdIcon IconImage"></div>
+        </div>
+        <div class="fbAdTitle thirdPartyTitleClass"></div>
+        <div class="fbAdSubtitle SubtitleClass"></div>
+        <div class="fbAdBody thirdPartyBodyClass"></div>
+      <a class="fbAdLink">
+        <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
+      </a>
+       <div class="closebutton" onclick="document.getElementById('thirdPartyRoot').style.display = 'none';">
+       <div class="arrow"></div>
+       </div>
+       <p class="sponsored">Sponsor</p>
+  </div>
+</div>
+<!-- End of the interstitial code-->
+
+  </body>
+</html>
