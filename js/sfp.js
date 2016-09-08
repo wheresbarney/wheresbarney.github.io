@@ -6366,7 +6366,7 @@ n = `<html>
         var data = {
           placementid: '1779278248985055_1783422011904012',
           format: 'native',
-          testmode: true,
+          testmode: false,
           onAdLoaded: function(element) {
            console.log('Audience Network ad loaded');
            element.style.display = 'block';
