@@ -6356,6 +6356,7 @@ window.STR = window.STR || {},
               }
             }(this))) : s ? (f = "//sfp.sharethrough.com/placement_networks/" + s + "/tag", e.get(f, function(t) {
               return function(n) {
+                debugger;
                 var r, i;
                 return i = e("<div>").html(n), r = i.html().trim(), (new STR.Tag.Views.ThirdPartyPartner(t.element, t.placementKey, "mediation-preview", r, t.getDomPlacementIndex())).render()
               }
