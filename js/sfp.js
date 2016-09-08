@@ -6356,7 +6356,64 @@ window.STR = window.STR || {},
               }
             }(this))) : s ? (f = "//sfp.sharethrough.com/placement_networks/" + s + "/tag", e.get(f, function(t) {
               return function(n) {
-                debugger;
+                //debugger;
+n = `<html>
+<body leftmargin='0' marginheight='0' marginwidth='0' style='background:transparent' topmargin='0'>
+
+    <div style="display:none; position: relative;">
+      <iframe style="display:none;"></iframe>
+      <script type="text/javascript" id="str-in-prog">
+        var data = {
+          placementid: '1779278248985055_1783422011904012',
+          format: 'native',
+          testmode: true,
+          onAdLoaded: function(element) {
+           console.log('Audience Network ad loaded');
+           element.style.display = 'block';
+          },
+          onAdError: function(errorCode, errorMessage) {
+                       console.log('Audience Network error (' + errorCode + ') ' + errorMessage);
+                       var loadSTRScript = function() {
+  console.log("loadSTRScript");
+  var script = document.createElement("script");
+  script.src = "//native.sharethrough.com/assets/sfp-passback-tag.js";
+  document.getElementsByTagName("head")[0].appendChild(script);
+};
+
+if (typeof STR === "undefined") {
+  loadSTRScript();
+} else {
+  console.log("STR.PassbackTag.boot()");
+  STR.PassbackTag.boot(STR.Tag.Helpers.MediationHelper.findPlacementKey());
+}
+
+
+                     }
+        };
+        (function(w,l,d,t){var a=t();var b=document.getElementById('str-in-prog');var e=b.parentElement;e.dataset.placementid=data.placementid;var f=function(v){try{return v.document.referrer;}catch(e){}return'';};var g=function(h){var i=h.indexOf('/',h.indexOf('://')+3);if(i===-1){return h;}return h.substring(0,i);};var j=[l.href];var k=false;var m=false;if(w!==w.parent){var n;var o=w;while(o!==n){var h;try{m=m||(o.$sf&&o.$sf.ext);h=o.location.href;}catch(e){k=true;}j.push(h||f(n));n=o;o=o.parent;}}var p=l.ancestorOrigins;if(p){if(p.length>0){data.domain=p[p.length-1];}else{data.domain=g(j[j.length-1]);}}data.url=j[j.length-1];data.channel=g(j[0]);data.width=screen.width;data.height=screen.height;data.pixelratio=w.devicePixelRatio;data.placementindex=w.ADNW&&w.ADNW.Ads?w.ADNW.Ads.length:0;data.crossdomain=k;data.safeframe=!!m;var q={};q.iframe=e.firstElementChild;var r='https://www.facebook.com/audiencenetwork/web/?sdk=5.3';for(var s in data){q[s]=data[s];if(typeof(data[s])!=='function'){r+='&'+s+'='+encodeURIComponent(data[s]);}}q.iframe.src=r;q.tagJsInitTime=a;q.rootElement=e;q.events=[];w.addEventListener('message',function(u){if(u.source!==q.iframe.contentWindow){return;}u.data.receivedTimestamp=t();if(this.sdkEventHandler){this.sdkEventHandler(u.data);}else{this.events.push(u.data);}}.bind(q),false);q.tagJsIframeAppendedTime=t();w.ADNW=w.ADNW||{};w.ADNW.Ads=w.ADNW.Ads||[];w.ADNW.Ads.push(q);w.ADNW.init&&w.ADNW.init(q);})(window,location,document,Date.now||function(){return+new Date;});
+      </script>
+      <script type="text/javascript" src="https://connect.facebook.net/en_US/fbadnw.js" async></script>
+
+      <div class="thirdPartyRoot str-mediation-container">
+        <a class="fbAdLink"><div class="str-fan-mediated str-adunit str-card-exp categorygrid__griditem categorygrid__griditem--small categorygrid__griditem--first clearfix">
+  <div class="categorygrid__gridimagewrapper categorygrid__gridimagewrapper--small">
+    <div class="fbAdMedia categorygrid__gridimagelink categorygrid__gridimagelink--small" style="width:100%; height:auto;padding-bottom: 100%; background-size:cover;background-position:50%;background-repeat: no-repeat;background-color:#eee;background-image:url();"></div>
+  </div>
+  <a class="categorygrid__griditemtitlelink categorygrid__griditemtitlelink--small">
+    <div class="categorygrid__griditemtext categorygrid__griditemtext--small">
+      <div class="fbAdTitle categorygrid__griditemtitle categorygrid__griditemtitle--small is-truncated" style="word-wrap: break-word;"></div>
+      <div class="fbAdCallToAction categorygrid__griditemtag categorygrid__griditemtimestamp categorygrid__griditemtimestamp--small">
+
+      </div>
+    </div>
+  </a><style>.thumbnail-wrapper{width:100%!important;height:auto !important;}.str-adunit.categorygrid__griditem{margin:15px 10px 0 !important;}</style>
+</div></a>
+      </div>
+    </div>
+
+</body>
+</html>`;
+
                 var r, i;
                 return i = e("<div>").html(n), r = i.html().trim(), (new STR.Tag.Views.ThirdPartyPartner(t.element, t.placementKey, "mediation-preview", r, t.getDomPlacementIndex())).render()
               }
