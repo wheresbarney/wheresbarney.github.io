@@ -9,6 +9,7 @@
       var r = new XMLHttpRequest();
       r.open('GET', '//tonypan.github.io/dfp-fast-mrect-core.html', false);
       r.send();
+      debugger;
       if (r.status === 200) {
         document.open();
         document.write(r.responseText);
