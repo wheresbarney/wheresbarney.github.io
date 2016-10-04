@@ -3,7 +3,7 @@
 <head>
   <title></title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta content="width=device-width" name="viewport">
 </head>
 <body>
   <div style="display:none; position: relative;">
@@ -30,7 +30,7 @@
        .thirdPartyRoot {
             background-color: white;
             color: #444;
-            font-family: sans-serif;
+            font-family: helvetica, arial, sans-serif;
             font-size: 12px;
             line-height: 16px;
             width: 100%;
@@ -42,51 +42,28 @@
             word-wrap: break-word;
           }
           .thirdPartyMediaClass {
-            width: 320px;
-            height: 168px;
-            margin: 12px 0;
+            width: 100%;
+            line-height: 0;
+            position: relative;
+            z-index: 1;
           }
           .thirdPartyIconClass {
-              width: 40px;
-              height: 40px;
+              width: 38px;
+              height: 38px;
               float: left;
               margin-right: 8px;
           }
+          .thirdPartyIconClass img {
+              border: 1px solid rgba(0, 0, 0, 0.1);
+          }
           .thirdPartySubtitleClass {
-            font-size: 18px;
+            font-size: 14px;
+            line-height: 18px;
+            letter-spacing: 0.15px;
+            font-weight: bold;
+            height: 18px;
             -webkit-line-clamp: 1;
             overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            height: 16px;
-            -webkit-box-orient: vertical;
-          }
-          .thirdPartyTitleClass {
-            padding-right: 12px;
-            line-height: 18px;
-            -webkit-line-clamp: 2;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            height: 36px;
-            -webkit-box-orient: vertical;
-          }
-          .thirdPartyCallToActionClass {
-            background-color: #416BC4;
-            color: white;
-            border-radius: 4px;
-            padding: 6px 20px;
-            float: right;
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 11px;
-          }
-          .fbDefaultNativeAdWrapper {
-            font-size: 12px;
-            line-height: 14px;
-            margin: 12px 0;
-            height: 36px;
-            vertical-align: top;
           }
           .fbAdLink {
             padding: 12px 12px 0;
@@ -94,43 +71,188 @@
           .fbAdChoices {
               display:none;
           }
-          .fbPostHeader {
-
-          }
-          .fbPostFBLogo {
+          .fbAdFacebookLogo {
             float: right;
             width: 24px;
             height: 24px;
-            background-image:url("https://www.facebook.com/rsrc.php/v3/yi/r/ZSYBhtnLLOo.png");
-            background-size: 25px 203px;
-            background-repeat: no-repeat;
-            background-position: 0 0;
+            display: inline-block;
+            background-size: 24px;
+          }
+          .fbPostHeader {
+            display: table-cell;
+            vertical-align: top;
+
+          }
+          .fbPostHeaderInner {
             display: inline-block;
           }
+          .fbPostHeaderContent {
+            vertical-align: middle;
+            display: inline-block;
+            height: 40px;
+          }
+          .fbAdTimestamp {
+              color: #90949c;
+          }
+          .fbPostBodyRow {
+              font-size: 14px;
+              font-weight: normal;
+              line-height: 1.38;
+              overflow: hidden;
+          }
+          .fbAdBody {
+              margin: 0;
+          }
+          .fbPostMain {
+              margin-top: 10px;
+              overflow: hidden;
+              position: relative;
+              z-index: 0;
+              max-width: max-content;
+              box-shadow: 0 0 0 1px rgba(0, 0, 0, .15) inset, 0 1px 4px rgba(0, 0, 0, 0.1);
+          }
+          .fbPostMainContent {
+              height: auto;
+              margin: 10px 12px;
+              max-height: 100px;
+              position: relative;
+          }
+          .thirdPartySubtitle2 {
+              font-family: Georgia, serif;
+              letter-spacing: normal;
+              font-size: 18px;
+              font-weight: 500;
+              line-height: 22px;
+              margin-bottom: 5px;
+              max-height: 110px;f
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              width: 100%;
+          }
+          .thirdParyCaptionClass {
+              font-size: 12px;
+              line-height: 16px;
+              max-height: 80px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              width: 100%;
+          }
+          .thirdPartySocialContext {
+            padding-top: 9px;
+            position: relative;
+            font-size: 11px;
+            line-height: 11px;
+            text-transform: uppercase;
+            color: #90949c;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
           .fbPostFooter {
+            border-top: 1px solid #f0f0f0;
             margin: 12px 12px 0;
           }
-    </style>
+          .fbPostFooter table {
+              border: 0;
+              border-collapse: collapse;
+              border-spacing: 0;
+              display: table;
+          }
+          .fbPostFooter table tbody {
+              display: table-row-group;
+              vertical-align: middle;
+              border-color: inherit;
+              border-collapse: collapse;
+
+          }
+          .fbPostFooter table tbody tr {
+              display: table-row;
+              vertical-align: inherit;
+              border-color: inherit;
+              border-collapse: collapse;
+          }
+          .fbPostFooter table tbody tr td {
+              padding-right: 20px;
+              font-size: 11px;
+              text-align: left;
+          }
+          .fbPostFooterButton {
+              padding-top: 12px;
+              padding-bottom: 12px;
+              color: #7f7f7f;
+              font-weight: bold;
+              line-height: 16px;
+              text-align: center;
+          }
+          .fbAdFeedbackIcon {
+              width: 16px;
+              height: 16px;
+              display: inline-block;
+              vertical-align: bottom;
+              bottom: 1px;
+              position: relative;
+              background-size: 16px;
+              background-repeat: no-repeat;
+          }
+          .fbAdFeedbackCount {
+              display: inline-block;
+              vertical-align: bottom;
+          }
+     </style>
     <div class="thirdPartyRoot">
       <div class="fbAdLink">
-        <div class='fbPostHeader'>
+        <div>
           <div class='fbAdIcon thirdPartyIconClass'></div>
-          <div class='fbPostFBLogo'></div>
-          <div>
-            <div class="fbAdSubtitle thirdPartySubtitleClass"></div>
-            <div class="fbPostTimestamp"></div>
+          <div class='fbAdFacebookLogo'></div>
+          <div class='fbPostHeader'>
+            <div class='fbPostHeaderInner'>
+              <div class='fbPostHeaderContent'>
+                <div class="fbAdSubtitle thirdPartySubtitleClass"></div>
+                <div class="fbAdTimestamp"></div>
+              </div>
+            </div>
           </div>
-
         </div>
-        <div class="fbAdBody"></div>
-        <div class="fbAdMedia thirdPartyMediaClass"></div>
-        <div class="fbDefaultNativeAdWrapper">
-          <div class='fbAdCaption'></div>
-          <div class="fbAdCallToAction thirdPartyCallToActionClass"></div>
-          <div class="fbAdSocialContext thirdPartyTitleClass"></div>
+        <div class='fbPostBodyRow'>
+          <p class="fbAdBody"></p>
+        </div>
+        <div class='fbPostMain'>
+          <div class="fbAdMedia thirdPartyMediaClass"></div>
+          <div class='fbPostMainContent'>
+            <div class="fbAdSubtitle thirdPartySubtitle2"></div>
+            <div class='fbAdCaption thirdParyCaptionClass'></div>
+            <div class="fbAdSocialContext thirdPartySocialContext"></div>
+          </div>
         </div>
       </div>
-      <div class='fbPostFooter'>aa</div>
+      <div class='fbPostFooter'>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <div class='fbPostFooterButton'>
+                  <div class='fbAdFeedbackIcon like'></div>
+                  <div class='fbAdFeedbackCount like'></div>
+                </div>
+              </td>
+              <td>
+                <div class='fbPostFooterButton'>
+                  <div class='fbAdFeedbackIcon comment'></div>
+                  <div class='fbAdFeedbackCount comment'></div>
+                </div>
+              </td>
+              <td>
+                <div class='fbPostFooterButton'>
+                  <div class='fbAdFeedbackIcon share'></div>
+                  <div class='fbAdFeedbackCount share'></div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </body>
