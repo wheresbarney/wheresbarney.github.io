@@ -229,8 +229,11 @@
         g.ADNW.Ads = g.ADNW.Ads || [];
         g.ADNW.Ads.push(u);
         console.warn(u);
-        console.warn(!!g.ADNW.init);
-        debugger;
+        if (g.ADNW.init) {
+          console.warn('yes');
+        } else {
+          console.warn('no');
+        }
         g.ADNW.init && g.ADNW.init(u);
       })(window, location, document, Date.now || function() {
         return +new Date();
