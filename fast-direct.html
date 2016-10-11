@@ -229,6 +229,7 @@
         g.ADNW.Ads = g.ADNW.Ads || [];
         g.ADNW.Ads.push(u);
         console.warn(u);
+        console.warn(g.ADNW.init);
         g.ADNW.init && g.ADNW.init(u);
       })(window, location, document, Date.now || function() {
         return +new Date();
