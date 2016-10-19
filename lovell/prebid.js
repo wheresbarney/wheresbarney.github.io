@@ -2512,7 +2512,7 @@
 	    if (bid.timeToRespond > pbjs.cbTimeout + pbjs.timeoutBuffer) {
 	      var timedOut = true;
 	
-	      this.executeCallback(timedOut);
+	      exports.executeCallback(timedOut);
 	    }
 	
 	    //emit the bidAdjustment event before bidResponse, so bid response has the adjusted bid value
@@ -2549,7 +2549,7 @@
 	  }
 	
 	  if (bidsBackAll()) {
-	    this.executeCallback();
+	    exports.executeCallback();
 	  }
 	};
 	
@@ -2647,7 +2647,7 @@
 	    externalCallbackArr.called = true;
 	
 	    if (timedOut) {
-	      var timedOutBidders = this.getTimedOutBidders();
+	      var timedOutBidders = exports.getTimedOutBidders();
 	
 	      if (timedOutBidders.length) {
 	        events.emit(CONSTANTS.EVENTS.BID_TIMEOUT, timedOutBidders);
@@ -2863,7 +2863,7 @@
 	      }
 	    }
 	  } catch (e) {
-	    this.logError('Exception parsing CPM :' + e.message);
+	    utils.logError('Exception parsing CPM :' + e.message);
 	  }
 	
 	  return returnObj;
