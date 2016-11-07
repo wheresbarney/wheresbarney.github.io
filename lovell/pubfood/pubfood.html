@@ -9,7 +9,7 @@
     var pf = new pubfood();
     pf.addBidProvider(audienceNetworkBidDelegate);
 
-    var slot = new Slot('/1023632/hb_300x250_LIG', 'div-gpt-ad-1476127208992-0');
+    var slot = Slot('/1023632/hb_300x250_LIG', 'div-gpt-ad-1476127208992-0');
     slot.addBidProvider('audience-network');
     slot.addSizes([[300, 250]]);
     slot.setParam('audience-network', {
@@ -60,38 +60,11 @@
     });
 
   </script>
-
-  <script>
-    (function () {
-        var gads = document.createElement('script');
-        gads.async = true;
-        gads.type = 'text/javascript';
-        var useSSL = 'https:' == document.location.protocol;
-        gads.src = (useSSL ? 'https:' : 'http:') +
-                '//www.googletagservices.com/tag/js/gpt.js';
-        var node = document.getElementsByTagName('script')[0];
-        node.parentNode.insertBefore(gads, node);
-    })();
-  </script>
-
-  <script>
-    googletag.cmd.push(function () {
-        googletag.defineSlot('/1023632/hb_300x250_LIG', [[300, 250]], 'div-gpt-ad-1476127208992-0').addService(googletag.pubads());
-
-        googletag.pubads().enableSingleRequest();
-        googletag.enableServices();
-    });
-  </script>
 </head>
 
 <body>
-<h2>Prebid.js Test</h2>
-<h5>Div-1</h5>
-<div id='div-gpt-ad-1476127208992-0'>
-    <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1476127208992-0'); });
-    </script>
-</div>
-
+  <h2>Prebid.js Test</h2>
+  <h5>Div-1</h5>
+  <div id='div-gpt-ad-1476127208992-0'> </div>
 </body>
 </html>
