@@ -1,7 +1,7 @@
 <html>
 <head>
 
-  <script src="/lovell/pubfood/pubfood.min.js"></script>
+  <script src="/lovell/pubfood/pubfood.js"></script>
   <script src="/lovell/pubfood/audience-network-bid-delegate.min.js"></script>
   <script>
     var PREBID_TIMEOUT = 2000;
@@ -12,7 +12,7 @@
     var slot = new Slot('/1023632/hb_300x250_LIG', 'div-gpt-ad-1476127208992-0');
     slot.addBidProvider('audience-network');
     slot.addSizes([[300, 250]]);
-    slot.setParam('audience-network': {
+    slot.setParam('audience-network', {
       placementId: '873801679416180_873802436082771'
     });
     pf.addSlot(slot);
