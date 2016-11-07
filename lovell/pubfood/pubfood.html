@@ -9,13 +9,14 @@
     var pf = new pubfood();
     pf.addBidProvider(audienceNetworkBidDelegate);
 
-    var slot = Slot('/1023632/hb_300x250_LIG', 'div-gpt-ad-1476127208992-0');
-    slot.addBidProvider('audience-network');
-    slot.addSizes([[300, 250]]);
+    var slot = pf.addSlot({
+      name: '/1023632/hb_300x250_LIG',
+      elementId: 'div-gpt-ad-1476127208992-0',
+      sizes: [[300, 250]],
+      bidProviders: ['audience-network']
     slot.setParam('audience-network', {
       placementId: '873801679416180_873802436082771'
     });
-    pf.addSlot(slot);
 
     pf.setAuctionProvider({
       name: 'Google',
