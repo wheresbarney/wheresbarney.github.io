@@ -9,13 +9,12 @@
     var pf = new pubfood();
     pf.addBidProvider(audienceNetworkBidDelegate);
 
-    var slot = pf.addSlot({
+    pf.addSlot({
       name: '/1023632/hb_300x250_LIG',
       elementId: 'div-gpt-ad-1476127208992-0',
       sizes: [[300, 250]],
       bidProviders: ['audience-network']
-    });
-    slot.setParam('audience-network', {
+    }).setParam('audience-network', {
       placementId: '873801679416180_873802436082771'
     });
 
