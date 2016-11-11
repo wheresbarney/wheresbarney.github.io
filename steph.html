@@ -58,12 +58,12 @@
       console.log('timed out: ' + prebid_token);
       show();
     }, 10);
-    prebid_callback_q[] = () => {
+    prebid_callback_q.push(() => {
       if (! timeout) return;
       window.clearTimeout(timeout);
       console.log('callback: ' + prebid_token);
       show();
-    };
+    });
   </script>
   <script type="text/javascript" src="https://connect.facebook.net/en_US/fbadnw.js" async></script>
 </div>
