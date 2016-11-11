@@ -4,13 +4,15 @@
 <body>
 
   <script>
+    var prebid_token = prebid_token || '';
     window.anPrebidAsyncInit = function() {
       var prebid = new AudienceNetworkPrebid(
         '372488576419278_372489453085857',
         document.body
       );
       prebid.getProfile(function(profile) {
-        global.window.anpb_token = profile.token;
+        prebid_token = profile.token;
+        console.log('prebid_token: ' + prebid_token);
       });
     };
     (function(d, s, id){
@@ -29,11 +31,13 @@
 <div style="display:none; position: relative;">
   <iframe style="display:none;"></iframe>
   <script type="text/javascript">
+    var prebid_token = prebid_token || '';
+
     var data = {
       placementid: '372488576419278_372489453085857',
       format: '300x250',
       testmode: false,
-      token: global.window.anpb_token,
+      token: prebid_token,
       onAdLoaded: function(element) {
         console.log('Audience Network [372488576419278_372489453085857] ad loaded');
         element.style.display = 'block';
