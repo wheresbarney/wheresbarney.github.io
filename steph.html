@@ -1,14 +1,18 @@
 <html>
   <head>
-    <script>
-      window.anPrebidAsyncInit = function() {
-        var prebid = new AudienceNetworkPrebid(
-          '372488576419278_372489453085857',
-          document.body
-        );
-        prebid.getProfile(function(profile) {
-        });
-      };
+  </head>
+<body>
+
+  <script>
+    window.anPrebidAsyncInit = function() {
+      var prebid = new AudienceNetworkPrebid(
+        '372488576419278_372489453085857',
+        document.body
+      );
+      prebid.getProfile(function(profile) {
+        global.window.anpb_token = profile.token;
+      });
+    };
     (function(d, s, id){
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) {return;}
@@ -16,10 +20,9 @@
       js.src = "//www.barneym.sb.facebook.com/assets.php/en_US/AudienceNetworkPrebid.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'an-prebid'));
-    </script>
-  </head>
-<body>
-My Test Page
+  </script>
+
+  My Test Page
 
 <!-- DFP tag here -->
 
@@ -30,6 +33,7 @@ My Test Page
       placementid: '372488576419278_372489453085857',
       format: '300x250',
       testmode: false,
+      token: global.window.anpb_token,
       onAdLoaded: function(element) {
         console.log('Audience Network [372488576419278_372489453085857] ad loaded');
         element.style.display = 'block';
@@ -42,5 +46,4 @@ My Test Page
   </script>
   <script type="text/javascript" src="https://connect.facebook.net/en_US/fbadnw.js" async></script>
 </div>
-
 </body>
