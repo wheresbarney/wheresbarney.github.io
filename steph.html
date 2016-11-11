@@ -57,7 +57,7 @@
       timeout = null;
       console.log('timed out: ' + prebid_token);
       show();
-    }, 10);
+    }, 5000);
     prebid_callback_q.push(() => {
       if (! timeout) return;
       window.clearTimeout(timeout);
