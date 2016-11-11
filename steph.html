@@ -1,4 +1,23 @@
 <html>
+  <head>
+    <script>
+      window.anPrebidAsyncInit = function() {
+        var prebid = new AudienceNetworkPrebid(
+          '131734303545872_1054502624602364',
+          document.body
+        );
+        prebid.getProfile(function(profile) {
+        });
+      };
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//www.barneym.sb.facebook.com/assets.php?en_US/AudienceNetworkPrebid.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'an-prebid'));
+    </script>
+  </head>
 <body>
 My Test Page
 
