@@ -10,7 +10,7 @@
     window.anPrebidAsyncInit = function() {
       let prebid = new AudienceNetworkPrebid(
         '372488576419278_372489453085857',
-        document.body,
+        document.body
       );
       prebid.getProfile((profile) => {
         prebid_token = profile.token;
