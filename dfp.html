@@ -15,7 +15,7 @@
     pbjs.que = pbjs.que || [];
     pbjs.retries = 0;
 
-    function initAdserver() {
+    function initAdServer() {
         if (pbjs.initAdserverSet) return;
         if(!googletag.pubadsReady && pbjs.retries <= MAX_RETRIES) {
           setTimeout(initAdserver, 50); //poll ms can be adjusted as desired.
