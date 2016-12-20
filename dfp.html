@@ -55,7 +55,17 @@
     })();
 
     pbjs.que.push(function() {	
+	    
+    const customGranularity = {
+      "buckets" : [{
+        "min" : 0,
+	"max" : 20,
+	"increment" : 0.10
+      }]
+    };
 
+//set custom config object
+pbjs.setPriceGranularity(customConfigObject);
         var adUnits = [{
             code: 'div-gpt-ad-1481323898207-0',
             sizes: [[300, 250]],
