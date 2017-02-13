@@ -1,0 +1,137 @@
+<html>
+<head>
+  <!-- Prebid Config Section START -->
+  <!-- Make sure this is inserted before your GPT tag -->
+  <script> 
+    var PREBID_TIMEOUT = 10000;
+    var MAX_RETRIES = 20;
+
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    googletag.cmd.push(function() {
+        googletag.pubads().disableInitialLoad();
+    });
+    var pbjs = pbjs || {};
+    pbjs.que = pbjs.que || [];
+    pbjs.retries = 0;
+
+    function initAdserver() {
+        if (pbjs.initAdserverSet) return;
+        if(!googletag.pubadsReady && pbjs.retries <= MAX_RETRIES) {
+          setTimeout(initAdserver, 50); //poll ms can be adjusted as desired.
+          pbjs.retries++;
+          return;
+        }
+        googletag.cmd.push(function () {
+            pbjs.que.push(function () {
+                pbjs.setTargetingForGPTAsync();
+            });
+            googletag.pubads().refresh();
+        });
+        pbjs.initAdserverSet = true;
+    }
+
+    setTimeout(initAdserver, PREBID_TIMEOUT);
+      
+    (function () {
+        var d = document;
+        var pbs = d.createElement("script");
+        pbs.type = "text/javascript";
+        pbs.src = 'js/prebid.js';
+        var target = d.getElementsByTagName("head")[0];
+        target.insertBefore(pbs, target.firstChild);
+    })();
+
+     //load GPT library here
+    (function () {
+        var gads = document.createElement('script');
+        // gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') +
+                '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+
+    pbjs.que.push(function() {	
+	    
+      const customGranularity = {
+        "buckets" : [{
+          "min" : 0,
+          "max" : 20,
+          "increment" : 0.10
+        }]
+      };
+      pbjs.setPriceGranularity(customGranularity);
+      
+        var adUnits = [{
+            code: 'div-gpt-ad-1486479040361-0',
+            sizes: [[300, 250]],
+            bids: [{
+                bidder: 'audienceNetwork',
+                params: {
+                  placementId: '873801679416180_873802436082771',
+		              tagVersion: ['5.3.web', '5.5.web'],
+                }
+            }]
+        },];
+    
+        pbjs.addAdUnits(adUnits);
+        pbjs.requestBids({
+            bidsBackHandler: function (bidResponses) {
+                initAdserver();
+            }
+        });
+        pbjs.bidderSettings = {
+	        audienceNetwork: {
+	        	adserverTargeting: [
+	                {
+	                    key: "fb_bidid",
+	                    val: function (bidResponse) {
+	                        // make the bidId available for targeting if required
+	                        return bidResponse.fbBidId;
+	                    } 
+	                },
+	                {   
+	                    key: "hb_bidder",
+	                    val: function (bidResponse) {
+	                        return 'fan';
+	                    }
+	                },
+	                {
+	                	key: "fb_format",
+	                	val: function(bidResponse) {
+	                		return bidResponse.fbFormat;
+	                	}
+	                },
+	                {
+	                	key: "fb_placementid",
+	                	val: function(bidResponse) {
+	                		return bidResponse.fbPlacementId;
+	                	}
+	                },
+	            ],
+	        },
+	    };	
+    });
+
+    googletag.cmd.push(function () {
+        googletag.defineSlot('/1023632/300x250_pb_passback', [[300, 250]], 'div-gpt-ad-1487000936430-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+    });
+  </script>
+</head>
+
+<body>
+<h2>Prebid.js Test</h2>
+<h5>Div-1</h5>
+<div id='div-gpt-ad-1487000936430-0'>
+    <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1487000936430-0'); });
+    </script>
+</div>
+
+</body>
+</html>
