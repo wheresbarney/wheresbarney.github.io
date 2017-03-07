@@ -1,10 +1,16 @@
 <html>
 <head>
-
   <script src="/lovell/pubfood/pubfood.js"></script>
   <script src="/lovell/pubfood/audience-network-bid-delegate.min.js"></script>
+</head>
+
+<body>
+  <h2>Pubfood.org Test</h2>
+  <h5>Div-1</h5>
+  <div id='div-gpt-ad-1486479040361-0'></div>
+
   <script>
-    var PREBID_TIMEOUT = 2000;
+  <script>
     window.googletag = window.googletag || {};
     googletag.cmd = googletag.cmd || [];
 
@@ -50,26 +56,16 @@
       },
     });
 
-    pf.timeout(PREBID_TIMEOUT);
+    pf.timeout(5000);
     pf.observe(function(ev) {
       console.log(ev);
     });
     pf.start(Date.now(), function(hasErrors, errors) {
       if(hasErrors) {
         console.log('ERRORS: ', errors);
-      } else {
-        console.log('Complete, no errors');
       }
     });
-  </script>
-</head>
-
-<body>
-  <h2>Pubfood.org Test</h2>
-  <h5>Div-1</h5>
-  <div id='div-gpt-ad-1486479040361-0'></div>
-
-  <script>
+    
     pf.observe('AUCTION_POST_RUN', function() {
       googletag.cmd.push(function() {
         googletag.display('div-gpt-ad-1486479040361-0');
