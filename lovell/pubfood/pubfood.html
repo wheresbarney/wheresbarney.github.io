@@ -34,7 +34,7 @@
                   var tgtObject = targeting[i];
                   var gptObject;
                   if (tgtObject.name) {
-                      gptObject = googletag.defineSlot(tgtObject.name, tgtObject.sizes, tgtObject.elementId).addService(googletag.pubads());
+                      gptObject = googletag.defineSlot(tgtObject.name, tgtObject.sizes[0], tgtObject.elementId).addService(googletag.pubads());
                   } else {
                       gptObject = googletag.pubads();
                   }
