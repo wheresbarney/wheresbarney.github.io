@@ -54,6 +54,8 @@
     pf.start(Date.now(), function(hasErrors, errors) {
       if(hasErrors) {
         console.log('ERRORS: ', errors);
+      } else {
+        console.log('Complete, no errors');
       }
     });
   </script>
