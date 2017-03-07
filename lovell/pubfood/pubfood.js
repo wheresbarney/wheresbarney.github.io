@@ -1,4 +1,4 @@
-/*! pubfood v0.2.1 | (c) pubfood | http://pubfood.org/LICENSE.txt */
+/*! Pubfood v1.0.0 - Copyright (c) 2015 Pubfood (http://pubfood.org) */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.pubfood = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
@@ -738,7 +738,7 @@ PubfoodEvent.prototype.publish = function(eventType, data, annotations) {
   return this.emit(eventType, event);
 };
 
-util.extends(PubfoodEvent, EventEmitter);
+util.extendsObject(PubfoodEvent, EventEmitter);
 
 /**
  * Emit event, but keep events without a registered listener.
@@ -2281,7 +2281,7 @@ AuctionMediator.prototype.throwErrors = function(silent) {
   return this.throwErrors_;
 };
 
-util.extends(AuctionMediator, PubfoodObject);
+util.extendsObject(AuctionMediator, PubfoodObject);
 module.exports = AuctionMediator;
 
 },{"../assembler/bidassembler":2,"../assembler/requestassembler":3,"../assembler/transformoperator":4,"../event":6,"../model/bid":10,"../model/slot":11,"../provider/auctionprovider":12,"../provider/bidprovider":13,"../pubfoodobject":16,"../util":17}],10:[function(require,module,exports){
@@ -2366,7 +2366,7 @@ Bid.prototype.addSize = function(w, h) {
   return this;
 };
 
-util.extends(Bid, PubfoodObject);
+util.extendsObject(Bid, PubfoodObject);
 module.exports = Bid;
 
 },{"../pubfoodobject":16,"../util":17}],11:[function(require,module,exports){
@@ -2471,7 +2471,7 @@ Slot.prototype.addBidProvider = function(bidProvider) {
   return this;
 };
 
-util.extends(Slot, PubfoodObject);
+util.extendsObject(Slot, PubfoodObject);
 module.exports = Slot;
 
 },{"../interfaces":7,"../pubfoodobject":16,"../util":17}],12:[function(require,module,exports){
@@ -2592,7 +2592,7 @@ AuctionProvider.prototype.getTimeout = function() {
   return this.timeout_;
 };
 
-util.extends(AuctionProvider, PubfoodProvider);
+util.extendsObject(AuctionProvider, PubfoodProvider);
 module.exports = AuctionProvider;
 
 },{"../event":6,"../interfaces":7,"../util":17,"./pubfoodprovider":14}],13:[function(require,module,exports){
@@ -2751,7 +2751,7 @@ BidProvider.prototype.getTimeout = function() {
   return this.timeout_;
 };
 
-util.extends(BidProvider, PubfoodProvider);
+util.extendsObject(BidProvider, PubfoodProvider);
 module.exports = BidProvider;
 
 },{"../event":6,"../interfaces":7,"../util":17,"./pubfoodprovider":14}],14:[function(require,module,exports){
@@ -2787,7 +2787,7 @@ PubfoodProvider.prototype.throwErrors = function(silent) {
   return this.throwErrors_;
 };
 
-util.extends(PubfoodProvider, PubfoodObject);
+util.extendsObject(PubfoodProvider, PubfoodObject);
 module.exports = PubfoodProvider;
 
 },{"../pubfoodobject":16,"../util":17}],15:[function(require,module,exports){
@@ -2823,7 +2823,7 @@ var AuctionMediator = require('./mediator/auctionmediator');
   };
 
   pubfood.library = pubfood.prototype = {
-    version: '0.2.1',
+    version: '1.0.0',
     PubfoodError: require('./errors'),
     logger: logger
   };
@@ -3354,7 +3354,7 @@ var util = {
    *
    * @todo refactor to use? - https://github.com/isaacs/inherits
    */
-  extends: function(child, parent) {
+  extendsObject: function(child, parent) {
 
     for (var k in parent.prototype) {
       child.prototype[k] = parent.prototype[k];
@@ -3365,10 +3365,18 @@ var util = {
       return parent;
     });
 
-    child.prototype.init_ = function() {
-      var parents = this.parents || [];
+    child.prototype.init_ = function(a1, a2, a3, a4, a5) {
+      var parents = this.parents || [],
+        len = arguments.length;
       for (var i = 0; i < parents.length; i++) {
-        parents[i]().call(this);
+        switch (len) {
+        case 0: parents[i]().call(this); break;
+        case 1: parents[i]().call(this, a1); break;
+        case 2: parents[i]().call(this, a1, a2); break;
+        case 3: parents[i]().call(this, a1, a2, a3); break;
+        case 4: parents[i]().call(this, a1, a2, a3, a4); break;
+        default: parents[i]().call(this, a1, a2, a3, a4, a5); break;
+        }
       }
     };
   },
@@ -3394,7 +3402,7 @@ var util = {
       } else {
         /*eslint-disable no-empty */
         try {
-          doc.write('<script src="' + scriptSrc + '"></script>');
+          doc.write('<script src="' + scriptSrc + '">\x3C/script>');
         } catch (e) { }
         /*eslint-enable no-empty: */
       }
