@@ -5,6 +5,8 @@
   <script src="/lovell/pubfood/audience-network-bid-delegate.min.js"></script>
   <script>
     var PREBID_TIMEOUT = 2000;
+    window.googletag = window.googletag || {};
+    googletag.cmd = googletag.cmd || [];
 
     var pf = new pubfood();
     pf.addBidProvider(audienceNetworkBidDelegate());
@@ -49,14 +51,13 @@
     pf.observe(function(ev) {
       console.log(ev);
     });
+    pf.observe('AUCTION_POST_RUN', function() {
+      googletag.cmd.push(function() {
+        googletag.display('div-gpt-ad-1486479040361-0');
+      });
+    });
+
     pf.start();
-
-//     pf.observe('AUCTION_POST_RUN', function() {
-//       googletag.cmd.push(function() {
-//         googletag.display('div-gpt-ad-1486479040361-0');
-//       });
-//     });
-
   </script>
 </head>
 
