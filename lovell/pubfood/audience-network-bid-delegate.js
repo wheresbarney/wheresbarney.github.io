@@ -850,7 +850,7 @@ var init = function init(slots, pushBid, done) {
             id: bid.bid_id,
             slot: slotNames[i],
             value: String((bid.bid_price_cents / 100).toFixed(2)),
-            sizes: isNative(adformats[i]) ? [0, 0] : adformats[i].split('x').map(Number),
+            sizes: [isNative(adformats[i]) ? [0, 0] : adformats[i].split('x').map(Number)],
             targeting: {
               bidder: name,
               placementId: bid.placement_id,
