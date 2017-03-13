@@ -769,8 +769,7 @@ var validateSlot = function validateSlot(slot) {
  * @returns {Boolean}
  */
 var validateSlotSizes = function validateSlotSizes(slot) {
-  slot.sizes = slot.sizes.map(flattenSize);
-  return slot.sizes.every(function (size) {
+  return slot.sizes.map(flattenSize).every(function (size) {
     return ['native', '300x250', '300x50'].includes(size);
   });
 };
@@ -822,7 +821,7 @@ var init = function init(slots, pushBid, done) {
   slots.filter(validateSlot).filter(validateSlotSizes).forEach(function (slot) {
     return slot.sizes.forEach(function (size) {
       placementids.push(slot.getParam(name).placementId);
-      adformats.push(size);
+      adformats.push(flattenSize(size));
       slotNames.push(slot.name);
     });
   });
@@ -850,12 +849,13 @@ var init = function init(slots, pushBid, done) {
             id: bid.bid_id,
             slot: slotNames[i],
             value: String((bid.bid_price_cents / 100).toFixed(2)),
-            sizes: [isNative(adformats[i]) ? [0, 0] : adformats[i].split('x').map(Number)],
+            sizes: isNative(adformats[i]) ? [0, 0] : adformats[i].split('x').map(Number),
             targeting: {
-              bidder: name,
-              placementId: bid.placement_id,
-              bidId: bid.bid_id,
-              size: adformats[i]
+              hb_bidder: name,
+              hb_pb: String((bid.bid_price_cents / 100).toFixed(2)),
+              fb_placementid: bid.placement_id,
+              fb_bidid: bid.bid_id,
+              fb_format: adformats[i]
             }
           });
         });
