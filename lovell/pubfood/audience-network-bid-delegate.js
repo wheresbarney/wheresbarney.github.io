@@ -791,7 +791,7 @@ var flattenSize = function flattenSize(size) {
  * @returns {String} URL
  */
 var url = function url(placementids, adformats) {
-  return ['https://an.facebook.com/v2/placementbid.json?sdk=5.3.web'].concat(placementids.map(function (placementid) {
+  return ['https://an.facebook.com/v2/placementbid.json?sdk=5.5.web'].concat(placementids.map(function (placementid) {
     return 'placementids[]=' + placementid;
   })).concat(adformats.map(function (adformat) {
     return 'adformats[]=' + adformat;
