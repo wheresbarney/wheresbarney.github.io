@@ -760,7 +760,7 @@ var name = 'audience-network';
  * @file Audience Network BidDelegate.
  */
 var validateSlot = function validateSlot(slot) {
-  return (0, _isObject2.default)(slot) && (0, _isString2.default)(slot.name) && (0, _isString2.default)(slot.elementId) && (0, _isArray2.default)(slot.sizes) && slot.sizes.length > 0 && (0, _isFunction2.default)(slot.getParam) && (0, _isObject2.default)(slot.getParam(name)) && (0, _isString2.default)(slot.getParam(name).placementId);
+  return (0, _isObject2.default)(slot) && (0, _isString2.default)(slot.name) && (0, _isString2.default)(slot.elementId) && (0, _isArray2.default)(slot.sizes) && slot.sizes.length > 0 && (0, _isFunction2.default)(slot.getParam) && (0, _isObject2.default)(slot.getParam(name)) && (0, _isString2.default)(slot.getParam(name).placementId) && (0, _isString2.default)(slot.getParam(name).format);
 };
 
 /**
@@ -769,29 +769,20 @@ var validateSlot = function validateSlot(slot) {
  * @returns {Boolean}
  */
 var validateSlotSizes = function validateSlotSizes(slot) {
-  return slot.sizes.map(flattenSize).every(function (size) {
-    return ['native', '300x250', '300x50'].includes(size);
+  return slot.sizes.every(function (size) {
+    return ['300x250', '320x50'].includes(size.join('x'));
   });
 };
 
 /**
- * Flattens a 2-element [W, H] array as a 'WxH' string,
- * otherwise passes value through.
- * @param {Array<Number>|String} size
- * @returns {String}
- */
-var flattenSize = function flattenSize(size) {
-  return (0, _isArray2.default)(size) && size.length === 2 ? size[0] + 'x' + size[1] : size;
-};
-
-/**
  * URL builder for Audience Network API call.
+ * @param {String} sdkVersion - the version of the SDK to render the ad
  * @param {Array<String>} placementids - list of placement ids
  * @param {Array<String>} adformats - list of ad formats
  * @returns {String} URL
  */
-var url = function url(placementids, adformats) {
-  return ['https://an.facebook.com/v2/placementbid.json?sdk=5.5.web'].concat(placementids.map(function (placementid) {
+var url = function url(sdkVersion, placementids, adformats) {
+  return ['https://an.facebook.com/v2/placementbid.json?sdk=' + sdkVersion].concat(placementids.map(function (placementid) {
     return 'placementids[]=' + placementid;
   })).concat(adformats.map(function (adformat) {
     return 'adformats[]=' + adformat;
@@ -804,7 +795,7 @@ var url = function url(placementids, adformats) {
  * @returns {Boolean}
  */
 var isNative = function isNative(size) {
-  return size === 'native';
+  return ['native', 'fullwidth'].includes(size);
 };
 
 /**
@@ -813,21 +804,18 @@ var isNative = function isNative(size) {
  * @param {Function} pushBid - Callback to execute on next bid available
  * @param {Function} done - Callback to execute on done
  */
-var init = function init(slots, pushBid, done) {
+var init = function init(sdkVersion, slots, pushBid, done) {
   // Build placementids and adformats lists
   var placementids = [];
   var adformats = [];
   var slotNames = [];
   slots.filter(validateSlot).filter(validateSlotSizes).forEach(function (slot) {
-    return slot.sizes.forEach(function (size) {
-      placementids.push(slot.getParam(name).placementId);
-      adformats.push(flattenSize(size));
-      slotNames.push(slot.name);
-    });
+    placementids.push(slot.getParam(name).placementId);
+    adformats.push(slot.getParam(name).format);
+    slotNames.push(slot.name);
   });
-
   if (placementids.length) {
-    fetch(url(placementids, adformats), { credentials: 'include' }).then(function (res) {
+    fetch(url(sdkVersion, placementids, adformats), { credentials: 'include' }).then(function (res) {
       return res.json();
     }).then(function (data) {
       if ((0, _isArray2.default)(data.errors) && data.errors.length) {
@@ -850,7 +838,7 @@ var init = function init(slots, pushBid, done) {
             id: bid.bid_id,
             slot: slotNames[i],
             value: bidCPM,
-            sizes: isNative(adformats[i]) ? [0, 0] : adformats[i].split('x').map(Number),
+            sizes: isNative(adformats[i]) ? [300, 250] : adformats[i].split('x').map(Number),
             targeting: {
               hb_bidder: 'fan',
               hb_pb: bidCPM,
@@ -875,7 +863,13 @@ var init = function init(slots, pushBid, done) {
  * @property {Function} init - Initial bid request
  */
 var AudienceNetworkBidDelegate = function AudienceNetworkBidDelegate() {
-  return { name: name, init: init, refresh: init };
+  var sdkVersion = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '5.5.web';
+
+  return {
+    name: name,
+    init: init.bind(null, sdkVersion),
+    refresh: init.bind(null, sdkVersion)
+  };
 };
 module.exports = AudienceNetworkBidDelegate;
 
