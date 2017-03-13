@@ -15,7 +15,7 @@
     googletag.cmd = googletag.cmd || [];
 
     var pf = new pubfood();
-    pf.addBidProvider(audienceNetworkBidDelegate());
+    pf.addBidProvider(audienceNetworkBidDelegate('5.5.web'));
 
     pf.addSlot({
       name: '/1023632/hb_300x250_LIG',
@@ -23,7 +23,8 @@
       sizes: [[300, 250]],
       bidProviders: ['audience-network']
     }).setParam('audience-network', {
-      placementId: '873801679416180_873802436082771'
+      placementId: '873801679416180_873802436082771',
+      format: 'fullwidth',
     });
 
     pf.setAuctionProvider({
