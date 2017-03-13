@@ -845,14 +845,15 @@ var init = function init(slots, pushBid, done) {
         }, [])
         // call pushBid
         .forEach(function (bid, i) {
-          return pushBid({
+          var bidCPM = String((Math.floor(bid.bid_price_cents) / 100).toFixed(2));
+          pushBid({
             id: bid.bid_id,
             slot: slotNames[i],
-            value: String((bid.bid_price_cents / 100).toFixed(2)),
+            value: bidCPM,
             sizes: isNative(adformats[i]) ? [0, 0] : adformats[i].split('x').map(Number),
             targeting: {
-              hb_bidder: name,
-              hb_pb: String((bid.bid_price_cents / 100).toFixed(2)),
+              hb_bidder: 'fan',
+              hb_pb: bidCPM,
               fb_placementid: bid.placement_id,
               fb_bidid: bid.bid_id,
               fb_format: adformats[i]
