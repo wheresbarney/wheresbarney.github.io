@@ -845,7 +845,7 @@ var init = function init(slots, pushBid, done) {
         }, [])
         // call pushBid
         .forEach(function (bid, i) {
-          var bidCPM = String((Math.floor(bid.bid_price_cents) / 100).toFixed(2));
+          var bidCPM = String((Math.floor(bid.bid_price_cents / 10) / 10).toFixed(2));
           pushBid({
             id: bid.bid_id,
             slot: slotNames[i],
