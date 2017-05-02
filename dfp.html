@@ -84,14 +84,17 @@
                 initAdserver();
             }
         });
-        /*pbjs.bidderSettings = {
+        pbjs.bidderSettings = {
 	        audienceNetwork: {
+			// for each key, the first value is from the fbsamples private adaptor,
+			// and the second value is from the public open source adaptor
 	        	adserverTargeting: [
 	                {
 	                    key: "fb_bidid",
 	                    val: function (bidResponse) {
 	                        // make the bidId available for targeting if required
-	                        return bidResponse.fbBidId;
+	                        return bidResponse.fbBidId	// fbsamples private adaptor
+							    || bidResponse.fb_bidid;// public open source adaptor 
 	                    } 
 	                },
 	                {   
@@ -103,18 +106,20 @@
 	                {
 	                	key: "fb_format",
 	                	val: function(bidResponse) {
-	                		return bidResponse.fbFormat;
+	                		return bidResponse.fbFormat 	// fbsamples private adaptor
+								|| bidResponse.fb_format;	// public open source adaptor 
 	                	}
 	                },
 	                {
 	                	key: "fb_placementid",
 	                	val: function(bidResponse) {
-	                		return bidResponse.fbPlacementId;
+	                		return bidResponse.fbPlacementId	// fbsamples private adaptor
+								|| bidResponse.fb_placementid	// public open source adaptor 
 	                	}
 	                },
 	            ],
 	        },
-	    };*/
+	    };
     });
 
     googletag.cmd.push(function () {
