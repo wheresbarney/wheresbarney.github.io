@@ -1,133 +1,141 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>apstag</title>
 
-        <!-- BOOTSTRAP -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <!-- END BOOTSTRAP -->
-    </head>
-    <body>
+<head>
+    <script type="text/javascript">
+        var googletag = googletag || {};
+        googletag.cmd = googletag.cmd || [];
+    </script>
 
-          <!-- A9 BID REQUEST -->
+    <script type="text/javascript">
+        (function() {
+            var gads = document.createElement('script');
+            gads.async = true;
+            gads.type = 'text/javascript';
+            var useSSL = 'https:' == document.location.protocol;
+            gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+            var node = document.getElementsByTagName('script')[0];
+            node.parentNode.insertBefore(gads, node);
+        })();
+    </script>
+    <script type="text/javascript">
+        googletag.cmd.push(function() {
+            googletag.defineSlot('/116082170/a9partner', [
+                [728, 90],
+                [970, 250]
+            ], 'aps_slot_1').addService(googletag.pubads());
+            googletag.defineSlot('/116082170/a9partner', [
+                [300, 600],
+                [300, 250]
+            ], 'aps_slot_2').addService(googletag.pubads());
+            googletag.defineSlot('/116082170/a9partner', [
+                [320, 50]
+            ], 'aps_slot_3').addService(googletag.pubads());
+            googletag.defineSlot('/116082170/a9partner', [
+                [160, 600]
+            ], 'aps_slot_4').addService(googletag.pubads());
+            googletag.pubads().disableInitialLoad();
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+        });
+    </script>
 
-        <script type='text/javascript'>
-            var googletag = window.googletag || {};
-            googletag.cmd = googletag.cmd || [];
+    <script>
+        ! function(a9, a, p, s, t, A, g) {
+            if (a[a9]) return;
 
-            !function(a9, a, p, s, t, A, g) {
-                if(a[a9]) return;
-                function q(c, r) {
-                    a[a9]._Q.push([c,r]);
-                }
-                a[a9] = {
-                    init: function() {q('i', arguments);},
-                    fetchBids: function(){q('f', arguments);},
-                    setDisplayBids: function(){},
-                    _Q: []
-                };
-                
-                A = p.createElement(s);
-                A.async = !0;
-                A.src = t;
-                g = p.getElementsByTagName(s)[0];
-                g.parentNode.insertBefore(A, g);
-            }('apstag', window, document, 'script', "//c.amazon-adsystem.com/aax2/apstag.js");
+            function q(c, r) {
+                a[a9]._Q.push([c, r])
+            }
+            a[a9] = {
+                init: function() {
+                    q("i", arguments)
+                },
+                fetchBids: function() {
+                    q("f", arguments)
+                },
+                setDisplayBids: function() {},
+                _Q: []
+            };
+            A = p.createElement(s);
+            A.async = !0;
+            A.src = t;
+            g = p.getElementsByTagName(s)[0];
+            g.parentNode.insertBefore(A, g)
+        }("apstag", window, document, "script", "//c.amazon-adsystem.com/aax2/apstag.js");
+        apstag.init({
+            pubID: '1015',
+            adServer: 'googletag'
+        });
+        apstag.fetchBids({
+                    slots: [{
+                        slotID: 'aps_slot_1',
+                        sizes: [
+                            [970, 250],
+                            [728, 90]
+                        ]
+                    }, {
+                        slotID: 'aps_slot_2',
+                        sizes: [
+                            [300, 250],
+                            [300, 600]
+                        ]
+                    }, {
+                        slotID: 'aps_slot_3',
+                        sizes: [
+                            [320, 50]
+                        ]
+                    }, {
+                        slotID: 'aps_slot_4',
+                        sizes: [
+                            [160, 600]
+                        ]
+                    }],
+                    timeout: 2e3
+                }, function(bids) { // Your callback method, in this example it triggers the first DFP request for googletag's disableInitialLoad integration after bids have been set googletag.cmd.push(function() { apstag.setDisplayBids(); googletag.pubads().refresh(); }); });
+    </script>
+</head>
 
-
-            apstag.init({
-                pubID: '1079',
-                adServer: 'googletag',
-                bidTimeout: 2e3              
-            }, function() { console.log('apstag loaded!'); });
-
-            apstag.fetchBids({
-                    slots: [
-                        {
-                        slotID: 'pdpqa-sv2-slot1',
-                        sizes: [[300, 250], [300, 600]]
-                        },
-                        {
-                            slotID: 'pdpqa-sv2-slot2',
-                            slotName: 'pdpqa-sv2-slot2',
-                            sizes: [[300, 250], [300, 600]]
-                        },
-                        {
-                            slotID: 'pdpqa-sv2-slot3',
-                            slotName: 'pdpqa-sv2-slot3',
-                            sizes: [[970,250]]
-                        }
-                    ]
-                }, function(bids) {
-                    console.log(bids)
-                    googletag.cmd.push(function() {
-                        apstag.setDisplayBids();
-                        googletag.pubads().refresh()
-                    })
-                });
-
-        </script>
-        <!-- END A9 BID REQUEST -->
-
-        <!-- GPT AD REQUEST -->
-        <script async='async' src='https://www.googletagservices.com/tag/js/gpt.js'></script>
-        <script>
+<body>
+    <h4>
+        970 x250 / 728 x90 #1:
+     </h4>
+    <div id="aps_slot_1">
+        <script type="text/javascript">
             googletag.cmd.push(function() {
-                googletag.defineSlot('/116082170/pdpqa-sv2-slot1', [300, 600], 'pdpqa-sv2-slot1').addService(googletag.pubads());
-                googletag.defineSlot('/116082170/pdpqa-sv2-slot2', [300, 250], 'pdpqa-sv2-slot2').addService(googletag.pubads());
-                googletag.defineSlot('/116082170/pdpqa-sv2-slot3', [970, 250], 'pdpqa-sv2-slot3').addService(googletag.pubads());
-                googletag.pubads().disableInitialLoad();
-                googletag.pubads().enableSingleRequest();
-                googletag.enableServices();
-            });  
+                googletag.display('aps_slot_1');
+            });
         </script>
-        <!-- END GPT AD REQUEST -->
-        <container>
-            <div class='jumbotron'><h2 style="color:green">TAM Test Page</h2></div>
-            <br/>
-            <div class="well">
-                <h3>Some Words</h3>
-                <p>Passport stamps, she's cosmopolitan. We'd keep all our promises be us against the world. I wanna see your peacock, cock, cock, your peacock, cock. Respect. But don't make me your enemy, your enemy, your enemy. We drove to Cali and got drunk on the beach.</p>
+    </div>
 
-                <p>You think you're so rock and roll, but you're really just a joke. I am so unprepared. They say, be afraid you're not like the others, futuristic lover. Don't let the greatness get you down. I see it all, I see it now. Do you ever feel already buried deep six feet under? This one goes out to the ladies at breakfast in last night's dress. You think you've seen her in a magazine. It's a blacked out blur, but I'm pretty sure it ruled. Damn. Had the world in the palm of your hands. Do you ever feel already buried deep six feet under?</p>
-            </div>
+    <h4>
+                            300 x250 / 300 x600 #2:</h4>
+    <div id="aps_slot_2">
+        <script type="text/javascript">
+            googletag.cmd.push(function() {
+                googletag.display('aps_slot_2');
+            });
+        </script>
+    </div>
 
-            <!-- RENDER 4 GPT ADs -->
-            <h3>/116082170/pdpqa-sv2-slot1</h3>
-            <div id='pdpqa-sv2-slot1'>
-                <script>
-                googletag.cmd.push(function() {
-                    googletag.cmd.push(function() { googletag.display('pdpqa-sv2-slot1'); });   
-                });
-                    
-                </script>
-            </div>
+    <h4>
+                                                320 x50 #3:</h4>
+    <div id="aps_slot_3">
+        <script type="text/javascript">
+            googletag.cmd.push(function() {
+                googletag.display('aps_slot_3');
+            });
+        </script>
+    </div>
 
-            <h3>/116082170/pdpqa-sv2-slot2</h3>
-            <div id='pdpqa-sv2-slot2'>
-                <script>
-                    googletag.cmd.push(function() { googletag.display('pdpqa-sv2-slot2'); });
-                </script>
-            </div>
+    <h4>
+                                                                    160 x600 #4:</h4>
+    <div id="aps_slot_4">
+        <script type="text/javascript">
+            googletag.cmd.push(function() {
+                googletag.display('aps_slot_4');
+            });
+        </script>
+    </div>
+</body>
 
-            <h3>/116082170/pdpqa-sv2-slot3</h3>
-            <div id='pdpqa-sv2-slot3'>
-                <script>
-                    googletag.cmd.push(function() { googletag.display('pdpqa-sv2-slot3'); });
-                </script>
-            </div>
-            <!-- END RENDER GPT AD -->
-
-            <br/>
-            </div>
-            <div class="well">
-                <h3>More Words</h3>   
-                <p>I'm walking on air. 'Cause, baby, you're a firework. California girls we're undeniable. We'd keep all our promises be us against the world. Sippin' gin and juice laying underneath the palm trees. Cause I'm coming at you like a dark horse. I need your strength to handle the pressure. You know that I'm the girl that you should call.</p>
-
-                <p>So make a wish, I'll make it like your birthday everyday. So just be sure before you give it all to me. I am ready for the road less traveled. Last Friday night, yeah I think we broke the law, always say we're gonna stop. Come on, show 'em what you're worth. So let me get you in your birthday suit. Screams but no one seems to hear a thing. This is real so take a chance and don't ever look back, don't ever look back. You brought me to life, now every February you'll be my Valentine, Valentine.</p>
-            </div>
-        </container> 
-
-    </body>
 </html>
