@@ -4,138 +4,101 @@
 </head>
 
 <body>
-    <script type="text/javascript">
-        var googletag = googletag || {};
-        googletag.cmd = googletag.cmd || [];
-    </script>
-
-    <script type="text/javascript">
-        (function() {
-            var gads = document.createElement('script');
-            gads.async = true;
-            gads.type = 'text/javascript';
-            var useSSL = 'https:' == document.location.protocol;
-            gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
-            var node = document.getElementsByTagName('script')[0];
-            node.parentNode.insertBefore(gads, node);
-        })();
-    </script>
-    <script type="text/javascript">
-        googletag.cmd.push(function() {
-            googletag.defineSlot('/116082170/a9partner', [
-                [728, 90],
-                [970, 250]
-            ], 'aps_slot_1').addService(googletag.pubads());
-            googletag.defineSlot('/116082170/a9partner', [
-                [300, 600],
-                [300, 250]
-            ], 'aps_slot_2').addService(googletag.pubads());
-            googletag.defineSlot('/116082170/a9partner', [
-                [320, 50]
-            ], 'aps_slot_3').addService(googletag.pubads());
-            googletag.defineSlot('/116082170/a9partner', [
-                [160, 600]
-            ], 'aps_slot_4').addService(googletag.pubads());
-            googletag.pubads().disableInitialLoad();
-            googletag.pubads().enableSingleRequest();
-            googletag.enableServices();
-        });
-    </script>
-
-    <script>
-        ! function(a9, a, p, s, t, A, g) {
-            if (a[a9]) return;
-
-            function q(c, r) {
-                a[a9]._Q.push([c, r])
-            }
-            a[a9] = {
-                init: function() {
-                    q("i", arguments)
-                },
-                fetchBids: function() {
-                    q("f", arguments)
-                },
-                setDisplayBids: function() {},
-                _Q: []
-            };
-            A = p.createElement(s);
-            A.async = !0;
-            A.src = t;
-            g = p.getElementsByTagName(s)[0];
-            g.parentNode.insertBefore(A, g)
-        }("apstag", window, document, "script", "//c.amazon-adsystem.com/aax2/apstag.js");
-        apstag.init({
-            pubID: '1015',
-            adServer: 'googletag'
-        });
-        apstag.fetchBids({
-                    slots: [{
-                        slotID: 'aps_slot_1',
-                        sizes: [
-                            [970, 250],
-                            [728, 90]
-                        ]
-                    }, {
-                        slotID: 'aps_slot_2',
-                        sizes: [
-                            [300, 250],
-                            [300, 600]
-                        ]
-                    }, {
-                        slotID: 'aps_slot_3',
-                        sizes: [
-                            [320, 50]
-                        ]
-                    }, {
-                        slotID: 'aps_slot_4',
-                        sizes: [
-                            [160, 600]
-                        ]
-                    }],
-                    timeout: 2e3
-                }, function(bids) { // Your callback method, in this example it triggers the first DFP request for googletag's disableInitialLoad integration after bids have been set googletag.cmd.push(function() { apstag.setDisplayBids(); googletag.pubads().refresh(); }); });
-    </script>
-    <h4>
-        970 x250 / 728 x90 #1:
-     </h4>
-    <div id="aps_slot_1">
-        <script type="text/javascript">
-            googletag.cmd.push(function() {
-                googletag.display('aps_slot_1');
-            });
-        </script>
-    </div>
-
-    <h4>
-                            300 x250 / 300 x600 #2:</h4>
-    <div id="aps_slot_2">
-        <script type="text/javascript">
-            googletag.cmd.push(function() {
-                googletag.display('aps_slot_2');
-            });
-        </script>
-    </div>
-
-    <h4>
-                                                320 x50 #3:</h4>
-    <div id="aps_slot_3">
-        <script type="text/javascript">
-            googletag.cmd.push(function() {
-                googletag.display('aps_slot_3');
-            });
-        </script>
-    </div>
-
-    <h4>
-                                                                    160 x600 #4:</h4>
-    <div id="aps_slot_4">
-        <script type="text/javascript">
-            googletag.cmd.push(function() {
-                googletag.display('aps_slot_4');
-            });
-        </script>
-    </div>
+<script type="text/javascript">
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script type="text/javascript">
+  (function() {
+  var gads = document.createElement('script');
+  gads.async = true;
+  gads.type = 'text/javascript';
+  var useSSL = 'https:' == document.location.protocol;
+  gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+  var node = document.getElementsByTagName('script')[0];
+  node.parentNode.insertBefore(gads, node);
+  })();
+</script>
+<script type="text/javascript">
+  googletag.cmd.push(function() {
+  googletag.defineSlot('/116082170/a9partner', [[728, 90], [970, 250]], 'aps_slot_1').addService(googletag.pubads());
+  googletag.defineSlot('/116082170/a9partner', [[300, 600], [300, 250]], 'aps_slot_2').addService(googletag.pubads());
+  googletag.defineSlot('/116082170/a9partner', [[320, 50]], 'aps_slot_3').addService(googletag.pubads());
+  googletag.defineSlot('/116082170/a9partner', [[160, 600]], 'aps_slot_4').addService(googletag.pubads());
+  googletag.pubads().disableInitialLoad();
+  googletag.pubads().enableSingleRequest();
+  googletag.enableServices();
+  });
+</script>
+<script>
+  !function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+  apstag.init({
+      pubID: '1015',
+      adServer: 'googletag'
+  });
+  apstag.fetchBids({
+      slots: [{
+          slotID: 'aps_slot_1',
+          sizes: [[970, 250], [728, 90]]
+      },{
+          slotID: 'aps_slot_2',
+          sizes: [[300, 250], [300, 600]]
+      },{
+          slotID: 'aps_slot_3',
+          sizes: [[320, 50]]
+      },{
+          slotID: 'aps_slot_4',
+          sizes: [[160, 600]]
+      }], 
+      timeout: 2e3
+  }, function(bids) {
+      // Your callback method, in this example it triggers the first DFP request for googletag's disableInitialLoad integration after bids have been set
+      googletag.cmd.push(function(){
+          apstag.setDisplayBids();
+          googletag.pubads().refresh();
+      });
+  });
+</script>
+<h4>
+  970x250/728x90 #1:
+</h4>
+<div id="aps_slot_1">
+  <script type="text/javascript">
+    googletag.cmd.push(function() { 
+     googletag.display('aps_slot_1');
+    });
+  </script>
+</div>
+<h4>
+  300x250/300x600 #2:
+</h4>
+<div id="aps_slot_2">
+  <script type="text/javascript">
+    googletag.cmd.push(function() { 
+     googletag.display('aps_slot_2');
+    });
+  </script>
+</div>
+<h4>
+  320x50 #3:
+</h4>
+<div id="aps_slot_3">
+  <script type="text/javascript">
+    googletag.cmd.push(function() { 
+     googletag.display('aps_slot_3');
+    });
+  </script>
+</div>
+<h4>
+  160x600 #4:
+</h4>
+<div id="aps_slot_4">
+  <script type="text/javascript">
+    googletag.cmd.push(function() { 
+     googletag.display('aps_slot_4');
+    });
+  </script>
+</div>
 </body>
 
 </html>
