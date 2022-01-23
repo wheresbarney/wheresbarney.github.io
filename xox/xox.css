@@ -1,0 +1,86 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol,
+ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.outer {
+  display: grid;
+  grid-template-columns: 10em 10em 10em;
+  grid-template-rows: 10em 10em 10em;
+  gap: 50px;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.inner.closed {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(204, 204, 204, 1) 60%
+  );
+}
+
+.inner.x_won {
+  background-image: url(https://freesvg.org/img/Bina-Effect-Letters-alphabet-red-24.png);
+  background-size: contain;
+}
+
+.inner.o_won {
+  background-image: url(https://freesvg.org/img/Bina-Effect-Letters-alphabet-red-59.png);
+  background-size: contain;
+}
+
+.cell {
+  background: #fff;
+  border: 1px solid #999;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.closed > .cell,
+.x_won > .cell,
+.o_won > .cell {
+  opacity: 60%;
+}
+
+.cell:focus {
+  outline: none;
+}
+
+.cell.lastClicked {
+  color: #069132;
+}
+
+.kbd-navigation .cell:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
